@@ -1,0 +1,5 @@
+C:\Users\strik\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.8770.66\bin\cmake\win\x64\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=C:/Users/strik/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8770.66/bin/ninja/win/x64/ninja.exe -G Ninja -S C:\Users\strik\CLionProjects\refrisystem -B C:\Users\strik\CLionProjects\refrisystem\cmake-build-debug
+-- Using the multi-header code from C:/Users/strik/CLionProjects/refrisystem/json/include/
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/strik/CLionProjects/refrisystem/cmake-build-debug

@@ -1,0 +1,674 @@
+[
+  {
+    "NAME": "Spicy Vegan Chili",
+    "TAG": ["Vegan", "Spicy", "Hot", "Protein", "Vitamin", "Mineral"],
+    "STEPS": [
+      "First, chop up onions, bell peppers, and garlic.",
+      "In a large pot, sauté the onions, bell peppers, and garlic until they're softened.",
+      "Add chili powder, cumin, oregano, and salt, and stir well.",
+      "Add canned tomatoes, kidney beans, black beans, and corn. Mix them well.",
+      "Simmer for 30-45 minutes until flavors are well combined.",
+      "Serve with your choice of toppings like avocado slices, green onions, or vegan sour cream."
+    ],
+    "INGREDIENT_INFO": [{"name": "Onion", "amount": 1},{"name": "Bell pepper", "amount": 1},{"name": "Garlic", "amount": 0.2},{"name": "Chili powder", "amount": 0.2},{"name": "Cumin", "amount": 0.1},{"name": "Oregano", "amount": 0.1},{"name": "Salt", "amount": 0.1},{"name": "Canned tomatoes", "amount": 2},{"name": "Kidney bean", "amount": 1},{"name": "Black bean", "amount": 1},{"name": "Corn", "amount": 1},{"name": "Avocado", "amount": 0.5},{"name": "Green onion", "amount": 0.5},{"name": "Vegan sour cream", "amount": 0.5}]
+  },
+  {
+    "NAME": "Sweet Banana Pancakes",
+    "TAG": ["Vegetarian", "Sweet", "Hot", "Carbohydroxide", "Vitamin"],
+    "STEPS": [
+      "First, in a large bowl, mash the bananas until smooth.",
+      "Add eggs, milk, vanilla extract, and mix well.",
+      "In another bowl, mix together flour, baking powder, and salt.",
+      "Gradually add the dry ingredients to the wet ingredients, mixing just until combined.",
+      "Heat a non-stick skillet over medium heat, add batter by 1/4 cupfuls and cook until bubbles form on top, then flip and cook until the other side is golden brown.",
+      "Serve with maple syrup or your choice of toppings."
+    ],
+    "INGREDIENT_INFO": [{"name": "Banana", "amount": 2},{"name": "Egg", "amount": 2},{"name": "Milk", "amount": 0.5},{"name": "Vanilla extract", "amount": 0.1},{"name": "Flour", "amount": 2},{"name": "Baking powder", "amount": 0.2},{"name": "Salt", "amount": 0.1},{"name": "Maple syrup", "amount": 0.5}]
+  },
+  {
+    "NAME": "Refreshing Summer Gazpacho",
+    "TAG": ["Vegan", "Healthy", "Cold", "Vitamin", "Mineral"],
+    "STEPS": [
+      "First, chop the cucumber, bell peppers, tomatoes, and red onions into 1-inch cubes.",
+      "Put each vegetable separately into a food processor fitted with a steel blade and pulse until it is coarsely chopped. Do not over-process!",
+      "After each vegetable is processed, combine them in a large bowl and add the garlic, tomato juice, vinegar, olive oil, salt, and pepper.",
+      "Mix well and chill before serving. The longer gazpacho sits, the more the flavors develop."
+    ],
+    "INGREDIENT_INFO": [{"name": "Cucumber", "amount": 2},{"name": "Bell pepper", "amount": 2},{"name": "Tomato", "amount": 4},{"name": "Red onion", "amount": 1},{"name": "Garlic", "amount": 0.2},{"name": "Tomato juice", "amount": 1},{"name": "White wine vinegar", "amount": 0.1},{"name": "Olive oil", "amount": 0.2},{"name": "Salt", "amount": 0.1},{"name": "Pepper", "amount": 0.1}]
+  },
+  {
+    "NAME": "Savory Beef Stroganoff",
+    "TAG": ["Hot", "Savory", "Protein", "Fat", "Iron"],
+    "STEPS": [
+      "First, in a large skillet, cook the beef until browned. Set aside.",
+      "In the same skillet, add the butter, onions, and mushrooms. Sauté until onions are tender.",
+      "Stir in flour until blended. Gradually stir in beef broth. Bring to a boil; cook and stir for 2 minutes or until thickened.",
+      "Add the beef back into the skillet. Stir in sour cream and heat through (do not boil).",
+      "Serve over noodles or rice."
+    ],
+    "INGREDIENT_INFO": [{"name": "Beef", "amount": 2},{"name": "Butter", "amount": 0.5},{"name": "Onion", "amount": 1},{"name": "Mushroom", "amount": 1},{"name": "Flour", "amount": 0.2},{"name": "Beef broth", "amount": 2},{"name": "Sour cream", "amount": 0.5},{"name": "Noodle or rice", "amount": 2}]
+  },
+  {
+    "NAME": "Sweet Apple Crisp",
+    "TAG": ["Vegetarian", "Sweet", "Hot", "Carbohydroxide", "Vitamin"],
+    "STEPS": [
+      "First, preheat the oven to 375 degrees F (190 degrees C).",
+      "In a large bowl, mix together apples, sugar, cinnamon, and flour. Pour into a 9x13 inch baking dish.",
+      "In the same bowl, combine oats, flour, brown sugar, baking powder, baking soda, and melted butter. Crumble evenly over the apple mixture.",
+      "Bake at 375 degrees F (190 degrees C) for about 45 minutes or until the top is golden and the apples are tender."
+    ],
+    "INGREDIENT_INFO": [{"name": "Apple", "amount": 6},{"name": "Sugar", "amount": 1},{"name": "Cinnamon", "amount": 0.1},{"name": "Flour", "amount": 1.5},{"name": "Oat", "amount": 2},{"name": "Brown sugar", "amount": 1},{"name": "Baking powder", "amount": 0.1},{"name": "Baking soda", "amount": 0.05},{"name": "Butter", "amount": 1}]
+  },
+  {
+    "NAME": "Premium Lobster Bisque",
+    "TAG": ["Premium", "Hot", "Savory", "Protein", "Fat"],
+    "STEPS": [
+      "First, melt the butter in a large pot over medium heat.",
+      "Add the lobster shells and cook until they are bright red. Then add the onions, carrots, and celery and sauté until the onions are translucent.",
+      "Add the tomato paste and cook for another 3-4 minutes.",
+      "Add the cognac and let it simmer until the alcohol has evaporated.",
+      "Add the fish stock and the bouquet garni. Let it simmer for 20 minutes.",
+      "Strain the mixture and return the liquid to the pot. Add the cream and lobster meat and let it simmer for another 5 minutes.",
+      "Season with salt and pepper. Serve hot."
+    ],
+    "INGREDIENT_INFO": [{"name": "Butter", "amount": 0.5},{"name": "Lobster shell", "amount": 2},{"name": "Onion", "amount": 1},{"name": "Carrot", "amount": 1},{"name": "Celery", "amount": 1},{"name": "Tomato paste", "amount": 0.2},{"name": "Cognac", "amount": 0.2},{"name": "Fish stock", "amount": 2},{"name": "Bouquet garni", "amount": 1},{"name": "Cream", "amount": 0.5},{"name": "Lobster meat", "amount": 2},{"name": "Salt", "amount": 0.1},{"name": "Pepper", "amount": 0.1}]
+  },
+  {
+    "NAME": "Fluffy Japanese Pancakes",
+    "TAG": ["Sweet", "Hot", "Carbohydroxide"],
+    "STEPS": [
+      "First, separate egg yolks and whites into two different bowls.",
+      "Whisk the egg yolks with sugar, milk, and vanilla extract.",
+      "Add flour to the egg yolk mixture and mix well until no lumps are left.",
+      "Beat the egg whites with a mixer until stiff peaks form.",
+      "Slowly fold the egg whites into the yolk mixture.",
+      "Cook on a low heat in a frying pan, add batter to fill the pancake molds, cover and cook for about 10 minutes. Flip and cook for another 5 minutes.",
+      "Serve with syrup and fresh fruits."
+    ],
+    "INGREDIENT_INFO": [{"name": "Egg", "amount": 2},{"name": "Sugar", "amount": 0.5},{"name": "Milk", "amount": 0.5},{"name": "Vanilla extract", "amount": 0.1},{"name": "Flour", "amount": 1},{"name": "Syrup", "amount": 0.5},{"name": "Fruit", "amount": 1}]
+  },
+  {
+    "NAME": "Vegan Avocado Toast",
+    "TAG": ["Vegan", "Healthy", "Cold", "Fat", "Vitamin"],
+    "STEPS": [
+      "First, toast the bread in a toaster.",
+      "Mash the avocado with a fork and add lemon juice and salt.",
+      "Spread the mashed avocado on the toast.",
+      "Top with cherry tomatoes and a sprinkle of sesame seeds. Serve immediately."
+    ],
+    "INGREDIENT_INFO": [{"name": "Bread", "amount": 2},{"name": "Avocado", "amount": 1},{"name": "Lemon juice", "amount": 0.05},{"name": "Salt", "amount": 0.05},{"name": "Cherry tomatoe", "amount": 0.5},{"name": "Sesame seed", "amount": 0.05}]
+  },
+  {
+    "NAME": "Chicken Alfredo Pasta",
+    "TAG": ["Hot", "Savory", "Protein", "Fat", "Carbohydroxide"],
+    "STEPS": [
+      "First, cook the chicken in a pan until browned and set aside.",
+      "Cook the pasta in a pot of boiling water until al dente.",
+      "In a separate pan, melt butter and add garlic, cooking until fragrant.",
+      "Add cream and parmesan to the butter and garlic, stirring until the cheese is melted.",
+      "Add the cooked chicken and pasta, mixing well to coat.",
+      "Serve immediately with a sprinkle of chopped parsley."
+    ],
+    "INGREDIENT_INFO": [{"name": "Chicken", "amount": 1},{"name": "Pasta", "amount": 2},{"name": "Butter", "amount": 0.5},{"name": "Garlic", "amount": 0.1},{"name": "Cream", "amount": 0.5},{"name": "Parmesan cheese", "amount": 0.5},{"name": "Parsley", "amount": 0.1}]
+  },
+  {
+    "NAME": "Classic Margherita Pizza",
+    "TAG": ["Hot", "Savory", "Vegetarian", "Fat", "Carbohydroxide"],
+    "STEPS": [
+      "First, preheat your oven to the highest setting.",
+      "Roll out your pizza dough on a floured surface.",
+      "Spread tomato sauce over the dough, leaving a border for the crust.",
+      "Top with sliced mozzarella and fresh basil leaves.",
+      "Bake in the oven until the crust is golden and the cheese is bubbling and slightly browned.",
+      "Drizzle with a little extra virgin olive oil before serving."
+    ],
+    "INGREDIENT_INFO": [{"name": "Pizza dough", "amount": 1},{"name": "Tomato sauce", "amount": 0.5},{"name": "Mozzarella cheese", "amount": 1},{"name": "Fresh basil leave", "amount": 0.1},{"name": "Extra virgin olive oil", "amount": 0.1}]
+  },
+  {
+    "NAME": "Classic French Ratatouille",
+    "TAG": ["Vegetarian", "Healthy", "Hot", "Vitamin"],
+    "STEPS": [
+      "First, heat olive oil in a large pan over medium heat.",
+      "Add the onions and garlic, cook until fragrant.",
+      "Add the eggplant, cook until it's softened.",
+      "Add the zucchini, bell peppers and tomatoes, cook until all the vegetables are tender.",
+      "Stir in the basil, thyme, salt, and pepper, then reduce the heat to low, cover, and let it simmer for about 15 minutes.",
+      "Serve hot."
+    ],
+    "INGREDIENT_INFO": [{"name": "Olive oil", "amount": 0.2},{"name": "Onion", "amount": 1},{"name": "Garlic", "amount": 0.1},{"name": "Eggplant", "amount": 1},{"name": "Zucchini", "amount": 1},{"name": "Bell pepper", "amount": 2},{"name": "Tomato", "amount": 2},{"name": "Basil", "amount": 0.1},{"name": "Thyme", "amount": 0.1},{"name": "Salt", "amount": 0.05},{"name": "Pepper", "amount": 0.05}]
+  },
+  {
+    "NAME": "Viet'name'se Pho",
+    "TAG": ["Hot", "Savory", "Protein", "Carbohydroxide"],
+    "STEPS": [
+      "First, simmer the beef bones in a large pot of water.",
+      "Add the onions, ginger, salt, star anise, and cloves, continue to simmer for about 2-3 hours.",
+      "Strain the broth, and add fish sauce, sugar, and salt.",
+      "Prepare rice noodles according to the package instructions.",
+      "Serve the broth with noodles, topped with thinly sliced beef, onions, and fresh herbs."
+    ],
+    "INGREDIENT_INFO": [{"name": "Beef bone", "amount": 2},{"name": "Onion", "amount": 2},{"name": "Ginger", "amount": 0.1},{"name": "Salt", "amount": 0.1},{"name": "Star anise", "amount": 0.05},{"name": "Clove", "amount": 0.05},{"name": "Fish sauce", "amount": 0.2},{"name": "Sugar", "amount": 0.1},{"name": "Rice noodle", "amount": 2},{"name": "Beef", "amount": 1},{"name": "Fresh herb", "amount": 0.2}]
+  },
+  {
+    "NAME": "Chocolate Chip Cookies",
+    "TAG": ["Sweet", "Hot", "Carbohydroxide", "Fat"],
+    "STEPS": [
+      "First, preheat your oven to 375°F (190°C).",
+      "Cream together the butter and sugars in a large mixing bowl.",
+      "Beat in the eggs and vanilla extract.",
+      "In a separate bowl, combine the flour, baking soda, and salt, then gradually add it to the butter mixture.",
+      "Fold in the chocolate chips.",
+      "Drop rounded tablespoonfuls onto ungreased baking sheets, and bake for 9-11 minutes or until golden brown.",
+      "Let them cool on wire racks."
+    ],
+    "INGREDIENT_INFO": [{"name": "Butter", "amount": 1},{"name": "Sugar", "amount": 1.5},{"name": "Egg", "amount": 2},{"name": "Vanilla extract", "amount": 0.1},{"name": "Flour", "amount": 3},{"name": "Baking soda", "amount": 0.2},{"name": "Salt", "amount": 0.1},{"name": "Chocolate chip", "amount": 2}]
+  },
+  {
+    "NAME": "Greek Salad",
+    "TAG": ["Vegetarian", "Cold", "Healthy", "Vitamin", "Mineral"],
+    "STEPS": [
+      "First, chop the tomatoes, cucumbers, onions, and feta cheese into bite-size pieces.",
+      "Combine the chopped ingredients in a large bowl.",
+      "Add the olives and toss lightly.",
+      "Whisk together the olive oil, lemon juice, and oregano, then pour over the salad.",
+      "Season with salt and pepper, toss until well combined, and serve."
+    ],
+    "INGREDIENT_INFO": [{"name": "Tomato", "amount": 2},{"name": "Cucumber", "amount": 2},{"name": "Onion", "amount": 1},{"name": "Feta cheese", "amount": 1},{"name": "Olive", "amount": 0.5},{"name": "Olive oil", "amount": 0.2},{"name": "Lemon juice", "amount": 0.1},{"name": "Oregano", "amount": 0.05},{"name": "Salt", "amount": 0.05},{"name": "Pepper", "amount": 0.05}]
+  },
+  {
+    "NAME": "Spicy Tofu Stir Fry",
+    "TAG": ["Hot", "Spicy", "Vegetarian", "Protein", "Healthy"],
+    "STEPS": [
+      "First, press tofu to remove excess moisture and cut into cubes.",
+      "Heat oil in a pan over medium heat.",
+      "Add tofu to the pan and fry until golden brown on all sides. Remove from the pan and set aside.",
+      "In the same pan, add garlic, ginger, and chili, cook until fragrant.",
+      "Return tofu to the pan, add soy sauce, vinegar, and sugar. Stir well to combine.",
+      "Add scallions and sesame seeds, stir to combine, and cook for another minute.",
+      "Serve hot."
+    ],
+    "INGREDIENT_INFO": [{"name": "Tofu", "amount": 2},{"name": "Oil", "amount": 0.2},{"name": "Garlic", "amount": 0.1},{"name": "Ginger", "amount": 0.1},{"name": "Chili", "amount": 0.1},{"name": "Soy sauce", "amount": 0.2},{"name": "Vinegar", "amount": 0.1},{"name": "Sugar", "amount": 0.05},{"name": "Scallion", "amount": 0.5},{"name": "Sesame seed", "amount": 0.05}]
+  },
+  {
+    "NAME": "Grilled Salmon with Lemon and Dill",
+    "TAG": ["Hot", "Protein", "Healthy", "Iron"],
+    "STEPS": [
+      "First, preheat your grill to medium-high heat.",
+      "Season the salmon fillets with salt and pepper, then squeeze lemon juice over them and sprinkle with dill.",
+      "Place the salmon fillets on the grill, skin side down, and cook for about 5-7 minutes per side, or until the fish is opaque and flaky.",
+      "Serve hot."
+    ],
+    "INGREDIENT_INFO": [{"name": "Salmon fillet", "amount": 2},{"name": "Salt", "amount": 0.05},{"name": "Pepper", "amount": 0.05},{"name": "Lemon", "amount": 1},{"name": "Dill", "amount": 0.1}]
+  },
+  {
+    "NAME": "Classic Cheesecake",
+    "TAG": ["Cold", "Sweet", "Fat"],
+    "STEPS": [
+      "First, preheat your oven to 325°F (160°C).",
+      "Mix the graham cracker crumbs, melted butter, and sugar, then press into the bottom of a springform pan.",
+      "Beat the cream cheese until smooth, then beat in the sugar, eggs, vanilla, and lemon zest.",
+      "Pour the mixture over the crust in the pan.",
+      "Bake for 50-60 minutes, or until the center is set and the top is slightly browned.",
+      "Let it cool in the pan on a wire rack, then refrigerate for at least 4 hours before serving."
+    ],
+    "INGREDIENT_INFO": [{"name": "Graham cracker crumb", "amount": 2},{"name": "Butter", "amount": 0.5},{"name": "Sugar", "amount": 1.5},{"name": "Cream cheese", "amount": 4},{"name": "Egg", "amount": 3},{"name": "Vanilla extract", "amount": 0.1},{"name": "Lemon zest", "amount": 0.05}]
+  },
+  {
+    "NAME": "Guacamole",
+    "TAG": ["Cold", "Vegan", "Healthy", "Fat", "Vitamin"],
+    "STEPS": [
+      "First, cut the avocados in half, remove the pit, and scoop the flesh into a bowl.",
+      "Mash the avocado with a fork until it's as smooth or chunky as you like.",
+      "Stir in the onion, tomato, cilantro, lime juice, and salt.",
+      "Serve immediately, or cover with plastic wrap and refrigerate to let the flavors meld together."
+    ],
+    "INGREDIENT_INFO": [{"name": "Avocado", "amount": 3},{"name": "Onion", "amount": 0.5},{"name": "Tomato", "amount": 1},{"name": "Cilantro", "amount": 0.2},{"name": "Lime juice", "amount": 0.2},{"name": "Salt", "amount": 0.1}]
+  },
+  {
+    "NAME": "Pumpkin Soup",
+    "TAG": ["Hot", "Vegan", "Healthy", "Vitamin"],
+    "STEPS": [
+      "First, peel and chop the pumpkin, potato, and onion.",
+      "Heat oil in a large pot, add the onion and cook until translucent.",
+      "Add the pumpkin and potato to the pot and cover with vegetable broth. Bring to a boil, then reduce heat and simmer until the vegetables are tender.",
+      "Blend the soup until smooth, then season with salt and pepper.",
+      "Serve hot, garnished with pumpkin seeds if desired."
+    ],
+    "INGREDIENT_INFO": [{"name": "Pumpkin", "amount": 1},{"name": "Potato", "amount": 1},{"name": "Onion", "amount": 1},{"name": "Oil", "amount": 0.2},{"name": "Vegetable broth", "amount": 4},{"name": "Salt", "amount": 0.1},{"name": "Pepper", "amount": 0.05},{"name": "Pumpkin seed", "amount": 0.1}]
+  },
+  {
+    "NAME": "Beef Tacos",
+    "TAG": ["Hot", "Protein", "Iron"],
+    "STEPS": [
+      "First, brown the ground beef in a skillet over medium heat, breaking it up as it cooks.",
+      "Add the taco seasoning and water, then simmer until the liquid has evaporated.",
+      "Heat the taco shells in the oven according to package instructions.",
+      "Fill the taco shells with the beef mixture, then top with lettuce, tomato, cheese, and any other desired toppings.",
+      "Serve immediately."
+    ],
+    "INGREDIENT_INFO": [{"name": "Ground beef", "amount": 1},{"name": "Taco seasoning", "amount": 0.1},{"name": "Water", "amount": 0.5},{"name": "Taco shell", "amount": 2},{"name": "Lettuce", "amount": 0.5},{"name": "Tomato", "amount": 1},{"name": "Cheese", "amount": 0.5}]
+  },
+  {
+    "NAME": "French Onion Soup",
+    "TAG": ["Hot", "Savory", "Healthy"],
+    "STEPS": [
+      "First, slice the onions and cook them in a large pot with melted butter until they're caramelized.",
+      "Add the beef broth, wine, and thyme to the pot, bring to a boil, then reduce heat and simmer for about 20 minutes.",
+      "Ladle the soup into oven-safe bowls, top each with a slice of baguette and some grated cheese, then broil until the cheese is bubbly and golden.",
+      "Serve hot."
+    ],
+    "INGREDIENT_INFO": [{"name": "Onion", "amount": 4},{"name": "Butter", "amount": 0.5},{"name": "Beef broth", "amount": 4},{"name": "Red wine", "amount": 1},{"name": "Thyme", "amount": 0.1},{"name": "Baguette", "amount": 1},{"name": "Cheese", "amount": 1}]
+  },
+  {
+    "NAME": "Matcha Green Tea Ice Cream",
+    "TAG": ["Cold", "Sweet", "Vegan"],
+    "STEPS": [
+      "First, whisk together the almond milk, sugar, and matcha powder until well combined.",
+      "Pour the mixture into an ice cream maker and churn according to manufacturer's instructions.",
+      "Once churned, transfer the ice cream to a lidded container and freeze until firm.",
+      "Serve cold."
+    ],
+    "INGREDIENT_INFO": [{"name": "Almond milk", "amount": 2},{"name": "Sugar", "amount": 0.75},{"name": "Matcha powder", "amount": 0.1}]
+  },
+  {
+    "NAME": "Chicken Caesar Salad",
+    "TAG": ["Cold", "Protein", "Healthy"],
+    "STEPS": [
+      "First, grill or pan-fry the chicken until fully cooked, then slice it into strips.",
+      "Toss the romaine lettuce with Caesar dressing in a large bowl.",
+      "Top the lettuce with the chicken strips, croutons, and shaved Parmesan cheese.",
+      "Serve cold."
+    ],
+    "INGREDIENT_INFO": [{"name": "Chicken", "amount": 2},{"name": "Romaine lettuce", "amount": 2},{"name": "Caesar dressing", "amount": 0.5},{"name": "Crouton", "amount": 0.5},{"name": "Parmesan cheese", "amount": 0.5}]
+  },
+  {
+    "NAME": "Shrimp Scampi",
+    "TAG": ["Hot", "Savory", "Protein"],
+    "STEPS": [
+      "First, sauté the garlic in butter and olive oil until fragrant.",
+      "Add the shrimp and cook until pink, then remove them from the pan.",
+      "Deglaze the pan with white wine and lemon juice, then return the shrimp to the pan.",
+      "Stir in the parsley, then serve the shrimp scampi over cooked pasta.",
+      "Serve hot."
+    ],
+    "INGREDIENT_INFO": [{"name": "Garlic", "amount": 0.1},{"name": "Butter", "amount": 0.5},{"name": "Olive oil", "amount": 0.2},{"name": "Shrimp", "amount": 2},{"name": "White wine", "amount": 0.5},{"name": "Lemon juice", "amount": 0.2},{"name": "Parsley", "amount": 0.1},{"name": "Pasta", "amount": 2}]
+  },
+  {
+    "NAME": "Vegan Banana Bread",
+    "TAG": ["Hot", "Vegan", "Sweet"],
+    "STEPS": [
+      "First, mash the bananas in a large bowl, then stir in the sugar, vegetable oil, and vanilla.",
+      "Mix in the flour, baking soda, and salt, then fold in the chopped walnuts.",
+      "Pour the batter into a loaf pan and bake at 350°F (175°C) for about 60 minutes, or until a toothpick inserted into the center comes out clean.",
+      "Allow to cool in the pan for a few minutes, then remove and cool completely on a wire rack.",
+      "Serve warm or at room temperature."
+    ],
+    "INGREDIENT_INFO": [{"name": "Banana", "amount": 3},{"name": "Sugar", "amount": 1},{"name": "Vegetable oil", "amount": 0.5},{"name": "Vanilla extract", "amount": 0.1},{"name": "Flour", "amount": 2},{"name": "Baking soda", "amount": 0.1},{"name": "Salt", "amount": 0.1},{"name": "Walnut", "amount": 1}]
+  },
+  {
+    "NAME": "Beef Bulgogi",
+    "TAG": ["Hot", "Protein", "Savory"],
+    "STEPS": [
+      "First, marinate the thinly sliced beef in soy sauce, sugar, sesame oil, garlic, and pepper for at least an hour.",
+      "Heat a pan over medium-high heat, then add the beef and cook until browned.",
+      "Serve the beef bulgogi over steamed rice with kimchi and other side dishes."
+    ],
+    "INGREDIENT_INFO": [{"name": "Beef", "amount": 2},{"name": "Soy sauce", "amount": 0.2},{"name": "Sugar", "amount": 0.1},{"name": "Sesame oil", "amount": 0.1},{"name": "Garlic", "amount": 0.1},{"name": "Pepper", "amount": 0.05},{"name": "Rice", "amount": 2}]
+  },
+  {
+    "NAME": "Chicken Carbonara",
+    "TAG": ["Hot", "Protein", "Premium"],
+    "STEPS": [
+      "First, cook the spaghetti according to the package instructions, then drain and set aside.",
+      "Cook the bacon until crispy, then remove from the pan and set aside.",
+      "In the same pan, cook the chicken until browned, then add the garlic and cook until fragrant.",
+      "Beat the eggs with the Parmesan cheese and a little black pepper, then add to the pan and stir until the eggs thicken but are still creamy.",
+      "Add the cooked spaghetti and bacon to the pan and toss to combine.",
+      "Serve the chicken carbonara hot with extra Parmesan cheese on top."
+    ],
+    "INGREDIENT_INFO": [{"name": "Spaghetti", "amount": 2},{"name": "Bacon", "amount": 1},{"name": "Chicken", "amount": 1},{"name": "Garlic", "amount": 0.1},{"name": "Egg", "amount": 4},{"name": "Parmesan cheese", "amount": 1},{"name": "Black pepper", "amount": 0.05}]
+  },
+  {
+    "NAME": "Chicken Katsu",
+    "TAG": ["Hot", "Protein", "Savory"],
+    "STEPS": [
+      "First, season the chicken with salt and pepper, then dredge in flour, dip in beaten eggs, and coat with panko breadcrumbs.",
+      "Heat oil in a pan over medium heat, then fry the chicken until golden brown.",
+      "Slice the chicken katsu into strips and serve over steamed rice with katsu sauce."
+    ],
+    "INGREDIENT_INFO": [{"name": "Chicken", "amount": 2},{"name": "Salt", "amount": 0.05},{"name": "Pepper", "amount": 0.05},{"name": "Flour", "amount": 0.5},{"name": "Egg", "amount": 2},{"name": "Panko breadcrumbs", "amount": 1},{"name": "Oil", "amount": 1},{"name": "Rice", "amount": 2},{"name": "Katsu sauce", "amount": 0.5}]
+  },
+  {
+    "NAME": "Pesto Pasta",
+    "TAG": ["Hot", "Vegetarian", "Savory"],
+    "STEPS": [
+      "First, cook the pasta according to the package instructions, then drain and set aside.",
+      "In a blender or food processor, combine the basil, garlic, pine nuts, Parmesan cheese, olive oil, salt, and pepper, then blend until smooth.",
+      "Toss the cooked pasta with the pesto, then serve the pesto pasta hot with extra Parmesan cheese on top."
+    ],
+    "INGREDIENT_INFO": [{"name": "Pasta", "amount": 2},{"name": "Basil", "amount": 1},{"name": "Garlic", "amount": 0.1},{"name": "Pine nut", "amount": 0.5},{"name": "Parmesan cheese", "amount": 1},{"name": "Olive oil", "amount": 0.5},{"name": "Salt", "amount": 0.1},{"name": "Pepper", "amount": 0.05}]
+  },
+  {
+    "NAME": "Chicken Quesadillas",
+    "TAG": ["Hot", "Protein", "Spicy"],
+    "STEPS": [
+      "First, cook the chicken until browned, then add the bell peppers and onions and cook until soft.",
+      "Spread a layer of cheese on one half of each tortilla, then top with the chicken and vegetable mixture and fold in half.",
+      "Cook the quesadillas in a pan over medium heat until the cheese is melted and the tortillas are crispy.",
+      "Serve the chicken quesadillas hot with salsa and sour cream."
+    ],
+    "INGREDIENT_INFO": [{"name": "Chicken", "amount": 1},{"name": "Bell pepper", "amount": 1},{"name": "Onion", "amount": 0.5},{"name": "Cheese", "amount": 2},{"name": "Tortilla", "amount": 4},{"name": "Salsa", "amount": 0.5},{"name": "Sour cream", "amount": 0.5}]
+  },
+  {
+    "NAME": "Fried Rice",
+    "TAG": ["Hot", "Healthy", "Vegetarian"],
+    "STEPS": [
+      "First, cook the rice according to the package instructions, then set aside.",
+      "Heat oil in a pan over medium heat, then add the garlic and onions and cook until soft.",
+      "Add the cooked rice, peas, carrots, soy sauce, and scrambled eggs, then stir until well combined.",
+      "Serve the fried rice hot with a sprinkle of green onions on top."
+    ],
+    "INGREDIENT_INFO": [{"name": "Rice", "amount": 2},{"name": "Oil", "amount": 0.2},{"name": "Garlic", "amount": 0.1},{"name": "Onion", "amount": 0.5},{"name": "Pea", "amount": 0.5},{"name": "Carrot", "amount": 0.5},{"name": "Soy sauce", "amount": 0.2},{"name": "Egg", "amount": 2},{"name": "Green onion", "amount": 0.2}]
+  },
+  {
+    "NAME": "Lemon Seafood Risotto",
+    "TAG": ["Hot", "Premium", "Healthy"],
+    "STEPS": [
+      "First, heat the oil in a large saucepan, then add the onions and garlic and cook until soft.",
+      "Add the rice and cook until translucent, then add the wine and cook until absorbed.",
+      "Gradually add the broth, stirring constantly, until the rice is cooked.",
+      "Add the shrimp, scallops, lemon zest, lemon juice, and parsley, then cook until the seafood is cooked through.",
+      "Serve the lemon seafood risotto hot with a sprinkle of Parmesan cheese on top."
+    ],
+    "INGREDIENT_INFO": [{"name": "Oil", "amount": 0.2},{"name": "Onion", "amount": 0.5},{"name": "Garlic", "amount": 0.1},{"name": "Rice", "amount": 2},{"name": "Wine", "amount": 1},{"name": "Broth", "amount": 5},{"name": "Shrimp", "amount": 1},{"name": "Scallop", "amount": 1},{"name": "Lemon zest", "amount": 0.1},{"name": "Lemon juice", "amount": 0.1},{"name": "Parsley", "amount": 0.1},{"name": "Parmesan cheese", "amount": 0.5}]
+  },
+  {
+    "NAME": "Lobster Ravioli",
+    "TAG": ["Premium", "Hot", "Savory"],
+    "STEPS": [
+      "First, prepare the ravioli dough and set it aside.",
+      "Next, cook the lobster in boiling water until it is fully cooked and let it cool.",
+      "Remove the meat from the lobster and chop it finely.",
+      "Combine the chopped lobster with ricotta, Parmesan, and herbs.",
+      "Place a spoonful of the lobster mixture on each piece of ravioli dough and fold over, sealing the edges.",
+      "Cook the ravioli in boiling water until they float.",
+      "Serve with a butter and herb sauce."
+    ],
+    "INGREDIENT_INFO": [{"name": "Ravioli dough", "amount": 2},{"name": "Lobster", "amount": 1},{"name": "Ricotta cheese", "amount": 1},{"name": "Parmesan cheese", "amount": 0.5},{"name": "Fresh herb", "amount": 0.2},{"name": "Butter", "amount": 0.5}]
+  },
+  {
+    "NAME": "Grilled Garlic Shrimp",
+    "TAG": ["Protein", "Hot", "Healthy"],
+    "STEPS": [
+      "First, mix together the garlic, olive oil, lemon juice, and spices.",
+      "Marinate the shrimp in the garlic mixture for at least 30 minutes.",
+      "Skewer the shrimp and grill until pink and opaque.",
+      "Serve the grilled garlic shrimp hot with fresh lemon wedges."
+    ],
+    "INGREDIENT_INFO": [{"name": "Garlic", "amount": 0.2},{"name": "Olive oil", "amount": 0.2},{"name": "Lemon juice", "amount": 0.2},{"name": "Spice", "amount": 0.2},{"name": "Shrimp", "amount": 2},{"name": "Lemon wedge", "amount": 0.5}]
+  },
+  {
+    "NAME": "British Fish Cake",
+    "TAG": ["Protein", "Hot", "Savory"],
+    "STEPS": [
+      "First, boil the fish until it is fully cooked, then flake it with a fork.",
+      "Mix the flaked fish with mashed potatoes and herbs.",
+      "Form the mixture into patties and coat with bread crumbs.",
+      "Fry the fish cakes until golden brown.",
+      "Serve the British fish cakes hot with tartar sauce."
+    ],
+    "INGREDIENT_INFO": [{"name": "Fish", "amount": 1},{"name": "Potato", "amount": 1},{"name": "Fresh herb", "amount": 0.2},{"name": "Bread crumb", "amount": 0.5},{"name": "Oil", "amount": 0.2},{"name": "Tartar sauce", "amount": 0.5}]
+  },
+  {
+    "NAME": "Churros",
+    "TAG": ["Sweet", "Hot", "Vegan"],
+    "STEPS": [
+      "First, heat the water, sugar, salt, and oil in a pot until boiling.",
+      "Add the flour and stir until a dough forms.",
+      "Pipe the dough through a star-shaped nozzle into hot oil.",
+      "Fry the churros until golden brown, then drain on paper towels.",
+      "Roll the churros in sugar and cinnamon.",
+      "Serve the churros hot with chocolate sauce."
+    ],
+    "INGREDIENT_INFO": [{"name": "Water", "amount": 1},{"name": "Sugar", "amount": 0.5},{"name": "Salt", "amount": 0.05},{"name": "Oil", "amount": 2},{"name": "Flour", "amount": 2},{"name": "Cinnamon", "amount": 0.1},{"name": "Chocolate sauce", "amount": 0.5}]
+  },
+  {
+    "NAME": "Chicken Pot Pie",
+    "TAG": ["Hot", "Savory", "Protein"],
+    "STEPS": [
+      "First, cook the chicken in a pot until it's fully cooked and cut it into bite-sized pieces.",
+      "Saute the vegetables in a pan until they are soft.",
+      "Add the chicken and vegetables to a pie crust and cover it with another crust, making sure to seal the edges.",
+      "Bake in the oven until the crust is golden brown.",
+      "Serve the chicken pot pie hot."
+    ],
+    "INGREDIENT_INFO": [{"name": "Chicken", "amount": 1},{"name": "Vegetable", "amount": 2},{"name": "Pie crust", "amount": 2}]
+  },
+  {
+    "NAME": "Spaghetti Aglio e Olio",
+    "TAG": ["Hot", "Vegan", "Savory"],
+    "STEPS": [
+      "First, cook the spaghetti in boiling water until al dente.",
+      "In a separate pan, saute the garlic in olive oil until golden brown.",
+      "Add red pepper flakes and remove from heat.",
+      "Toss the cooked spaghetti in the garlic oil.",
+      "Serve the spaghetti aglio e olio hot, sprinkled with parsley."
+    ],
+    "INGREDIENT_INFO": [{"name": "Spaghetti", "amount": 1},{"name": "Garlic", "amount": 0.1},{"name": "Olive oil", "amount": 0.2},{"name": "Red pepper flake", "amount": 0.05},{"name": "Parsley", "amount": 0.05}]
+  },
+  {
+    "NAME": "Roasted Chicken",
+    "TAG": ["Hot", "Protein", "Savory"],
+    "STEPS": [
+      "First, season the chicken with salt, pepper, and herbs.",
+      "Place the chicken in a roasting pan and bake in the oven until the skin is crispy and the chicken is fully cooked.",
+      "Let the chicken rest for a few minutes before carving.",
+      "Serve the roasted chicken hot with your choice of sides."
+    ],
+    "INGREDIENT_INFO": [{"name": "Chicken", "amount": 1},{"name": "Salt", "amount": 0.1},{"name": "Pepper", "amount": 0.1},{"name": "Herb", "amount": 0.1}]
+  },
+  {
+    "NAME": "Beef Lasagna",
+    "TAG": ["Hot", "Protein", "Savory"],
+    "STEPS": [
+      "First, prepare the meat sauce by sauteing ground beef with onions, garlic, tomatoes, and herbs.",
+      "In a separate bowl, mix together ricotta cheese, eggs, and herbs.",
+      "Layer the lasagna noodles, meat sauce, ricotta mixture, and mozzarella cheese in a baking dish.",
+      "Bake in the oven until the cheese is bubbly and browned.",
+      "Serve the lasagna hot."
+    ],
+    "INGREDIENT_INFO": [{"name": "Ground beef", "amount": 1},{"name": "Onion", "amount": 0.5},{"name": "Garlic", "amount": 0.1},{"name": "Tomato", "amount": 1},{"name": "Herb", "amount": 0.1},{"name": "Ricotta cheese", "amount": 1},{"name": "Egg", "amount": 0.5},{"name": "Lasagna noodles", "amount": 1},{"name": "Mozzarella cheese", "amount": 1}]
+  },
+  {
+    "NAME": "Beef Stew",
+    "TAG": ["Hot", "Savory", "Protein"],
+    "STEPS": [
+      "First, brown the beef in a pot with oil.",
+      "Remove the beef and sauté onions, carrots, and celery.",
+      "Return the beef to the pot and add broth, potatoes, and herbs.",
+      "Simmer until the beef and vegetables are tender.",
+      "Serve the beef stew hot with bread."
+    ],
+    "INGREDIENT_INFO": [{"name": "Beef", "amount": 1},{"name": "Onion", "amount": 0.5},{"name": "Carrot", "amount": 0.5},{"name": "Celery", "amount": 0.5},{"name": "Broth", "amount": 2},{"name": "Potato", "amount": 1},{"name": "Herb", "amount": 0.1},{"name": "Bread", "amount": 1}]
+  },
+  {
+    "NAME": "Mac and Cheese",
+    "TAG": ["Hot", "Savory", "Carbohydroxide"],
+    "STEPS": [
+      "First, cook the macaroni according to the package instructions.",
+      "In a separate pot, melt the butter and add the flour to make a roux.",
+      "Add milk to the roux and stir until the sauce thickens.",
+      "Remove from heat and stir in the cheese until it melts.",
+      "Combine the cheese sauce with the cooked macaroni.",
+      "Serve the mac and cheese hot."
+    ],
+    "INGREDIENT_INFO": [{"name": "Macaroni", "amount": 1},{"name": "Butter", "amount": 0.5},{"name": "Flour", "amount": 0.1},{"name": "Milk", "amount": 1},{"name": "Cheese", "amount": 1}]
+  },
+  {
+    "NAME": "Orange Cinnamon Rolls",
+    "TAG": ["Sweet", "Vegan", "Carbohydroxide"],
+    "STEPS": [
+      "First, prepare the dough and let it rise.",
+      "Roll out the dough and spread the filling of sugar, cinnamon, and orange zest.",
+      "Roll up the dough and cut into rolls.",
+      "Bake the rolls in the oven until golden brown.",
+      "While the rolls are cooling, prepare the icing with powdered sugar and orange juice.",
+      "Drizzle the icing over the cinnamon rolls.",
+      "Serve the orange cinnamon rolls warm or at room temperature."
+    ],
+    "INGREDIENT_INFO": [{"name": "Dough", "amount": 1},{"name": "Sugar", "amount": 0.5},{"name": "Cinnamon", "amount": 0.1},{"name": "Orange zest", "amount": 0.1},{"name": "Powdered sugar", "amount": 0.5},{"name": "Orange juice", "amount": 0.2}]
+  },
+  {
+    "NAME": "Fish Tacos",
+    "TAG": ["Hot", "Protein", "Savory"],
+    "STEPS": [
+      "First, season the fish with spices and grill.",
+      "In a separate bowl, prepare the slaw with cabbage, lime juice, and mayo.",
+      "Warm the tortillas in a pan.",
+      "Assemble the tacos with the grilled fish, slaw, and any additional toppings.",
+      "Serve the fish tacos immediately."
+    ],
+    "INGREDIENT_INFO": [{"name": "Fish", "amount": 1},{"name": "Spice", "amount": 0.1},{"name": "Cabbage", "amount": 0.5},{"name": "Lime juice", "amount": 0.1},{"name": "Mayo", "amount": 0.2},{"name": "Tortilla", "amount": 1}]
+  },
+  {
+    "NAME": "Roasted Rack of Lamb",
+    "TAG": ["Hot", "Protein", "Premium"],
+    "STEPS": [
+      "First, season the rack of lamb with herbs and garlic.",
+      "Roast in the oven until desired doneness.",
+      "Let the lamb rest before slicing into individual chops.",
+      "Serve the roasted rack of lamb with vegetables."
+    ],
+    "INGREDIENT_INFO": [{"name": "Lamb", "amount": 1},{"name": "Herb", "amount": 0.1},{"name": "Garlic", "amount": 0.1},{"name": "Vegetable", "amount": 1}]
+  },
+  {
+    "NAME": "Grilled Cheese Sandwich",
+    "TAG": ["Hot", "Savory", "Carbohydroxide"],
+    "STEPS": [
+      "First, butter one side of each slice of bread.",
+      "Place cheese between the non-buttered sides of the bread.",
+      "Grill the sandwich in a pan until golden brown and the cheese is melted.",
+      "Serve the grilled cheese sandwich hot."
+    ],
+    "INGREDIENT_INFO": [{"name": "Bread", "amount": 0.5},{"name": "Butter", "amount": 0.1},{"name": "Cheese", "amount": 0.5}]
+  },
+  {
+    "NAME": "Tomato Soup",
+    "TAG": ["Hot", "Vegan", "Healthy"],
+    "STEPS": [
+      "First, sauté onions and garlic in a pot.",
+      "Add tomatoes, broth, and herbs.",
+      "Simmer until the tomatoes are soft.",
+      "Blend the soup until smooth.",
+      "Serve the tomato soup hot with bread."
+    ],
+    "INGREDIENT_INFO": [{"name": "Onion", "amount": 0.5},{"name": "Garlic", "amount": 0.1},{"name": "Tomato", "amount": 2},{"name": "Broth", "amount": 2},{"name": "Herb", "amount": 0.1},{"name": "Bread", "amount": 1}]
+  },
+  {
+    "NAME": "Banana Smoothie",
+    "TAG": ["Cold", "Sweet", "Healthy"],
+    "STEPS": [
+      "First, combine bananas, yogurt, and honey in a blender.",
+      "Blend until smooth.",
+      "Serve the banana smoothie immediately."
+    ],
+    "INGREDIENT_INFO": [{"name": "Banana", "amount": 1},{"name": "Yogurt", "amount": 1},{"name": "Honey", "amount": 0.1}]
+  },
+  {
+    "NAME": "Italian Baked Meatballs",
+    "TAG": ["Hot", "Protein", "Savory"],
+    "STEPS": [
+      "First, combine ground meat with breadcrumbs, parmesan, and spices.",
+      "Shape the mixture into meatballs and place on a baking sheet.",
+      "Bake in the oven until cooked through.",
+      "Serve the Italian baked meatballs with pasta and marinara sauce."
+    ],
+    "INGREDIENT_INFO": [{"name": "Ground meat", "amount": 1},{"name": "Bread crumb", "amount": 0.5},{"name": "Parmesan cheese", "amount": 0.5},{"name": "Spice", "amount": 0.1},{"name": "Pasta", "amount": 1},{"name": "Marinara sauce", "amount": 1}]
+  },
+  {
+    "NAME": "Blueberry Yogurt Smoothie",
+    "TAG": ["Cold", "Sweet", "Healthy"],
+    "STEPS": [
+      "First, combine blueberries, yogurt, and honey in a blender.",
+      "Blend until smooth.",
+      "Serve the blueberry yogurt smoothie immediately."
+    ],
+    "INGREDIENT_INFO": [{"name": "Blueberry", "amount": 1},{"name": "Yogurt", "amount": 1},{"name": "Honey", "amount": 0.1}]
+  },
+  {
+    "NAME": "Black Bean Veggie Burger",
+    "TAG": ["Hot", "Vegan", "Protein"],
+    "STEPS": [
+      "First, mash black beans and combine with vegetables and spices.",
+      "Shape the mixture into patties and grill.",
+      "Serve the black bean veggie burger with a bun and your favorite toppings."
+    ],
+    "INGREDIENT_INFO": [{"name": "Black bean", "amount": 1},{"name": "Vegetable", "amount": 1},{"name": "Spice", "amount": 0.1},{"name": "Bun", "amount": 0.5}]
+  },
+  {
+    "NAME": "French Toast",
+    "TAG": ["Hot", "Sweet", "Carbohydroxide"],
+    "STEPS": [
+      "First, whisk together eggs, milk, and cinnamon.",
+      "Dip slices of bread into the mixture.",
+      "Fry the bread in a pan until golden brown.",
+      "Serve the French toast with maple syrup and powdered sugar."
+    ],
+    "INGREDIENT_INFO": [{"name": "Egg", "amount": 0.5},{"name": "Milk", "amount": 0.5},{"name": "Cinnamon", "amount": 0.05},{"name": "Bread", "amount": 1},{"name": "Maple syrup", "amount": 0.1},{"name": "Powdered sugar", "amount": 0.05}]
+  },
+  {
+    "NAME": "BLT Sandwich",
+    "TAG": ["Cold", "Protein", "Salty"],
+    "STEPS": [
+      "First, fry bacon until crispy.",
+      "Assemble the sandwich with bread, bacon, lettuce, and tomato.",
+      "Add mayo for extra flavor.",
+      "Serve the BLT sandwich immediately."
+    ],
+    "INGREDIENT_INFO": [{"name": "Bacon", "amount": 1},{"name": "Bread", "amount": 1},{"name": "Lettuce", "amount": 0.5},{"name": "Tomato", "amount": 0.5},{"name": "Mayo", "amount": 0.1}]
+  },
+  {
+    "NAME": "Baked Potatoes",
+    "TAG": ["Hot", "Vegan", "Carbohydroxide"],
+    "STEPS": [
+      "First, clean the potatoes and pierce them with a fork.",
+      "Bake in the oven until they are soft.",
+      "Serve the baked potatoes with butter and chives."
+    ],
+    "INGREDIENT_INFO": [{"name": "Potato", "amount": 1},{"name": "Butter", "amount": 0.1},{"name": "Chive", "amount": 0.1}]
+  },
+  {
+    "NAME": "Denver Omelet",
+    "TAG": ["Hot", "Protein", "Salty"],
+    "STEPS": [
+      "First, sauté diced onion, bell pepper, and ham.",
+      "Beat eggs and pour them over the sautéed mixture.",
+      "Flip the omelet and allow it to cook fully.",
+      "Serve the Denver Omelet hot with toast."
+    ],
+    "INGREDIENT_INFO": [{"name": "Onion", "amount": 0.5},{"name": "Bell pepper", "amount": 0.5},{"name": "Ham", "amount": 0.5},{"name": "Egg", "amount": 2},{"name": "Toast", "amount": 2}]
+  },
+  {
+    "NAME": "Southwestern Burrito",
+    "TAG": ["Hot", "Protein", "Salty"],
+    "STEPS": [
+      "First, cook the rice and beans together.",
+      "Sauté onion, bell pepper, and beef.",
+      "Assemble the burrito with rice, beans, sautéed mixture, and cheese.",
+      "Grill the burrito until it is crispy and golden.",
+      "Serve the Southwestern Burrito with salsa and sour cream."
+    ],
+    "INGREDIENT_INFO": [{"name": "Rice", "amount": 0.5},{"name": "Bean", "amount": 0.5},{"name": "Onion", "amount": 0.5},{"name": "Bell pepper", "amount": 0.5},{"name": "Beef", "amount": 0.5},{"name": "Cheese", "amount": 0.5},{"name": "Salsa", "amount": 0.2},{"name": "Sour cream", "amount": 0.2}]
+  },
+  {
+    "NAME": "Croissant French Toast",
+    "TAG": ["Hot", "Sweet", "Savory"],
+    "STEPS": [
+      "First, slice the croissants in half.",
+      "Dip the croissants into a mixture of beaten egg, milk, and vanilla.",
+      "Fry the croissants until golden brown.",
+      "Serve the Croissant French Toast with syrup and fresh fruits."
+    ],
+    "INGREDIENT_INFO": [{"name": "Croissants", "amount": 2},{"name": "Egg", "amount": 2},{"name": "Milk", "amount": 0.5},{"name": "Vanilla", "amount": 0.05},{"name": "Syrup", "amount": 0.2},{"name": "Fruit", "amount": 1}]
+  }
+]

@@ -1,0 +1,9 @@
+# ninja log v5
+36	111	7063704539135662	CMakeFiles/refrisystem.dir/src/TimeSystem.cpp.obj	37435c03813e2e3a
+4	475	7063730167202904	CMakeFiles/refrisystem.dir/main.cpp.obj	19a2bb4585f11f07
+12	543	7063704543470468	CMakeFiles/refrisystem.dir/src/IngredientInfo.cpp.obj	a3070ae707d92020
+10	529	7063730167739435	CMakeFiles/refrisystem.dir/src/Table.cpp.obj	49c76cf4e8f7d643
+20	430	7063730166752551	CMakeFiles/refrisystem.dir/src/RefriSystem.cpp.obj	2616ad3a87bd64fc
+2710	3923	7063731668563545	refrisystem.exe	6193807fe8e8a6e3
+13	2923	7063711637346090	CMakeFiles/refrisystem.dir/src/Recipe.cpp.obj	200f3834dcb25e
+4	2709	7063731656402259	CMakeFiles/refrisystem.dir/src/RefriRecipe.cpp.obj	7623ce293a443966
