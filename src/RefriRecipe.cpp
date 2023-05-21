@@ -47,7 +47,15 @@ vector<Row> RefriRecipe::loadRecipeList(string data_path){
         // Ingredients
         string ingredients;
         for (const auto& ingredient : recipe["INGREDIENT_INFO"]) {
-            ingredients += to_string(ingredient["amount"].get<double>()) + " " + ingredient["name"].get<string>() + ", ";
+            // truncate the amountString to two decimal places
+            double amount = ingredient["amount"].get<double>();
+            string amountString = to_string(amount);
+            size_t dotPosition = amountString.find('.');
+            if (dotPosition != string::npos && dotPosition + 1 < amountString.length() - 1) {
+                amountString = amountString.substr(0, dotPosition + 1 + 1);
+            }
+            // make ingredients string
+            ingredients += amountString + " " + ingredient["name"].get<string>() + ", ";
         }
         ingredients = ingredients.substr(0, ingredients.size()-2); // remove the trailing comma
         row.values.push_back(ingredients);
@@ -61,12 +69,15 @@ void RefriRecipe::showRecipeList(){
     vector<string> title = {"NAME","TAGS","INGREDIENTS"};
     vector<Row> data = RefriRecipe::loadRecipeList("../source/recipeData.json");
 
-    table(title, data);
+    table(title, data); // print all rows in table format
 }
 
 void RefriRecipe::removeRecipe(string targetName){
     vector<string> title = {"NAME","TAGS","INGREDIENTS"};
     vector<Row> data = RefriRecipe::loadRecipeList("../source/recipeData.json");
+
+
+
 
 }
 
