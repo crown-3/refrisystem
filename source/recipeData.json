@@ -14,7 +14,7 @@
   },
   {
     "NAME": "Sweet Banana Pancakes",
-    "TAG": ["Vegetarian", "Sweet", "Hot", "Carbohydroxide", "Vitamin"],
+    "TAG": ["Vegetarian", "Sweet", "Hot", "Carbohydrate", "Vitamin"],
     "STEPS": [
       "First, in a large bowl, mash the bananas until smooth.",
       "Add eggs, milk, vanilla extract, and mix well.",
@@ -50,7 +50,7 @@
   },
   {
     "NAME": "Sweet Apple Crisp",
-    "TAG": ["Vegetarian", "Sweet", "Hot", "Carbohydroxide", "Vitamin"],
+    "TAG": ["Vegetarian", "Sweet", "Hot", "Carbohydrate", "Vitamin"],
     "STEPS": [
       "First, preheat the oven to 375 degrees F (190 degrees C).",
       "In a large bowl, mix together apples, sugar, cinnamon, and flour. Pour into a 9x13 inch baking dish.",
@@ -75,7 +75,7 @@
   },
   {
     "NAME": "Fluffy Japanese Pancakes",
-    "TAG": ["Sweet", "Hot", "Carbohydroxide"],
+    "TAG": ["Sweet", "Hot", "Carbohydrate"],
     "STEPS": [
       "First, separate egg yolks and whites into two different bowls.",
       "Whisk the egg yolks with sugar, milk, and vanilla extract.",
@@ -100,7 +100,7 @@
   },
   {
     "NAME": "Chicken Alfredo Pasta",
-    "TAG": ["Hot", "Savory", "Protein", "Fat", "Carbohydroxide"],
+    "TAG": ["Hot", "Savory", "Protein", "Fat", "Carbohydrate"],
     "STEPS": [
       "First, cook the chicken in a pan until browned and set aside.",
       "Cook the pasta in a pot of boiling water until al dente.",
@@ -113,7 +113,7 @@
   },
   {
     "NAME": "Classic Margherita Pizza",
-    "TAG": ["Hot", "Savory", "Vegetarian", "Fat", "Carbohydroxide"],
+    "TAG": ["Hot", "Savory", "Vegetarian", "Fat", "Carbohydrate"],
     "STEPS": [
       "First, preheat your oven to the highest setting.",
       "Roll out your pizza dough on a floured surface.",
@@ -139,7 +139,7 @@
   },
   {
     "NAME": "Viet'name'se Pho",
-    "TAG": ["Hot", "Savory", "Protein", "Carbohydroxide"],
+    "TAG": ["Hot", "Savory", "Protein", "Carbohydrate"],
     "STEPS": [
       "First, simmer the beef bones in a large pot of water.",
       "Add the onions, ginger, salt, star anise, and cloves, continue to simmer for about 2-3 hours.",
@@ -151,7 +151,7 @@
   },
   {
     "NAME": "Chocolate Chip Cookies",
-    "TAG": ["Sweet", "Hot", "Carbohydroxide", "Fat"],
+    "TAG": ["Sweet", "Hot", "Carbohydrate", "Fat"],
     "STEPS": [
       "First, preheat your oven to 375°F (190°C).",
       "Cream together the butter and sugars in a large mixing bowl.",
@@ -493,7 +493,7 @@
   },
   {
     "NAME": "Mac and Cheese",
-    "TAG": ["Hot", "Savory", "Carbohydroxide"],
+    "TAG": ["Hot", "Savory", "Carbohydrate"],
     "STEPS": [
       "First, cook the macaroni according to the package instructions.",
       "In a separate pot, melt the butter and add the flour to make a roux.",
@@ -506,7 +506,7 @@
   },
   {
     "NAME": "Orange Cinnamon Rolls",
-    "TAG": ["Sweet", "Vegan", "Carbohydroxide"],
+    "TAG": ["Sweet", "Vegan", "Carbohydrate"],
     "STEPS": [
       "First, prepare the dough and let it rise.",
       "Roll out the dough and spread the filling of sugar, cinnamon, and orange zest.",
@@ -543,7 +543,7 @@
   },
   {
     "NAME": "Grilled Cheese Sandwich",
-    "TAG": ["Hot", "Savory", "Carbohydroxide"],
+    "TAG": ["Hot", "Savory", "Carbohydrate"],
     "STEPS": [
       "First, butter one side of each slice of bread.",
       "Place cheese between the non-buttered sides of the bread.",
@@ -607,7 +607,7 @@
   },
   {
     "NAME": "French Toast",
-    "TAG": ["Hot", "Sweet", "Carbohydroxide"],
+    "TAG": ["Hot", "Sweet", "Carbohydrate"],
     "STEPS": [
       "First, whisk together eggs, milk, and cinnamon.",
       "Dip slices of bread into the mixture.",
@@ -629,7 +629,7 @@
   },
   {
     "NAME": "Baked Potatoes",
-    "TAG": ["Hot", "Vegan", "Carbohydroxide"],
+    "TAG": ["Hot", "Vegan", "Carbohydrate"],
     "STEPS": [
       "First, clean the potatoes and pierce them with a fork.",
       "Bake in the oven until they are soft.",

@@ -5,7 +5,7 @@
 #include <vector>
 #include "../include/Recipe.h"
 #include "../include/IngredientInfo.h"
-#include "../include/Table.h"
+#include "../hooks/Table.h"
 #include <nlohmann/json.hpp>
 #include <vector>
 #include <string>

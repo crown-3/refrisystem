@@ -6,7 +6,8 @@
 #define REFRISYSTEM_REFRIRECIPE_H
 
 #include <vector>
-#include "Table.h"
+#include "../hooks/Table.h"
+#include <nlohmann/json.hpp>
 using namespace std;
 
 class RefriRecipe {
@@ -17,6 +18,9 @@ public:
     static vector<Row> loadRecipeList(string data_path);
     static void showRecipeList();
     static void removeRecipe(string targetName);
+    static void addRecipe();
+    static void showPossibleTags();
+    static nlohmann::json inputIngredients();
     // ..
 };
 

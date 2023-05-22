@@ -4,7 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include "include/Recipe.h"
-#include "include/Table.h"
+#include "hooks/Table.h"
 
 #include "include/RefriRecipe.h"
 
@@ -15,6 +15,7 @@ int main(void){
 //    refri.MAIN_MENU();
 
     RefriRecipe::showRecipeList();
+    RefriRecipe::addRecipe();
 
     return 0;
 }
