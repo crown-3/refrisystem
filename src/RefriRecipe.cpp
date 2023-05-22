@@ -73,12 +73,15 @@ void RefriRecipe::showRecipeList() {
     vector<string> title = {"NAME", "TAGS", "INGREDIENTS"};
     vector<Row> data = RefriRecipe::loadRecipeList("../source/recipeData.json");
 
-    table(title, data);
+    table(title, data); // print all rows in table format
 }
 
 void RefriRecipe::removeRecipe(string targetName) {
     vector<string> title = {"NAME", "TAGS", "INGREDIENTS"};
     vector<Row> data = RefriRecipe::loadRecipeList("../source/recipeData.json");
+
+
+
 
 }
 
