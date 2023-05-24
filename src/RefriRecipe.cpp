@@ -73,13 +73,6 @@ void RefriRecipe::showRecipeList() {
     table(title, data); // print all rows in table format
 }
 
-void RefriRecipe::removeRecipe(string targetName) {
-    vector<string> title = {"NAME", "TAGS", "INGREDIENTS"};
-    vector<Row> data = RefriRecipe::loadRecipeList("../source/RecipeData.json");
-
-
-}
-
 void RefriRecipe::showPossibleTags() {
     cout << "Possible Tags: ";
     for (size_t i = 0; i < RecipeTagList.size(); ++i) {
@@ -222,3 +215,54 @@ void RefriRecipe::addRecipe() {
     }
 }
 
+void RefriRecipe::removeRecipe() {
+//    vector<string> title = {"NAME", "TAGS", "INGREDIENTS"};
+//    vector<Row> data = RefriRecipe::loadRecipeList("../source/RecipeData.json");
+    try {
+        Title("Remove Recipe");
+
+        Subtitle("Recipe Name");
+        string recipeName = Input("Enter target recipe name");
+
+        // Load existing recipes
+        ifstream i("../source/RecipeData_removeTest.json");
+        if (!i) {
+            throw runtime_error("Unable to open file: RecipeData_removeTest.json");
+        }
+
+        json existingRecipes;
+        if (i.peek() != ifstream::traits_type::eof()) // Check if file is empty
+            i >> existingRecipes;
+
+        // Find the recipe with the matching target name
+        bool found = false;
+        json removedRecipes;
+
+        for (const auto& element : existingRecipes.items()) {
+            if (element.value().is_object() && element.value().contains("NAME") && element.value()["NAME"] == recipeName) {
+                found = true;
+            }else{
+                removedRecipes.push_back(element);
+            }
+        }
+        if (!found) {
+            throw runtime_error("There is no remove target in existing data");
+        }
+
+        i.close();
+
+        // Save the updated recipes back to the file
+        ofstream o("../source/RecipeData_removeTest.json");
+        if (!o) {
+            throw runtime_error("Unable to open file: RecipeData_removeTest.json for writing");
+        }
+
+        o << removedRecipes.dump(4) << endl; // write with indentation of 4
+        o.close();
+        Subtitle("Successfully removed recipe '" + recipeName + "'!");
+    }
+    catch (const std::exception &e) {
+        Subtitle(e.what());  // Display the error message
+    }
+
+}

@@ -18,7 +18,7 @@ public:
     static void showRecipeList();
 
     // Remove Recipe
-    static void removeRecipe(string targetName);
+    static void removeRecipe();
 
     // Adding Recipe
     static void showPossibleTags();
