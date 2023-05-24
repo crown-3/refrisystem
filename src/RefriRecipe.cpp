@@ -20,15 +20,12 @@ using namespace nlohmann;
 
 RefriRecipe::RefriRecipe() {
     // recipe dataset load , assign to : vector<Recipe> recipeList
-//    string data_path = "../source/recipeData.json";
-//    vector<Row> data = RefriRecipe::loadRecipeList(data_path);
-
-
+    //    string data_path = "../source/RecipeData.json";
+    //    vector<Row> data = RefriRecipe::loadRecipeList(data_path);
 }
 
 void RefriRecipe::MAIN_RefriStorage() {
     // show recipelist
-
 }
 
 vector<Row> RefriRecipe::loadRecipeList(string data_path) {
@@ -71,16 +68,14 @@ vector<Row> RefriRecipe::loadRecipeList(string data_path) {
 
 void RefriRecipe::showRecipeList() {
     vector<string> title = {"NAME", "TAGS", "INGREDIENTS"};
-    vector<Row> data = RefriRecipe::loadRecipeList("../source/recipeData.json");
+    vector<Row> data = RefriRecipe::loadRecipeList("../source/RecipeData.json");
 
     table(title, data); // print all rows in table format
 }
 
 void RefriRecipe::removeRecipe(string targetName) {
     vector<string> title = {"NAME", "TAGS", "INGREDIENTS"};
-    vector<Row> data = RefriRecipe::loadRecipeList("../source/recipeData.json");
-
-
+    vector<Row> data = RefriRecipe::loadRecipeList("../source/RecipeData.json");
 
 
 }
@@ -116,7 +111,7 @@ json RefriRecipe::inputIngredients() {
     while (true) {
         double amount;
         string ingredient;
-        cout << "Input an ingredient name and amount (-1 to finish) : ";
+        cout << "Input an ingredient name and amount (-1 to finish): ";
         cin >> amount;
         if (amount == -1) {
             break;
@@ -126,7 +121,7 @@ json RefriRecipe::inputIngredients() {
 
         if (foodData.find(ingredient) == foodData.end()) {
             char response;
-            cout << "----| Add new ingredient '" << ingredient << "' to food data? (y/n) : ";
+            cout << "----| Add new ingredient '" << ingredient << "' to food data? (y/n): ";
             cin >> response;
             if (response == 'y' || response == 'Y') {
                 string storage;
@@ -145,6 +140,9 @@ json RefriRecipe::inputIngredients() {
                 output << j.dump(4); // pretty-printing with 4 spaces indent
                 output.close();
             } else {
+                TextColor(DARKGRAY, BLACK);
+                cout << "----| Adding ingredient '" << ingredient << "' canceled." << endl;
+                TextColor(WHITE, BLACK);
                 continue;
             }
         }
@@ -157,25 +155,70 @@ json RefriRecipe::inputIngredients() {
     return ingredientList;
 }
 
+json RefriRecipe::inputSteps() {
+    json steps = json::array();
+    string step;
+    int step_num = 1;
+    while (true) {
+        step = Input("Step " + to_string(step_num), "(-1 to finish)");
+        if (step == "-1")
+            break;
+        steps.push_back(step);
+        ++step_num;
+    }
+    return steps;
+}
+
 void RefriRecipe::addRecipe() {
-    Title("Add Recipe");
+    try {
+        Title("Add Recipe");
 
-    Subtitle("Recipe Name");
-    string recipeName = Input("Enter your recipe name");
+        Subtitle("Recipe Name");
+        string recipeName = Input("Enter your recipe name");
 
-    Subtitle("Recipe Tags");
-    showPossibleTags();
-    vector<string> recipeTagSelect = MultipleChoice(RecipeTagList, "Enter recipe's tags", "ex) Sweet, Fat");
+        Subtitle("Recipe Tags");
+        showPossibleTags();
+        vector<string> recipeTagSelect = MultipleChoice(RecipeTagList, "Enter recipe's tags", "ex) Sweet, Fat");
 
-    Subtitle("Recipe Ingredients");
-    json recipeIngredients = inputIngredients();
+        Subtitle("Recipe Ingredients");
+        json recipeIngredients = inputIngredients();
 
-    Subtitle("Recipe Steps");
+        Subtitle("Recipe Steps");
+        json recipeSteps = inputSteps();
 
+        // Save Recipe to the RecipeData.json
+        json newRecipe;
+        newRecipe["NAME"] = recipeName;
+        newRecipe["TAG"] = recipeTagSelect;
+        newRecipe["STEPS"] = recipeSteps;
+        newRecipe["INGREDIENT_INFO"] = recipeIngredients;
 
-    cout << recipeName << endl;
-    for (const auto &tag: recipeTagSelect) {
-        cout << tag << endl;
+        // Load existing recipes
+        ifstream i("../source/RecipeData.json");
+        if (!i) {
+            throw runtime_error("Unable to open file: RecipeData.json");
+        }
+
+        json existingRecipes;
+        if (i.peek() != ifstream::traits_type::eof()) // Check if file is empty
+            i >> existingRecipes;
+        i.close();
+
+        // Append the new recipe to the existing recipes
+        existingRecipes.push_back(newRecipe);
+
+        // Save the updated recipes back to the file
+        ofstream o("../source/RecipeData.json");
+        if (!o) {
+            throw runtime_error("Unable to open file: RecipeData.json for writing");
+        }
+
+        o << existingRecipes.dump(4) << endl; // write with indentation of 4
+        o.close();
+        Subtitle("Successfully added new recipe '" + recipeName + "'!");
+    }
+    catch (const std::exception &e) {
+        Subtitle(e.what());  // Display the error message
     }
 }
 

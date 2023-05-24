@@ -1,7 +1,3 @@
-//
-// Created by strik on 2023-05-22.
-//
-
 #include <string>
 #include <iostream>
 #include <vector>
@@ -12,8 +8,9 @@
 #include "ColorfulCli.h"
 using namespace std;
 
-string Input(const string question, string example = "") {
+string Input(string question, string example = "") {
     string value;
+    bool firstAttempt = true;
     while (value.length() <= 0) {
         TextColor(YELLOW, BLACK);
         cout << question;
@@ -22,9 +19,10 @@ string Input(const string question, string example = "") {
         TextColor(WHITE, BLACK);
 
         getline(cin, value);
-        if (value.length() <= 0) {
+        if (value.length() <= 0 && !firstAttempt) {
             cout << "Please Enter Something!" << endl;
         }
+        firstAttempt = false;
     }
     return value;
 }
