@@ -6,6 +6,7 @@
 #include <nlohmann/json.hpp>
 
 #include <iostream>
+#include <iomanip>
 #include <string>
 
 #include "../include/RefriRecipe.h"
@@ -216,8 +217,6 @@ void RefriRecipe::addRecipe() {
 }
 
 void RefriRecipe::removeRecipe() {
-//    vector<string> title = {"NAME", "TAGS", "INGREDIENTS"};
-//    vector<Row> data = RefriRecipe::loadRecipeList("../source/RecipeData.json");
     try {
         Title("Remove Recipe");
 
@@ -264,5 +263,113 @@ void RefriRecipe::removeRecipe() {
     catch (const std::exception &e) {
         Subtitle(e.what());  // Display the error message
     }
-
 }
+
+void RefriRecipe::makeFood() {
+    // recommended test case : Blueberry Yogurt Smoothie
+    try {
+        Title("Make Food");
+
+        Subtitle("Recipe Name");
+        string recipeName = Input("Enter target recipe name");
+
+        // Load existing recipes
+        ifstream i("../source/RecipeData.json");
+        if (!i) {
+            throw runtime_error("Unable to open file: RecipeData.json");
+        }
+
+        json existingRecipes;
+        if (i.peek() != ifstream::traits_type::eof()) // Check if file is empty
+            i >> existingRecipes;
+
+        // Find the recipe with the matching target name
+        bool found = false;
+        json targetRecipe;
+
+        for (const auto& element : existingRecipes.items()) {
+            if (element.value().is_object() && element.value().contains("NAME") && element.value()["NAME"] == recipeName) {
+                found = true;
+                targetRecipe = element.value();
+                break;
+            }
+        }
+        if (!found) {
+            throw runtime_error("There is no target in existing data");
+        }
+
+        i.close();
+
+        // Load current storage info
+        ifstream istorage("../source/Storage_makeFoodTest.json");
+        if (!istorage) {
+            throw runtime_error("Unable to open file: Storage_makeFoodTest.json");
+        }
+
+        json havingFoods;
+        if (istorage.peek() != ifstream::traits_type::eof()) // Check if file is empty
+            istorage >> havingFoods;
+
+        // check if storage have enough ingredients for target recipe
+        json updatedStorage = havingFoods;
+        json updateTargets;
+
+        for (const auto& ingredient : targetRecipe["INGREDIENT_INFO"].items()) {
+            string foodName = ingredient.value()["name"];
+            double foodAmount = ingredient.value()["amount"];
+            bool makable = false;
+            int index = 0;
+            for (const auto& food : havingFoods.items()) {
+                if (food.value()["name"] == foodName && food.value()["amount"] >= foodAmount && food.value()["freshness"] > 0) {
+                    makable = true;
+                    // cout << foodName << endl;
+
+                    json updatedFood;
+                    updatedFood = food.value();
+                    double updatedAmount = static_cast<double>(food.value()["amount"]) - foodAmount;
+                    updatedAmount = round(updatedAmount * 10) / 10;
+                    updatedFood["amount"] = updatedAmount;
+                    // cout << std::fixed << setprecision(2);
+                    // cout << updatedFood << endl;
+                    updatedStorage[index] = updatedFood;
+                    updatedFood["usedAmount"] = foodAmount;
+                    updateTargets.push_back(updatedFood);
+                }
+                index += 1;
+            }
+            if (!makable) {
+                throw runtime_error("There are not enough ingredients in storage to make food");
+            }
+        }
+
+        istorage.close();
+
+        // make food : Save the updated storageData back to the file
+        ofstream o("../source/Storage_makeFoodTest.json");
+        if (!o) {
+            throw runtime_error("Unable to open file: Storage_makeFoodTest.json for writing");
+        }
+
+        o << updatedStorage.dump(4) << endl; // write with indentation of 4
+        o.close();
+
+        Subtitle("Making '" + recipeName + "' ... ... ...");
+        // 소모된 food 출력
+        for (const auto& food : updateTargets.items()) {
+            cout << "\t" << food.value()["name"] << "used " << food.value()["usedAmount"] << ", left amount: "
+                 << food.value()["amount"] << endl;
+        }
+        // steps 출력
+        int stepIndex = 1;
+        for (const auto& step : targetRecipe["STEPS"].items()) {
+            string stepText = step.value();
+            stepText.erase(remove(stepText.begin(), stepText.end(), '\"'), stepText.end());
+            cout << stepIndex << ") " << stepText << endl;
+            stepIndex += 1;
+        }
+        Subtitle("Successfully made '" + recipeName + "'!");
+    }
+    catch (const std::exception &e) {
+        Subtitle(e.what());  // Display the error message
+    }
+};

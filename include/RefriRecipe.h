@@ -25,6 +25,7 @@ public:
     static json inputIngredients();
     static json inputSteps();
     static void addRecipe();
+    static void makeFood();
     // ..
 };
 
