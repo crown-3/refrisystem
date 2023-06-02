@@ -54,7 +54,6 @@ public:
 
     // Remove Recipe
     void removeRecipe(); // 고쳐야 함
-
 };
 
 #endif //REFRISYSTEM_REFRIRECIPE_H
