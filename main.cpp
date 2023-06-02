@@ -15,7 +15,8 @@ int main(void){
 //    refri.MAIN_MENU();
 
     RefriRecipe::showRecipeList();
-    RefriRecipe::addRecipe();
+//    RefriRecipe::addRecipe();
+//    RefriSystem::MAIN_MENU();
 
     return 0;
 }

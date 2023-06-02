@@ -1,7 +1,3 @@
-//
-// Created by strik on 2023-05-21.
-//
-
 #ifndef REFRISYSTEM_STORAGETYPE_H
 #define REFRISYSTEM_STORAGETYPE_H
 

@@ -1,7 +1,3 @@
-//
-// Created by strik on 2023-05-21.
-//
-
 #ifndef REFRISYSTEM_REFRISYSTEM_H
 #define REFRISYSTEM_REFRISYSTEM_H
 
@@ -17,21 +13,10 @@ class RefriSystem{
     RefriRecipe refriRecipe;
 
 public:
-    void MAIN_MENU();
+    static void MAIN_MENU();
+    static void Introduction();
+    void Briefing();
+    static void Act();
 };
-
-//class RefriSystem {
-//    Refrigerator fridge;
-//    vector<Recipe> recipes;
-//    // ShoppingList shoppingList;
-//    // Cart cart;
-//public:
-//    void addRecipe(Recipe);
-//    void removeRecipe(string);
-//    void makeRecipe(string);
-//    // void viewShoppingList();
-//    // void addToCart(Food, double);
-//    // void checkoutCart();
-//};
 
 #endif //REFRISYSTEM_REFRISYSTEM_H

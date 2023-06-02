@@ -7,11 +7,11 @@
 
 #include <vector>
 #include <map>
-#include "Food.h"
+#include "Ingredient.h"
 
 class Recipe {
     string name;
-    map<Food, double> ingredients;
+    map<Ingredient, double> ingredients;
     vector<string> tags;
 public:
     // 파일 입출력 관리
