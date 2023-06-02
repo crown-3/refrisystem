@@ -14,10 +14,13 @@ int main(void){
 //    RefriSystem refri;
 //    refri.MAIN_MENU();
 
-    RefriRecipe::showRecipeList();
-    //RefriRecipe::addRecipe();
-    //RefriRecipe::removeRecipe();
-    RefriRecipe::makeFood();
+    RefriRecipe recipe("../source/RecipeData.json");
+    recipe.showRecipe();
+
+//    RefriRecipe::showRecipeList();
+//    //RefriRecipe::addRecipe();
+//    //RefriRecipe::removeRecipe();
+//    RefriRecipe::makeFood();
 
     return 0;
 }

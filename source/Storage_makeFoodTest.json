@@ -102,19 +102,19 @@
         "storage": "fridge"
     },
     {
-        "amount": 3.0,
+        "amount": 2.0,
         "freshness": 95,
         "name": "Blueberry",
         "storage": "fridge"
     },
     {
-        "amount": 3.0,
+        "amount": 2.0,
         "freshness": 95,
         "name": "Yogurt",
         "storage": "fridge"
     },
     {
-        "amount": 3.6,
+        "amount": 3.5,
         "freshness": 95,
         "name": "Honey",
         "storage": "pantry"

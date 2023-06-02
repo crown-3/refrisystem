@@ -67,7 +67,7 @@ void table(const std::vector<std::string>& titles, const std::vector<Row>& rows)
         {{"Data1", "Data2", "Data3"}},
         {{"Data4", "Data5", "Data6"}},
         {{"Data7", "Data8", "Data9"}}
-    };
+     * };
      * */
 
     // 각 열의 최대 길이 찾기
