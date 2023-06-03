@@ -1,22 +1,33 @@
 #ifndef REFRISYSTEM_REFRISYSTEM_H
 #define REFRISYSTEM_REFRISYSTEM_H
 
-#include "RefriStorage.h"
+#include "Refrigerator.h"
 #include "RefriRecipe.h"
 
+// RefriSystem 클래스
 class RefriSystem{
-    int select; // 메뉴 선택 상태 (1~5)
-    bool flag = true; // 상세 페이지 IN 또는 OUT
-    // bool is_ON = true; // 냉장고 ON 또는 OFF
+    // composition of instance Refrigerator
+    string Storage_RawJSON_path = "../source/Storage.json";
+    Refrigerator refrigerator;
 
-    RefriStorage refriStorage;
+    // composition of instance RefriRecipe
+    string Recipe_RawJSON_path = "../source/RecipeData.json";
     RefriRecipe refriRecipe;
-
 public:
-    static void MAIN_MENU();
-    static void Introduction();
+    RefriSystem();
+
+    // MAIN MENU
+    void MAIN_MENU();
+
+    // each displays
+    void Introduction();
     void Briefing();
-    static void Act();
+    void Act();
+    void Eat();
+
+    // sub-menu of Act()
+    void ManageStorage();
+    void ShowRecipe();
 };
 
 #endif //REFRISYSTEM_REFRISYSTEM_H

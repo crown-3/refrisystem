@@ -56,20 +56,6 @@ build CMakeFiles/refrisystem.dir/main.cpp.obj: CXX_COMPILER__refrisystem_Debug C
   OBJECT_DIR = CMakeFiles\refrisystem.dir
   OBJECT_FILE_DIR = CMakeFiles\refrisystem.dir
 
-build CMakeFiles/refrisystem.dir/src/IngredientInfo.cpp.obj: CXX_COMPILER__refrisystem_Debug C$:/Users/strik/CLionProjects/refrisystem/src/IngredientInfo.cpp || cmake_object_order_depends_target_refrisystem
-  DEP_FILE = CMakeFiles\refrisystem.dir\src\IngredientInfo.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/strik/CLionProjects/refrisystem/json/include
-  OBJECT_DIR = CMakeFiles\refrisystem.dir
-  OBJECT_FILE_DIR = CMakeFiles\refrisystem.dir\src
-
-build CMakeFiles/refrisystem.dir/src/Recipe.cpp.obj: CXX_COMPILER__refrisystem_Debug C$:/Users/strik/CLionProjects/refrisystem/src/Recipe.cpp || cmake_object_order_depends_target_refrisystem
-  DEP_FILE = CMakeFiles\refrisystem.dir\src\Recipe.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/strik/CLionProjects/refrisystem/json/include
-  OBJECT_DIR = CMakeFiles\refrisystem.dir
-  OBJECT_FILE_DIR = CMakeFiles\refrisystem.dir\src
-
 build CMakeFiles/refrisystem.dir/src/RefriRecipe.cpp.obj: CXX_COMPILER__refrisystem_Debug C$:/Users/strik/CLionProjects/refrisystem/src/RefriRecipe.cpp || cmake_object_order_depends_target_refrisystem
   DEP_FILE = CMakeFiles\refrisystem.dir\src\RefriRecipe.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
@@ -90,13 +76,6 @@ build CMakeFiles/refrisystem.dir/hooks/Table.cpp.obj: CXX_COMPILER__refrisystem_
   INCLUDES = -IC:/Users/strik/CLionProjects/refrisystem/json/include
   OBJECT_DIR = CMakeFiles\refrisystem.dir
   OBJECT_FILE_DIR = CMakeFiles\refrisystem.dir\hooks
-
-build CMakeFiles/refrisystem.dir/src/TimeSystem.cpp.obj: CXX_COMPILER__refrisystem_Debug C$:/Users/strik/CLionProjects/refrisystem/src/TimeSystem.cpp || cmake_object_order_depends_target_refrisystem
-  DEP_FILE = CMakeFiles\refrisystem.dir\src\TimeSystem.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/strik/CLionProjects/refrisystem/json/include
-  OBJECT_DIR = CMakeFiles\refrisystem.dir
-  OBJECT_FILE_DIR = CMakeFiles\refrisystem.dir\src
 
 build CMakeFiles/refrisystem.dir/hooks/ColorfulCli.cpp.obj: CXX_COMPILER__refrisystem_Debug C$:/Users/strik/CLionProjects/refrisystem/hooks/ColorfulCli.cpp || cmake_object_order_depends_target_refrisystem
   DEP_FILE = CMakeFiles\refrisystem.dir\hooks\ColorfulCli.cpp.obj.d
@@ -126,13 +105,6 @@ build CMakeFiles/refrisystem.dir/hooks/Input.cpp.obj: CXX_COMPILER__refrisystem_
   OBJECT_DIR = CMakeFiles\refrisystem.dir
   OBJECT_FILE_DIR = CMakeFiles\refrisystem.dir\hooks
 
-build CMakeFiles/refrisystem.dir/src/Storage.cpp.obj: CXX_COMPILER__refrisystem_Debug C$:/Users/strik/CLionProjects/refrisystem/src/Storage.cpp || cmake_object_order_depends_target_refrisystem
-  DEP_FILE = CMakeFiles\refrisystem.dir\src\Storage.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/strik/CLionProjects/refrisystem/json/include
-  OBJECT_DIR = CMakeFiles\refrisystem.dir
-  OBJECT_FILE_DIR = CMakeFiles\refrisystem.dir\src
-
 build CMakeFiles/refrisystem.dir/src/Refrigerator.cpp.obj: CXX_COMPILER__refrisystem_Debug C$:/Users/strik/CLionProjects/refrisystem/src/Refrigerator.cpp || cmake_object_order_depends_target_refrisystem
   DEP_FILE = CMakeFiles\refrisystem.dir\src\Refrigerator.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
@@ -148,7 +120,7 @@ build CMakeFiles/refrisystem.dir/src/Refrigerator.cpp.obj: CXX_COMPILER__refrisy
 #############################################
 # Link the executable refrisystem.exe
 
-build refrisystem.exe: CXX_EXECUTABLE_LINKER__refrisystem_Debug CMakeFiles/refrisystem.dir/main.cpp.obj CMakeFiles/refrisystem.dir/src/IngredientInfo.cpp.obj CMakeFiles/refrisystem.dir/src/Recipe.cpp.obj CMakeFiles/refrisystem.dir/src/RefriRecipe.cpp.obj CMakeFiles/refrisystem.dir/src/RefriSystem.cpp.obj CMakeFiles/refrisystem.dir/hooks/Table.cpp.obj CMakeFiles/refrisystem.dir/src/TimeSystem.cpp.obj CMakeFiles/refrisystem.dir/hooks/ColorfulCli.cpp.obj CMakeFiles/refrisystem.dir/hooks/CutDecimal.cpp.obj CMakeFiles/refrisystem.dir/hooks/Title.cpp.obj CMakeFiles/refrisystem.dir/hooks/Input.cpp.obj CMakeFiles/refrisystem.dir/src/Storage.cpp.obj CMakeFiles/refrisystem.dir/src/Refrigerator.cpp.obj
+build refrisystem.exe: CXX_EXECUTABLE_LINKER__refrisystem_Debug CMakeFiles/refrisystem.dir/main.cpp.obj CMakeFiles/refrisystem.dir/src/RefriRecipe.cpp.obj CMakeFiles/refrisystem.dir/src/RefriSystem.cpp.obj CMakeFiles/refrisystem.dir/hooks/Table.cpp.obj CMakeFiles/refrisystem.dir/hooks/ColorfulCli.cpp.obj CMakeFiles/refrisystem.dir/hooks/CutDecimal.cpp.obj CMakeFiles/refrisystem.dir/hooks/Title.cpp.obj CMakeFiles/refrisystem.dir/hooks/Input.cpp.obj CMakeFiles/refrisystem.dir/src/Refrigerator.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\refrisystem.dir

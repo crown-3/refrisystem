@@ -1,248 +1,272 @@
 [
-  {
-    "storage": "fridge",
-    "name": "Avocado",
-    "freshness": 54,
-    "amount": 3
-  },
-  {
-    "storage": "pantry",
-    "name": "Apple",
-    "freshness": 45,
-    "amount": 6
-  },
-  {
-    "storage": "pantry",
-    "name": "Baking powder",
-    "freshness": 85,
-    "amount": 2
-  },
-  {
-    "storage": "fridge",
-    "name": "Butter",
-    "freshness": 32,
-    "amount": 7
-  },
-  {
-    "storage": "fridge",
-    "name": "Cabbage",
-    "freshness": 71,
-    "amount": 4
-  },
-  {
-    "storage": "pantry",
-    "name": "Garlic",
-    "freshness": 102,
-    "amount": 1
-  },
-  {
-    "storage": "fridge",
-    "name": "Egg",
-    "freshness": 17,
-    "amount": 5
-  },
-  {
-    "storage": "pantry",
-    "name": "Baking soda",
-    "freshness": 73,
-    "amount": 8
-  },
-  {
-    "storage": "pantry",
-    "name": "Onion",
-    "freshness": 25,
-    "amount": 3
-  },
-  {
-    "storage": "fridge",
-    "name": "Cheese",
-    "freshness": 112,
-    "amount": 2
-  },
-  {
-    "storage": "freezer",
-    "name": "Beef bone",
-    "freshness": 47,
-    "amount": 5
-  },
-  {
-    "storage": "fridge",
-    "name": "Almond milk",
-    "freshness": 0,
-    "amount": 4
-  },
-  {
-    "storage": "fridge",
-    "name": "Lemon",
-    "freshness": 92,
-    "amount": 7
-  },
-  {
-    "storage": "pantry",
-    "name": "Black pepper",
-    "freshness": 38,
-    "amount": 1
-  },
-  {
-    "storage": "pantry",
-    "name": "Baguette",
-    "freshness": 77,
-    "amount": 8
-  },
-  {
-    "storage": "fridge",
-    "name": "Beef",
-    "freshness": 63,
-    "amount": 2
-  },
-  {
-    "storage": "fridge",
-    "name": "Basil",
-    "freshness": 28,
-    "amount": 6
-  },
-  {
-    "storage": "fridge",
-    "name": "Blueberry",
-    "freshness": 95,
-    "amount": 4
-  },
-  {
-    "storage": "fridge",
-    "name": "Bell pepper",
-    "freshness": 62,
-    "amount": 3
-  },
-  {
-    "storage": "pantry",
-    "name": "Cinnamon",
-    "freshness": 107,
-    "amount": 1
-  },
-  {
-    "storage": "pantry",
-    "name": "Bun",
-    "freshness": 76,
-    "amount": 5
-  },
-  {
-    "storage": "pantry",
-    "name": "Bean",
-    "freshness": 119,
-    "amount": 7
-  },
-  {
-    "storage": "fridge",
-    "name": "Caesar dressing",
-    "freshness": 89,
-    "amount": 2
-  },
-  {
-    "storage": "fridge",
-    "name": "Bacon",
-    "freshness": 41,
-    "amount": 6
-  },
-  {
-    "storage": "pantry",
-    "name": "Brown sugar",
-    "freshness": 108,
-    "amount": 2
-  },
-  {
-    "storage": "fridge",
-    "name": "Carrot",
-    "freshness": 12,
-    "amount": 8
-  },
-  {
-    "storage": "fridge",
-    "name": "Cream",
-    "freshness": 51,
-    "amount": 3
-  },
-  {
-    "storage": "pantry",
-    "name": "Bread",
-    "freshness": 46,
-    "amount": 4
-  },
-  {
-    "storage": "fridge",
-    "name": "Chicken",
-    "freshness": 33,
-    "amount": 5
-  },
-  {
-    "storage": "pantry",
-    "name": "Banana",
-    "freshness": 98,
-    "amount": 1
-  },
-  {
-    "storage": "fridge",
-    "name": "Cherry tomato",
-    "freshness": 0,
-    "amount": 7
-  },
-  {
-    "storage": "pantry",
-    "name": "Clove",
-    "freshness": 111,
-    "amount": 8
-  },
-  {
-    "storage": "pantry",
-    "name": "Cumin",
-    "freshness": 24,
-    "amount": 2
-  },
-  {
-    "storage": "fridge",
-    "name": "Dill",
-    "freshness": 96,
-    "amount": 4
-  },
-  {
-    "storage": "pantry",
-    "name": "Dough",
-    "freshness": 15,
-    "amount": 3
-  },
-  {
-    "storage": "fridge",
-    "name": "Cream cheese",
-    "freshness": 2,
-    "amount": 7
-  },
-  {
-    "storage": "fridge",
-    "name": "Celery",
-    "freshness": 53,
-    "amount": 6
-  },
-  {
-    "storage": "fridge",
-    "name": "Chili",
-    "freshness": 34,
-    "amount": 5
-  },
-  {
-    "storage": "fridge",
-    "name": "Chocolate sauce",
-    "freshness": 67,
-    "amount": 8
-  },
-  {
-    "storage": "pantry",
-    "name": "Black bean",
-    "freshness": 50,
-    "amount": 7
-  },
-  {
-    "storage": "fridge",
-    "name": "Cilantro",
-    "freshness": 19,
-    "amount": 4
-  }
+    {
+        "amount": 2.5,
+        "freshness": 100,
+        "name": "Avocado",
+        "storage": "fridge"
+    },
+    {
+        "amount": 6.0,
+        "freshness": 100,
+        "name": "Apple",
+        "storage": "pantry"
+    },
+    {
+        "amount": 4.0,
+        "freshness": 71,
+        "name": "Cabbage",
+        "storage": "fridge"
+    },
+    {
+        "amount": 0.8,
+        "freshness": 102,
+        "name": "Garlic",
+        "storage": "pantry"
+    },
+    {
+        "amount": 5.0,
+        "freshness": 17,
+        "name": "Egg",
+        "storage": "fridge"
+    },
+    {
+        "amount": 8.0,
+        "freshness": 73,
+        "name": "Baking soda",
+        "storage": "pantry"
+    },
+    {
+        "amount": 8.0,
+        "freshness": 73,
+        "name": "Baking powder",
+        "storage": "pantry"
+    },
+    {
+        "amount": 2.0,
+        "freshness": 25,
+        "name": "Onion",
+        "storage": "pantry"
+    },
+    {
+        "amount": 2.0,
+        "freshness": 112,
+        "name": "Cheese",
+        "storage": "fridge"
+    },
+    {
+        "amount": 5.0,
+        "freshness": 47,
+        "name": "Beef bone",
+        "storage": "freezer"
+    },
+    {
+        "amount": 4.0,
+        "freshness": 50,
+        "name": "Almond milk",
+        "storage": "fridge"
+    },
+    {
+        "amount": 7.0,
+        "freshness": 92,
+        "name": "Lemon",
+        "storage": "fridge"
+    },
+    {
+        "amount": 1.0,
+        "freshness": 38,
+        "name": "Black pepper",
+        "storage": "pantry"
+    },
+    {
+        "amount": 8.0,
+        "freshness": 77,
+        "name": "Baguette",
+        "storage": "pantry"
+    },
+    {
+        "amount": 2.0,
+        "freshness": 63,
+        "name": "Beef",
+        "storage": "fridge"
+    },
+    {
+        "amount": 6.0,
+        "freshness": 28,
+        "name": "Basil",
+        "storage": "fridge"
+    },
+    {
+        "amount": 4.0,
+        "freshness": 95,
+        "name": "Blueberry",
+        "storage": "fridge"
+    },
+    {
+        "amount": 2.0,
+        "freshness": 62,
+        "name": "Bell pepper",
+        "storage": "fridge"
+    },
+    {
+        "amount": 1.0,
+        "freshness": 107,
+        "name": "Cinnamon",
+        "storage": "pantry"
+    },
+    {
+        "amount": 5.0,
+        "freshness": 76,
+        "name": "Bun",
+        "storage": "pantry"
+    },
+    {
+        "amount": 7.0,
+        "freshness": 119,
+        "name": "Bean",
+        "storage": "pantry"
+    },
+    {
+        "amount": 2.0,
+        "freshness": 89,
+        "name": "Caesar dressing",
+        "storage": "fridge"
+    },
+    {
+        "amount": 6.0,
+        "freshness": 41,
+        "name": "Bacon",
+        "storage": "fridge"
+    },
+    {
+        "amount": 2.0,
+        "freshness": 108,
+        "name": "Brown sugar",
+        "storage": "pantry"
+    },
+    {
+        "amount": 8.0,
+        "freshness": 12,
+        "name": "Carrot",
+        "storage": "fridge"
+    },
+    {
+        "amount": 3.0,
+        "freshness": 51,
+        "name": "Cream",
+        "storage": "fridge"
+    },
+    {
+        "amount": 4.0,
+        "freshness": 46,
+        "name": "Bread",
+        "storage": "pantry"
+    },
+    {
+        "amount": 5.0,
+        "freshness": 33,
+        "name": "Chicken",
+        "storage": "fridge"
+    },
+    {
+        "amount": 10.0,
+        "freshness": 98,
+        "name": "Banana",
+        "storage": "pantry"
+    },
+    {
+        "amount": 7.0,
+        "freshness": 20,
+        "name": "Cherry tomato",
+        "storage": "fridge"
+    },
+    {
+        "amount": 8.0,
+        "freshness": 111,
+        "name": "Clove",
+        "storage": "pantry"
+    },
+    {
+        "amount": 1.9,
+        "freshness": 24,
+        "name": "Cumin",
+        "storage": "pantry"
+    },
+    {
+        "amount": 4.0,
+        "freshness": 96,
+        "name": "Dill",
+        "storage": "fridge"
+    },
+    {
+        "amount": 3.0,
+        "freshness": 15,
+        "name": "Dough",
+        "storage": "pantry"
+    },
+    {
+        "amount": 7.0,
+        "freshness": 100,
+        "name": "Cream cheese",
+        "storage": "fridge"
+    },
+    {
+        "amount": 6.0,
+        "freshness": 53,
+        "name": "Celery",
+        "storage": "fridge"
+    },
+    {
+        "amount": 5.0,
+        "freshness": 34,
+        "name": "Chili",
+        "storage": "fridge"
+    },
+    {
+        "amount": 8.0,
+        "freshness": 67,
+        "name": "Chocolate sauce",
+        "storage": "fridge"
+    },
+    {
+        "amount": 6.0,
+        "freshness": 50,
+        "name": "Black bean",
+        "storage": "pantry"
+    },
+    {
+        "amount": 4.0,
+        "freshness": 19,
+        "name": "Cilantro",
+        "storage": "fridge"
+    },
+    {
+        "amount": 4.0,
+        "freshness": 19,
+        "name": "Vanilla extract",
+        "storage": "pantry"
+    },
+    {
+        "amount": 20.0,
+        "freshness": 19,
+        "name": "Flour",
+        "storage": "pantry"
+    },
+    {
+        "amount": 23.9,
+        "freshness": 200,
+        "name": "Salt",
+        "storage": "pantry"
+    },
+    {
+        "amount": 5.0,
+        "freshness": 67,
+        "name": "Maple syrup",
+        "storage": "fridge"
+    },
+    {
+        "amount": 5.0,
+        "freshness": 27,
+        "name": "Milk",
+        "storage": "fridge"
+    }
 ]

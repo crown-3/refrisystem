@@ -11,6 +11,7 @@ using namespace std;
 
 string Input(string question, string example = "");
 int SingleChoiceWithNumber(vector<string> choices);
+void PressEnterToContinue();
 vector<string> MultipleChoice(vector<string> choices, string question, string example = "");
 
 #endif //REFRISYSTEM_INPUT_H

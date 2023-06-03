@@ -27,6 +27,40 @@ string Input(string question, string example = "") {
     return value;
 }
 
+int SingleChoiceWithNumber(vector<string> choices) {
+    // Print the choices
+    for (int i = 0; i < choices.size(); ++i) {
+        cout << "(" << i+1 << ") ";
+        TextColor(YELLOW, BLACK);
+        cout << choices[i] << " ";
+        TextColor(WHITE, BLACK);
+    }
+    cout << endl;
+
+    // Get the user's choice
+    int answer;
+
+    TextColor(DARKGRAY, BLACK);
+    cout << "Answer : ";
+    TextColor(WHITE, BLACK);
+    cin >> answer;
+
+    // Check if the answer is valid
+    if(answer < 1 || answer > choices.size()){
+        cout << "Invalid choice. Please enter a number between 1 and " << choices.size() << endl;
+        return SingleChoiceWithNumber(choices); // ask again
+    }
+
+    return answer;
+}
+
+void PressEnterToContinue() {
+    TextColor(DARKGRAY,BLACK);
+    cout << "Press ENTER to continue...";
+    TextColor(WHITE,BLACK);
+    cin.get();
+}
+
 vector<string> MultipleChoice(vector<string> choices, string question, string example = "") {
     string input;
     vector<string> selectedTags;

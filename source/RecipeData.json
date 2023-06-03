@@ -2,11 +2,11 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Onion"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Bell pepper"
             },
             {
@@ -30,19 +30,19 @@
                 "name": "Salt"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Canned tomatoes"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Kidney bean"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Black bean"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Corn"
             },
             {
@@ -79,11 +79,11 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Banana"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Egg"
             },
             {
@@ -95,7 +95,7 @@
                 "name": "Vanilla extract"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Flour"
             },
             {
@@ -131,19 +131,19 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Cucumber"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Bell pepper"
             },
             {
-                "amount": 4,
+                "amount": 4.0,
                 "name": "Tomato"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Red onion"
             },
             {
@@ -151,7 +151,7 @@
                 "name": "Garlic"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Tomato juice"
             },
             {
@@ -189,7 +189,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Beef"
             },
             {
@@ -197,11 +197,11 @@
                 "name": "Butter"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Onion"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Mushroom"
             },
             {
@@ -209,7 +209,7 @@
                 "name": "Flour"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Beef broth"
             },
             {
@@ -217,7 +217,7 @@
                 "name": "Sour cream"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Noodle or rice"
             }
         ],
@@ -240,11 +240,11 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 6,
+                "amount": 6.0,
                 "name": "Apple"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Sugar"
             },
             {
@@ -256,11 +256,11 @@
                 "name": "Flour"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Oat"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Brown sugar"
             },
             {
@@ -272,7 +272,7 @@
                 "name": "Baking soda"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Butter"
             }
         ],
@@ -298,19 +298,19 @@
                 "name": "Butter"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Lobster shell"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Onion"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Carrot"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Celery"
             },
             {
@@ -322,11 +322,11 @@
                 "name": "Cognac"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Fish stock"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Bouquet garni"
             },
             {
@@ -334,7 +334,7 @@
                 "name": "Cream"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Lobster meat"
             },
             {
@@ -367,7 +367,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Egg"
             },
             {
@@ -383,7 +383,7 @@
                 "name": "Vanilla extract"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Flour"
             },
             {
@@ -391,7 +391,7 @@
                 "name": "Syrup"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Fruit"
             }
         ],
@@ -414,11 +414,11 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Bread"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Avocado"
             },
             {
@@ -456,11 +456,11 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Chicken"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Pasta"
             },
             {
@@ -504,7 +504,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Pizza dough"
             },
             {
@@ -512,7 +512,7 @@
                 "name": "Tomato sauce"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Mozzarella cheese"
             },
             {
@@ -548,7 +548,7 @@
                 "name": "Olive oil"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Onion"
             },
             {
@@ -556,19 +556,19 @@
                 "name": "Garlic"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Eggplant"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Zucchini"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Bell pepper"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Tomato"
             },
             {
@@ -607,11 +607,11 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Beef bone"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Onion"
             },
             {
@@ -639,11 +639,11 @@
                 "name": "Sugar"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Rice noodle"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Beef"
             },
             {
@@ -669,7 +669,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Butter"
             },
             {
@@ -677,7 +677,7 @@
                 "name": "Sugar"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Egg"
             },
             {
@@ -685,7 +685,7 @@
                 "name": "Vanilla extract"
             },
             {
-                "amount": 3,
+                "amount": 3.0,
                 "name": "Flour"
             },
             {
@@ -697,7 +697,7 @@
                 "name": "Salt"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Chocolate chip"
             }
         ],
@@ -721,19 +721,19 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Tomato"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Cucumber"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Onion"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Feta cheese"
             },
             {
@@ -780,7 +780,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Tofu"
             },
             {
@@ -841,7 +841,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Salmon fillet"
             },
             {
@@ -853,7 +853,7 @@
                 "name": "Pepper"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Lemon"
             },
             {
@@ -878,7 +878,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Graham cracker crumb"
             },
             {
@@ -890,11 +890,11 @@
                 "name": "Sugar"
             },
             {
-                "amount": 4,
+                "amount": 4.0,
                 "name": "Cream cheese"
             },
             {
-                "amount": 3,
+                "amount": 3.0,
                 "name": "Egg"
             },
             {
@@ -924,7 +924,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 3,
+                "amount": 3.0,
                 "name": "Avocado"
             },
             {
@@ -932,7 +932,7 @@
                 "name": "Onion"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Tomato"
             },
             {
@@ -966,15 +966,15 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Pumpkin"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Potato"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Onion"
             },
             {
@@ -982,7 +982,7 @@
                 "name": "Oil"
             },
             {
-                "amount": 4,
+                "amount": 4.0,
                 "name": "Vegetable broth"
             },
             {
@@ -1016,7 +1016,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Ground beef"
             },
             {
@@ -1028,7 +1028,7 @@
                 "name": "Water"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Taco shell"
             },
             {
@@ -1036,7 +1036,7 @@
                 "name": "Lettuce"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Tomato"
             },
             {
@@ -1061,7 +1061,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 4,
+                "amount": 4.0,
                 "name": "Onion"
             },
             {
@@ -1069,11 +1069,11 @@
                 "name": "Butter"
             },
             {
-                "amount": 4,
+                "amount": 4.0,
                 "name": "Beef broth"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Red wine"
             },
             {
@@ -1081,11 +1081,11 @@
                 "name": "Thyme"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Baguette"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Cheese"
             }
         ],
@@ -1105,7 +1105,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Almond milk"
             },
             {
@@ -1133,11 +1133,11 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Chicken"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Romaine lettuce"
             },
             {
@@ -1181,7 +1181,7 @@
                 "name": "Olive oil"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Shrimp"
             },
             {
@@ -1197,7 +1197,7 @@
                 "name": "Parsley"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Pasta"
             }
         ],
@@ -1218,11 +1218,11 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 3,
+                "amount": 3.0,
                 "name": "Banana"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Sugar"
             },
             {
@@ -1234,7 +1234,7 @@
                 "name": "Vanilla extract"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Flour"
             },
             {
@@ -1246,7 +1246,7 @@
                 "name": "Salt"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Walnut"
             }
         ],
@@ -1267,7 +1267,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Beef"
             },
             {
@@ -1291,7 +1291,7 @@
                 "name": "Pepper"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Rice"
             }
         ],
@@ -1310,15 +1310,15 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Spaghetti"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Bacon"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Chicken"
             },
             {
@@ -1326,11 +1326,11 @@
                 "name": "Garlic"
             },
             {
-                "amount": 4,
+                "amount": 4.0,
                 "name": "Egg"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Parmesan cheese"
             },
             {
@@ -1356,7 +1356,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Chicken"
             },
             {
@@ -1372,19 +1372,19 @@
                 "name": "Flour"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Egg"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Panko breadcrumbs"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Oil"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Rice"
             },
             {
@@ -1407,11 +1407,11 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Pasta"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Basil"
             },
             {
@@ -1423,7 +1423,7 @@
                 "name": "Pine nut"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Parmesan cheese"
             },
             {
@@ -1454,11 +1454,11 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Chicken"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Bell pepper"
             },
             {
@@ -1466,11 +1466,11 @@
                 "name": "Onion"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Cheese"
             },
             {
-                "amount": 4,
+                "amount": 4.0,
                 "name": "Tortilla"
             },
             {
@@ -1498,7 +1498,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Rice"
             },
             {
@@ -1526,7 +1526,7 @@
                 "name": "Soy sauce"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Egg"
             },
             {
@@ -1562,23 +1562,23 @@
                 "name": "Garlic"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Rice"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Wine"
             },
             {
-                "amount": 5,
+                "amount": 5.0,
                 "name": "Broth"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Shrimp"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Scallop"
             },
             {
@@ -1615,15 +1615,15 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Ravioli dough"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Lobster"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Ricotta cheese"
             },
             {
@@ -1674,7 +1674,7 @@
                 "name": "Spice"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Shrimp"
             },
             {
@@ -1698,11 +1698,11 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Fish"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Potato"
             },
             {
@@ -1739,7 +1739,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Water"
             },
             {
@@ -1751,11 +1751,11 @@
                 "name": "Salt"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Oil"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Flour"
             },
             {
@@ -1785,15 +1785,15 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Chicken"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Vegetable"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Pie crust"
             }
         ],
@@ -1814,7 +1814,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Spaghetti"
             },
             {
@@ -1851,7 +1851,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Chicken"
             },
             {
@@ -1883,7 +1883,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Ground beef"
             },
             {
@@ -1895,7 +1895,7 @@
                 "name": "Garlic"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Tomato"
             },
             {
@@ -1903,7 +1903,7 @@
                 "name": "Herb"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Ricotta cheese"
             },
             {
@@ -1911,11 +1911,11 @@
                 "name": "Egg"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Lasagna noodles"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Mozzarella cheese"
             }
         ],
@@ -1936,7 +1936,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Beef"
             },
             {
@@ -1952,11 +1952,11 @@
                 "name": "Celery"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Broth"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Potato"
             },
             {
@@ -1964,7 +1964,7 @@
                 "name": "Herb"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Bread"
             }
         ],
@@ -1985,7 +1985,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Macaroni"
             },
             {
@@ -1997,11 +1997,11 @@
                 "name": "Flour"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Milk"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Cheese"
             }
         ],
@@ -2023,7 +2023,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Dough"
             },
             {
@@ -2066,7 +2066,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Fish"
             },
             {
@@ -2086,7 +2086,7 @@
                 "name": "Mayo"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Tortilla"
             }
         ],
@@ -2107,7 +2107,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Lamb"
             },
             {
@@ -2119,7 +2119,7 @@
                 "name": "Garlic"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Vegetable"
             }
         ],
@@ -2175,11 +2175,11 @@
                 "name": "Garlic"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Tomato"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Broth"
             },
             {
@@ -2187,7 +2187,7 @@
                 "name": "Herb"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Bread"
             }
         ],
@@ -2208,11 +2208,11 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Banana"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Yogurt"
             },
             {
@@ -2235,7 +2235,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Ground meat"
             },
             {
@@ -2251,11 +2251,11 @@
                 "name": "Spice"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Pasta"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Marinara sauce"
             }
         ],
@@ -2275,11 +2275,11 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Blueberry"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Yogurt"
             },
             {
@@ -2302,11 +2302,11 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Black bean"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Vegetable"
             },
             {
@@ -2345,7 +2345,7 @@
                 "name": "Cinnamon"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Bread"
             },
             {
@@ -2373,11 +2373,11 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Bacon"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Bread"
             },
             {
@@ -2409,7 +2409,7 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Potato"
             },
             {
@@ -2448,11 +2448,11 @@
                 "name": "Ham"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Egg"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Toast"
             }
         ],
@@ -2521,11 +2521,11 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Croissants"
             },
             {
-                "amount": 2,
+                "amount": 2.0,
                 "name": "Egg"
             },
             {
@@ -2541,7 +2541,7 @@
                 "name": "Syrup"
             },
             {
-                "amount": 1,
+                "amount": 1.0,
                 "name": "Fruit"
             }
         ],
