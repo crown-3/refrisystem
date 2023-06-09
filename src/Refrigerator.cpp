@@ -2,8 +2,8 @@
 #include <fstream>
 #include <algorithm>
 #include <iostream>
-#include "../hooks/Table.h"
-#include "../hooks/ColorfulCli.h"
+#include "../utils/Table.h"
+#include "../utils/ColorfulCli.h"
 
 using namespace std;
 using namespace nlohmann;

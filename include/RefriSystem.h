@@ -7,11 +7,11 @@
 // RefriSystem 클래스
 class RefriSystem{
     // composition of instance Refrigerator
-    string Storage_RawJSON_path = "../source/Storage.json";
+    string Storage_RawJSON_path = "../db/Storage.json";
     Refrigerator refrigerator;
 
     // composition of instance RefriRecipe
-    string Recipe_RawJSON_path = "../source/RecipeData.json";
+    string Recipe_RawJSON_path = "../db/RecipeData.json";
     RefriRecipe refriRecipe;
 public:
     RefriSystem();

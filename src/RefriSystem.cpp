@@ -3,13 +3,13 @@
 #include <thread>
 #include "../include/RefriSystem.h"
 #include "../include/Refrigerator.h"
-#include "../hooks/ColorfulCli.h"
-#include "../hooks/Title.h"
-#include "../hooks/Input.h"
+#include "../utils/ColorfulCli.h"
+#include "../utils/Title.h"
+#include "../utils/Input.h"
 
 using namespace std;
 
-//string RefriSystem::Storage_RawJSON_path = "../source/Storage.json";
+//string RefriSystem::Storage_RawJSON_path = "../db/Storage.json";
 //Refrigerator RefriSystem::refrigerator(RefriSystem::Storage_RawJSON_path);
 
 RefriSystem::RefriSystem()
@@ -162,6 +162,9 @@ map<string, string> MoodResponse = {
         {"fine", "Oh, that’s nice."},
         {"mentally_tired", "Oh, I'm so sorry to hear that."}
 };
+
+
+
 void RefriSystem::Eat() {
     Title("Cook & Eat");
 
@@ -271,6 +274,7 @@ void RefriSystem::Eat() {
                     break;
                 case 2:
                     // (2) No, I wanna go back to the food list.
+
                     break;
                 case 3:
                     // (3) No, I wanna go back to home.

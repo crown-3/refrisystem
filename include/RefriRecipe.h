@@ -2,7 +2,7 @@
 #define REFRISYSTEM_REFRIRECIPE_H
 
 #include <vector>
-#include "../hooks/Table.h"
+#include "../utils/Table.h"
 #include "Refrigerator.h"
 #include <nlohmann/json.hpp>
 using namespace std;
@@ -28,21 +28,18 @@ struct IngredientDetail {
     double amount;
 };
 
-// RefriRecipe 클래스
+// RefriRecipe class
 class RefriRecipe {
     string RawJSON_path;
     vector<RecipeRow> recipeData;
     Refrigerator& refrigeratorRef; // Reference to Refrigerator instance
 public:
-    // Load from JSON file
-    RefriRecipe(string data_path, Refrigerator& ref);  // json에서 벡터변수로 parsing해서 load
-    void loadRecipeData(); // helper funtion for constructor
+    RefriRecipe(string data_path, Refrigerator& ref);
+    ~RefriRecipe();
 
-    // Save to JSON file
-    ~RefriRecipe(); // json에 변경사항 save
-    void saveRecipeData(); // helper function for destructor
+    void loadRecipeData();
+    void saveRecipeData(); // save when destructor called
 
-    // Show Recipes
     void showAllRecipe();
     void showPartialRecipe(vector<RecipeRow> targetRecipeData);
     vector<Row> stringifyRecipe(vector<RecipeRow> targetRecipeData); // helper function for showRecipe()

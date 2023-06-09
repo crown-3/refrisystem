@@ -2,36 +2,44 @@
 #include <nlohmann/json.hpp>
 
 #include <iostream>
-#include <iomanip>
 #include <string>
 #include <algorithm>
+#include <utility>
 
 #include "../include/RefriRecipe.h"
-#include "../hooks/CutDecimal.h"
-#include "../hooks/Title.h"
-#include "../hooks/Input.h"
-#include "../hooks/ColorfulCli.h"
+#include "../utils/CutDecimal.h"
+#include "../utils/Title.h"
+#include "../utils/Input.h"
+#include "../utils/ColorfulCli.h"
+#include "../utils/Table.h"
 
 using namespace std;
 using namespace nlohmann;
 
-// 가능한 RecipeTag 종류
+
+// ------------------------------------------------------------------------------------------------------------
+// Constants used for Recipe management & recommendation
+// ------------------------------------------------------------------------------------------------------------
+
+// Possible Tags for Recipes
 vector<string> RecipeTagList = {
-        "Vegan", "Vegetarian",  // 성향 tag
-        "Healthy", "Premium",   // 기타 tag
-        "Cold", "Hot", "Sweet", "Salty", "Spicy", "Sour", "Savory", // 맛 관련 tag
-        "Fat", "Protein", "Carbohydrate", "Vitamin", "Mineral"      // 영양성분 관련 tag
+        "Vegan", "Vegetarian",  // Preference
+        "Cold", "Hot", "Sweet", "Salty", "Spicy", "Sour", "Savory", // Flavor
+        "Fat", "Protein", "Carbohydrate", "Vitamin", "Mineral", // Nutrition
+        "Healthy", "Premium", // Miscellaneous
 };
 
-// RecipeTag 중요도 정보
-map<string, vector<string>> moodPreference = {      // 기분에 따른 선호 RecipeTag
+// Preferred recipe tags for each mood
+map<string, vector<string>> moodPreference = {
         {"happy", {"Healthy", "Cold", "Salty", "Sour", "Vitamin", "Mineral"}},
         {"moody", {"Premium", "Sweet", "Savory", "Fat", "Carbohydrate", "Vitamin", "Mineral"}},
         {"exhausted", {"Healthy", "Sweet", "Fat", "Protein", "Carbohydrate"}},
         {"fine", {"Healthy", "Premium", "Cold", "Hot", "Sweet", "Savory", "Protein", "Carbohydrate", "Mineral"}},
         {"mentally_tired", {"Premium", "Hot", "Spicy", "Fat", "Vitamin"}}
 };
-map<int, vector<string>> userPreference = {      // 사용자의 RecipeTag 선호순서
+
+// Preferred recipe tags for each user
+map<int, vector<string>> userPreference = {
         {1, {"Hot", "Sweet", "Salty", "Spicy", "Sour"}},
         {2, {"Premium", "Fat", "Protein", "Carbohydrate"}},
         {3, {"Vitamin", "Mineral", "Savory", "Cold"}},
@@ -41,10 +49,12 @@ map<int, vector<string>> userPreference = {      // 사용자의 RecipeTag 선�
 // ------------------------------------------------------------------------------------------------------------
 // Load from JSON file
 RefriRecipe::RefriRecipe(string data_path, Refrigerator& ref)
-: RawJSON_path(data_path), refrigeratorRef(ref)
+: RawJSON_path(std::move(data_path)), refrigeratorRef(ref)
 {
     loadRecipeData();
 }
+
+
 void RefriRecipe::loadRecipeData() {
     // load json file with data_path
     ifstream jsonFile(RawJSON_path);
@@ -85,6 +95,7 @@ void RefriRecipe::loadRecipeData() {
 RefriRecipe::~RefriRecipe() {
     saveRecipeData();
 }
+
 void RefriRecipe::saveRecipeData() {
     // load json file with data_path
     ofstream jsonFile(RawJSON_path);
@@ -315,6 +326,7 @@ vector<RecipeRow> RefriRecipe::recommendRecipe(string mood) {
 
     return matchingRows;
 }
+
 bool RefriRecipe::checkMakable(RecipeRow recipe) {
     bool makable = true;
     for (const auto& ingredient : recipe.ingredients) {
@@ -325,6 +337,7 @@ bool RefriRecipe::checkMakable(RecipeRow recipe) {
     }
     return makable;
 }
+
 vector<IngredientDetail> RefriRecipe::checkLackIngredient(RecipeRow recipe) {
     vector<IngredientDetail> lackIngredientList;
     cout << "===================checkLackIngredient===================" << endl;

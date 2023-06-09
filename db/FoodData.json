@@ -1,0 +1,678 @@
+[
+    {
+        "name": "Almond milk",
+        "storage": "fridge"
+    },
+    {
+        "name": "Apple",
+        "storage": "pantry"
+    },
+    {
+        "name": "Avocado",
+        "storage": "fridge"
+    },
+    {
+        "name": "Bacon",
+        "storage": "fridge"
+    },
+    {
+        "name": "Baguette",
+        "storage": "pantry"
+    },
+    {
+        "name": "Baking powder",
+        "storage": "pantry"
+    },
+    {
+        "name": "Baking soda",
+        "storage": "pantry"
+    },
+    {
+        "name": "Banana",
+        "storage": "pantry"
+    },
+    {
+        "name": "Basil",
+        "storage": "fridge"
+    },
+    {
+        "name": "Bean",
+        "storage": "pantry"
+    },
+    {
+        "name": "Beef",
+        "storage": "fridge"
+    },
+    {
+        "name": "Beef bone",
+        "storage": "freezer"
+    },
+    {
+        "name": "Beef broth",
+        "storage": "pantry"
+    },
+    {
+        "name": "Bell pepper",
+        "storage": "fridge"
+    },
+    {
+        "name": "Black bean",
+        "storage": "pantry"
+    },
+    {
+        "name": "Black pepper",
+        "storage": "pantry"
+    },
+    {
+        "name": "Blueberry",
+        "storage": "fridge"
+    },
+    {
+        "name": "Bouquet garni",
+        "storage": "pantry"
+    },
+    {
+        "name": "Bread",
+        "storage": "pantry"
+    },
+    {
+        "name": "Bread crumb",
+        "storage": "pantry"
+    },
+    {
+        "name": "Broth",
+        "storage": "fridge"
+    },
+    {
+        "name": "Brown sugar",
+        "storage": "pantry"
+    },
+    {
+        "name": "Bun",
+        "storage": "pantry"
+    },
+    {
+        "name": "Butter",
+        "storage": "fridge"
+    },
+    {
+        "name": "Cabbage",
+        "storage": "fridge"
+    },
+    {
+        "name": "Caesar dressing",
+        "storage": "fridge"
+    },
+    {
+        "name": "Canned tomatoes",
+        "storage": "pantry"
+    },
+    {
+        "name": "Carrot",
+        "storage": "fridge"
+    },
+    {
+        "name": "Celery",
+        "storage": "fridge"
+    },
+    {
+        "name": "Cheese",
+        "storage": "fridge"
+    },
+    {
+        "name": "Cherry tomato",
+        "storage": "fridge"
+    },
+    {
+        "name": "Chicken",
+        "storage": "fridge"
+    },
+    {
+        "name": "Chili",
+        "storage": "fridge"
+    },
+    {
+        "name": "Chili powder",
+        "storage": "pantry"
+    },
+    {
+        "name": "Chive",
+        "storage": "fridge"
+    },
+    {
+        "name": "Chocolate chip",
+        "storage": "pantry"
+    },
+    {
+        "name": "Chocolate sauce",
+        "storage": "fridge"
+    },
+    {
+        "name": "Cilantro",
+        "storage": "fridge"
+    },
+    {
+        "name": "Cinnamon",
+        "storage": "pantry"
+    },
+    {
+        "name": "Clove",
+        "storage": "pantry"
+    },
+    {
+        "name": "Cognac",
+        "storage": "pantry"
+    },
+    {
+        "name": "Corn",
+        "storage": "freezer"
+    },
+    {
+        "name": "Cream",
+        "storage": "fridge"
+    },
+    {
+        "name": "Cream cheese",
+        "storage": "fridge"
+    },
+    {
+        "name": "Croissants",
+        "storage": "pantry"
+    },
+    {
+        "name": "Crouton",
+        "storage": "pantry"
+    },
+    {
+        "name": "Cucumber",
+        "storage": "fridge"
+    },
+    {
+        "name": "Cumin",
+        "storage": "pantry"
+    },
+    {
+        "name": "Dill",
+        "storage": "fridge"
+    },
+    {
+        "name": "Dough",
+        "storage": "pantry"
+    },
+    {
+        "name": "Egg",
+        "storage": "fridge"
+    },
+    {
+        "name": "Eggplant",
+        "storage": "fridge"
+    },
+    {
+        "name": "Extra virgin olive oil",
+        "storage": "pantry"
+    },
+    {
+        "name": "Feta cheese",
+        "storage": "fridge"
+    },
+    {
+        "name": "Fish",
+        "storage": "fridge"
+    },
+    {
+        "name": "Fish sauce",
+        "storage": "fridge"
+    },
+    {
+        "name": "Fish stock",
+        "storage": "pantry"
+    },
+    {
+        "name": "Flour",
+        "storage": "pantry"
+    },
+    {
+        "name": "Fresh basil leave",
+        "storage": "fridge"
+    },
+    {
+        "name": "Fresh herb",
+        "storage": "fridge"
+    },
+    {
+        "name": "Fruit",
+        "storage": "fridge"
+    },
+    {
+        "name": "Garlic",
+        "storage": "pantry"
+    },
+    {
+        "name": "Ginger",
+        "storage": "pantry"
+    },
+    {
+        "name": "Graham cracker crumb",
+        "storage": "pantry"
+    },
+    {
+        "name": "Green onion",
+        "storage": "fridge"
+    },
+    {
+        "name": "Ground beef",
+        "storage": "fridge"
+    },
+    {
+        "name": "Ground meat",
+        "storage": "fridge"
+    },
+    {
+        "name": "Ham",
+        "storage": "fridge"
+    },
+    {
+        "name": "Herb",
+        "storage": "fridge"
+    },
+    {
+        "name": "Honey",
+        "storage": "pantry"
+    },
+    {
+        "name": "Katsu sauce",
+        "storage": "fridge"
+    },
+    {
+        "name": "Kidney bean",
+        "storage": "pantry"
+    },
+    {
+        "name": "Lamb",
+        "storage": "fridge"
+    },
+    {
+        "name": "Lasagna noodles",
+        "storage": "pantry"
+    },
+    {
+        "name": "Lemon",
+        "storage": "fridge"
+    },
+    {
+        "name": "Lemon juice",
+        "storage": "fridge"
+    },
+    {
+        "name": "Lemon wedge",
+        "storage": "fridge"
+    },
+    {
+        "name": "Lemon zest",
+        "storage": "fridge"
+    },
+    {
+        "name": "Lettuce",
+        "storage": "fridge"
+    },
+    {
+        "name": "Lime juice",
+        "storage": "fridge"
+    },
+    {
+        "name": "Lobster",
+        "storage": "fridge"
+    },
+    {
+        "name": "Lobster meat",
+        "storage": "freezer"
+    },
+    {
+        "name": "Lobster shell",
+        "storage": "freezer"
+    },
+    {
+        "name": "Macaroni",
+        "storage": "pantry"
+    },
+    {
+        "name": "Maple syrup",
+        "storage": "fridge"
+    },
+    {
+        "name": "Marinara sauce",
+        "storage": "pantry"
+    },
+    {
+        "name": "Matcha powder",
+        "storage": "pantry"
+    },
+    {
+        "name": "Mayo",
+        "storage": "fridge"
+    },
+    {
+        "name": "Milk",
+        "storage": "fridge"
+    },
+    {
+        "name": "Mozzarella cheese",
+        "storage": "fridge"
+    },
+    {
+        "name": "Mushroom",
+        "storage": "fridge"
+    },
+    {
+        "name": "Noodle or rice",
+        "storage": "pantry"
+    },
+    {
+        "name": "Oat",
+        "storage": "pantry"
+    },
+    {
+        "name": "Oil",
+        "storage": "pantry"
+    },
+    {
+        "name": "Olive",
+        "storage": "pantry"
+    },
+    {
+        "name": "Olive oil",
+        "storage": "pantry"
+    },
+    {
+        "name": "Onion",
+        "storage": "pantry"
+    },
+    {
+        "name": "Orange juice",
+        "storage": "fridge"
+    },
+    {
+        "name": "Orange zest",
+        "storage": "fridge"
+    },
+    {
+        "name": "Oregano",
+        "storage": "pantry"
+    },
+    {
+        "name": "Panko breadcrumbs",
+        "storage": "pantry"
+    },
+    {
+        "name": "Parmesan cheese",
+        "storage": "fridge"
+    },
+    {
+        "name": "Parsley",
+        "storage": "fridge"
+    },
+    {
+        "name": "Pasta",
+        "storage": "pantry"
+    },
+    {
+        "name": "Pea",
+        "storage": "freezer"
+    },
+    {
+        "name": "Pepper",
+        "storage": "pantry"
+    },
+    {
+        "name": "Pie crust",
+        "storage": "fridge"
+    },
+    {
+        "name": "Pine nut",
+        "storage": "pantry"
+    },
+    {
+        "name": "Pizza dough",
+        "storage": "fridge"
+    },
+    {
+        "name": "Potato",
+        "storage": "pantry"
+    },
+    {
+        "name": "Powdered sugar",
+        "storage": "pantry"
+    },
+    {
+        "name": "Pumpkin",
+        "storage": "pantry"
+    },
+    {
+        "name": "Pumpkin seed",
+        "storage": "pantry"
+    },
+    {
+        "name": "Ravioli dough",
+        "storage": "fridge"
+    },
+    {
+        "name": "Red onion",
+        "storage": "pantry"
+    },
+    {
+        "name": "Red pepper flake",
+        "storage": "pantry"
+    },
+    {
+        "name": "Red wine",
+        "storage": "pantry"
+    },
+    {
+        "name": "Rice",
+        "storage": "pantry"
+    },
+    {
+        "name": "Rice noodle",
+        "storage": "pantry"
+    },
+    {
+        "name": "Ricotta cheese",
+        "storage": "fridge"
+    },
+    {
+        "name": "Romaine lettuce",
+        "storage": "fridge"
+    },
+    {
+        "name": "Salmon fillet",
+        "storage": "freezer"
+    },
+    {
+        "name": "Salsa",
+        "storage": "fridge"
+    },
+    {
+        "name": "Salt",
+        "storage": "pantry"
+    },
+    {
+        "name": "Scallion",
+        "storage": "fridge"
+    },
+    {
+        "name": "Scallop",
+        "storage": "fridge"
+    },
+    {
+        "name": "Sesame oil",
+        "storage": "pantry"
+    },
+    {
+        "name": "Sesame seed",
+        "storage": "pantry"
+    },
+    {
+        "name": "Shrimp",
+        "storage": "fridge"
+    },
+    {
+        "name": "Sour cream",
+        "storage": "fridge"
+    },
+    {
+        "name": "Soy sauce",
+        "storage": "pantry"
+    },
+    {
+        "name": "Spaghetti",
+        "storage": "pantry"
+    },
+    {
+        "name": "Spice",
+        "storage": "pantry"
+    },
+    {
+        "name": "Star anise",
+        "storage": "pantry"
+    },
+    {
+        "name": "Sugar",
+        "storage": "pantry"
+    },
+    {
+        "name": "Syrup",
+        "storage": "pantry"
+    },
+    {
+        "name": "Taco seasoning",
+        "storage": "pantry"
+    },
+    {
+        "name": "Taco shell",
+        "storage": "pantry"
+    },
+    {
+        "name": "Tartar sauce",
+        "storage": "fridge"
+    },
+    {
+        "name": "Thyme",
+        "storage": "pantry"
+    },
+    {
+        "name": "Toast",
+        "storage": "pantry"
+    },
+    {
+        "name": "Tofu",
+        "storage": "fridge"
+    },
+    {
+        "name": "Tomato",
+        "storage": "fridge"
+    },
+    {
+        "name": "Tomato juice",
+        "storage": "fridge"
+    },
+    {
+        "name": "Tomato paste",
+        "storage": "pantry"
+    },
+    {
+        "name": "Tomato sauce",
+        "storage": "pantry"
+    },
+    {
+        "name": "Tortilla",
+        "storage": "pantry"
+    },
+    {
+        "name": "Vanilla",
+        "storage": "pantry"
+    },
+    {
+        "name": "Vanilla extract",
+        "storage": "pantry"
+    },
+    {
+        "name": "Vegan sour cream",
+        "storage": "fridge"
+    },
+    {
+        "name": "Vegetable",
+        "storage": "fridge"
+    },
+    {
+        "name": "Vegetable broth",
+        "storage": "pantry"
+    },
+    {
+        "name": "Vegetable oil",
+        "storage": "pantry"
+    },
+    {
+        "name": "Vinegar",
+        "storage": "pantry"
+    },
+    {
+        "name": "Walnut",
+        "storage": "pantry"
+    },
+    {
+        "name": "Water",
+        "storage": "pantry"
+    },
+    {
+        "name": "White wine",
+        "storage": "pantry"
+    },
+    {
+        "name": "White wine vinegar",
+        "storage": "pantry"
+    },
+    {
+        "name": "Wine",
+        "storage": "pantry"
+    },
+    {
+        "name": "Yogurt",
+        "storage": "fridge"
+    },
+    {
+        "name": "Zucchini",
+        "storage": "fridge"
+    },
+    {
+        "name": "Kimchi",
+        "storage": "fridge"
+    },
+    {
+        "name": "Plum",
+        "storage": "freezer"
+    },
+    {
+        "name": "Gummy bear",
+        "storage": "pantry"
+    },
+    {
+        "name": "Strawberry",
+        "storage": "fridge"
+    },
+    {
+        "name": "Peanut butter",
+        "storage": "fridge"
+    },
+    {
+        "name": "Blue agave nectar",
+        "storage": "pantry"
+    },
+    {
+        "name": "Flax seed",
+        "storage": "pantry"
+    },
+    {
+        "name": "II",
+        "storage": "fridge"
+    }
+]
