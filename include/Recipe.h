@@ -1,10 +1,13 @@
-#ifndef REFRISYSTEM_REFRIRECIPE_H
-#define REFRISYSTEM_REFRIRECIPE_H
+#ifndef REFRISYSTEM_RECIPE_H
+#define REFRISYSTEM_RECIPE_H
 
 #include <vector>
 #include "../utils/Table.h"
-#include "Refrigerator.h"
+#include "Storage.h"
 #include <nlohmann/json.hpp>
+#include "Interfaces.h"
+#include "RecipeRecommendation.h"
+
 using namespace std;
 using namespace nlohmann;
 
@@ -14,35 +17,23 @@ extern vector<string> RecipeTagList;
 extern map<string, vector<string>> moodPreference; // 기분에 따른 선호 RecipeTag
 extern map<int, vector<string>> userPreference;    // 사용자의 RecipeTag 선호순서
 
-// RecipeRow 틀
-struct IngredientDetail;
-struct RecipeRow {
-    int id;
-    string name;
-    vector<string> tags;
-    vector<string> steps;
-    vector<IngredientDetail> ingredients;
-};
-struct IngredientDetail {
-    string name;
-    double amount;
-};
-
-// RefriRecipe class
-class RefriRecipe {
+// Recipe class
+class Recipe {
     string RawJSON_path;
-    vector<RecipeRow> recipeData;
-    Refrigerator& refrigeratorRef; // Reference to Refrigerator instance
+    vector<RecipeItem> recipeData;
+    Storage& refrigeratorRef; // Reference to Storage instance
+
+    RecipeRecommendation recommendManager;
 public:
-    RefriRecipe(string data_path, Refrigerator& ref);
-    ~RefriRecipe();
+    Recipe(string data_path, Storage& ref);
+    ~Recipe();
 
     void loadRecipeData();
     void saveRecipeData(); // save when destructor called
 
     void showAllRecipe();
-    void showPartialRecipe(vector<RecipeRow> targetRecipeData);
-    vector<Row> stringifyRecipe(vector<RecipeRow> targetRecipeData); // helper function for showRecipe()
+    void showPartialRecipe(vector<RecipeItem> targetRecipeData);
+    vector<Row> stringifyRecipe(vector<RecipeItem> targetRecipeData); // helper function for showRecipe()
 
     // --------------------------------------------------------------
     // Add Recipe
@@ -56,10 +47,10 @@ public:
 
     // --------------------------------------------------------------
     // Recommend Recipe
-    vector<RecipeRow> recommendRecipe(string mood);
-    bool checkMakable(RecipeRow recipe); // helper function
+    vector<RecipeItem> recommendRecipe(string mood);
+    bool checkMakable(RecipeItem recipe); // helper function
 
-    vector<IngredientDetail> checkLackIngredient(RecipeRow recipe); // helper function
+    vector<IngredientDetail> checkLackIngredient(RecipeItem recipe); // helper function
 };
 
-#endif //REFRISYSTEM_REFRIRECIPE_H
+#endif //REFRISYSTEM_RECIPE_H

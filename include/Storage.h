@@ -1,41 +1,26 @@
-#ifndef REFRISYSTEM_REFRIGERATOR_H
-#define REFRISYSTEM_REFRIGERATOR_H
+#ifndef REFRISYSTEM_STORAGE_H
+#define REFRISYSTEM_STORAGE_H
 
 #include <string>
 #include <vector>
 #include "nlohmann/json.hpp"
 #include "DataManagement.h"
+#include "Interfaces.h"
 
 using namespace nlohmann;
 using namespace std;
 
-// StorageType
-enum StorageType {
-    FRIDGE,
-    FREEZER,
-    PANTRY
-};
-
-// Ingredient
-struct Ingredient {
-    int id;
-    string name;
-    double quantity;
-    int freshness;
-    StorageType storageType;
-};
-
-class Refrigerator: public DataManagement {
+class Storage: public DataManagement {
 private:
     string RawJSON_path;
-    static vector<Ingredient> ingredientData;
+    static vector<IngredientItem> ingredientData;
 public:
-    Refrigerator(string data_path);
-    ~Refrigerator();
+    Storage(string data_path);
+    ~Storage();
 
     void loadData();
     void saveData();
-    void addIngredient(Ingredient ingredient);
+    void addIngredient(IngredientItem ingredient);
     void removeIngredient(string ingredientName, double amount);
     void printStorage();
 
@@ -45,10 +30,10 @@ public:
     void clearFreshness(string ingredientName, int init);
 
     // criteria보다 낮은  freshness를 가진 Ingredients 반환
-    vector<Ingredient> getIngredientsFreshnessLowerThan(int criteria);
+    vector<IngredientItem> getIngredientsFreshnessLowerThan(int criteria);
 
     // helper function
     double checkAmount(string ingredientName, int freshThreshold);
 };
 
-#endif //REFRISYSTEM_REFRIGERATOR_H
+#endif //REFRISYSTEM_STORAGE_H

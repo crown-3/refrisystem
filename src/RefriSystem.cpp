@@ -2,7 +2,8 @@
 #include <chrono>
 #include <thread>
 #include "../include/RefriSystem.h"
-#include "../include/Refrigerator.h"
+#include "../include/Storage.h"
+#include "../include/Consts.h"
 #include "../utils/ColorfulCli.h"
 #include "../utils/Title.h"
 #include "../utils/Input.h"
@@ -10,7 +11,7 @@
 using namespace std;
 
 //string RefriSystem::Storage_RawJSON_path = "../db/Storage.json";
-//Refrigerator RefriSystem::refrigerator(RefriSystem::Storage_RawJSON_path);
+//Storage RefriSystem::refrigerator(RefriSystem::Storage_RawJSON_path);
 
 RefriSystem::RefriSystem()
  : refrigerator(Storage_RawJSON_path), refriRecipe(Recipe_RawJSON_path, refrigerator)
@@ -42,7 +43,7 @@ void RefriSystem::Briefing() {
     Title("Briefing");
 
     // Print and remove the rotten ingredients
-    vector<Ingredient> spoiledFoods = refrigerator.getIngredientsFreshnessLowerThan(0);
+    vector<IngredientItem> spoiledFoods = refrigerator.getIngredientsFreshnessLowerThan(0);
     stringstream ss1;
 
     if (!spoiledFoods.empty()) {
@@ -63,7 +64,7 @@ void RefriSystem::Briefing() {
     Subtitle(ss1.str());
 
     // Print the danger ingredients
-    vector<Ingredient> dangerFoods = refrigerator.getIngredientsFreshnessLowerThan(10);
+    vector<IngredientItem> dangerFoods = refrigerator.getIngredientsFreshnessLowerThan(10);
     stringstream ss2;
     if (!dangerFoods.empty()) {
         ss2 << dangerFoods[0].name << " * " << dangerFoods[0].quantity;
@@ -150,50 +151,29 @@ void RefriSystem::ShowRecipe() {
     refriRecipe.showAllRecipe();
 }
 
-// MOOD-----------------------------------------------------------------------------------------------------------------
-
-map<int, string> Mood = {
-        {1, "happy"}, {2, "moody"}, {3, "exhausted"}, {4, "fine"}, {5, "mentally_tired"}
-};
-map<string, string> MoodResponse = {
-        {"happy", "Oh, I'm really glad to hear that!"},
-        {"moody", "Oh, I understand how you feel."},
-        {"exhausted", "Oh, you need to recharge."},
-        {"fine", "Oh, that’s nice."},
-        {"mentally_tired", "Oh, I'm so sorry to hear that."}
-};
-
-
-
 void RefriSystem::Eat() {
+    // Title for Part <Cook & Eat>
     Title("Cook & Eat");
 
-    // Ask for the user's mood
+    // Ask for the User's mood
     Subtitle("How do you do today, master?");
-    int answer_mood = SingleChoiceWithNumber({
-        "I'm very happy now.",
-        "I feel moody today.",
-        "I'm exhausted because of physical movement.",
-        "I'm just fine.",
-        "I'm mentally tired."
-    });
+    int answer_mood = SingleChoiceWithNumber(MoodQ);
+    string mood = MoodA[answer_mood];
 
-    string mood = Mood[answer_mood];
+    // Response output according to User's mood
+    Subtitle(MoodR[mood]);
 
-    // UI : Response output according to mood
-    Subtitle(MoodResponse[mood]);
-
-    // recommend recipes
-    vector<RecipeRow> recipePriorityList = refriRecipe.recommendRecipe(mood);
+    // Recommend recipes according to User's mood
+    vector<RecipeItem> recipePriorityList = refriRecipe.recommendRecipe(mood);
     while (!recipePriorityList.empty()){
-        // extract first 3 recipes
-        vector<RecipeRow> extractedRecipes;
+        // Extract first 3 recipes
+        vector<RecipeItem> extractedRecipes;
         for (int i = 0; i < 3 && !recipePriorityList.empty(); ++i) {
             extractedRecipes.push_back(recipePriorityList.front());
             recipePriorityList.erase(recipePriorityList.begin());
         }
 
-        // output detailed info of first 3 recipes
+        // Output detailed info of first 3 recipes
         Subtitle("Then, I recommend these foods. ");
         Subtitle("Here is the detailed info of TOP 3 recommended recipes");
         refriRecipe.showPartialRecipe(extractedRecipes);
@@ -207,84 +187,85 @@ void RefriSystem::Eat() {
             "There's nothing I like."
         });
 
-        // When recipe is selected
-        if (answer_recipeChosen == 1 || answer_recipeChosen == 2 || answer_recipeChosen == 3) {
-            RecipeRow selectedRecipe = extractedRecipes[answer_recipeChosen-1];
-            // Whether selectedRecipe is makable, Ask Cook OR Buy
-            bool selectedIsMakable = refriRecipe.checkMakable(selectedRecipe);
-            if (selectedIsMakable){
-                Subtitle(selectedRecipe.name +" is chosen, We can make this food with the ingredients in the storage! ");
-                Subtitle("Would you like to cook now, master? ");
-            } else {
-                Subtitle(selectedRecipe.name +" is chosen, But we need more of the following ingredients: ");
-                vector<IngredientDetail> lackIngredientList = refriRecipe.checkLackIngredient(selectedRecipe);
-                for (size_t i = 0; i < lackIngredientList.size(); ++i) {
-                    cout << "\t" << lackIngredientList[i].name << " * " << lackIngredientList[i].amount << endl;
-                }
-                Subtitle("Shall we buy these ingredients and then cook now, master? ");
-            }
-            // receive answer for ask:[Cook/Buy]
-            int answer_willCook = SingleChoiceWithNumber({
-                "Yes, please!",
-                "No, I wanna go back to the food list.",
-                "No, I wanna go back to home."
-            });
-            switch (answer_willCook) {
-                case 1:
-                    // UI : display Starting Cook message
-                    Subtitle("All right! I'll prepare a perfect meal, master. ");
-                    TextColor(CYAN, BLACK);
-                    cout << R"( ______     ______     ______     __  __     __     __   __     ______ )" << endl;
-                    cout << R"(/\  ___\   /\  __ \   /\  __ \   /\ \/ /    /\ \   /\ "-.\ \   /\  ___\ )" << endl;
-                    cout << R"(\ \ \____  \ \ \/\ \  \ \ \/\ \  \ \  _"-.  \ \ \  \ \ \-.  \  \ \ \__ \ )" << endl;
-                    cout << R"( \ \_____\  \ \_____\  \ \_____\  \ \_\ \_\  \ \_\  \ \_\\"\_\  \ \_____\)" << endl;
-                    cout << R"(  \/_____/   \/_____/   \/_____/   \/_/\/_/   \/_/   \/_/ \/_/   \/_____/ )" << endl << endl;
-                    for (int i = 5; i >= 0; i--) {
-                        TextColor(BLACK, CYAN);
-                        cout << "Refri is cooking ... (" << i << "s)";
-                        TextColor(WHITE, BLACK);
-                        cout << endl;
-                        this_thread::sleep_for(chrono::seconds(1));
-                    }
-                    // [Cook] selected food -> update(reduce quantity) refrigerator.ingredientData
-                    if(selectedIsMakable) {
-                        // makable -> use each ingredients * (recipe.ingredient.amount)
-                        for (const auto& ing : selectedRecipe.ingredients) {
-                            refrigerator.removeIngredient(ing.name, ing.amount);
-                        }
-                    } else {
-                        // non-makable -> use each ingredients * [isIngSufficient ? (recipe.ingredient.amount) : (all)]
-                        // (this means ; For insufficient ingredient, Fill and use all)
-                        for (const auto& ing : selectedRecipe.ingredients) {
-                            double ownIngAmount = refrigerator.checkAmount(ing.name, 0);
-                            // cout << ing.name << "\t" << ownIngAmount << " :::: now having ------- " << endl; // TEST CODE
-                            if (ownIngAmount >= ing.amount){
-                                refrigerator.removeIngredient(ing.name, ing.amount);
-                            } else {
-                                if (ownIngAmount > 0)
-                                    refrigerator.removeIngredient(ing.name, ownIngAmount);
-                            }
-                            cout << "\t" << ing.name << "\t" << ing.amount << " used" << endl;
-                        }
-                    }
-                    // UI : display Succeed Cook message
-                    TextColor(BLACK, CYAN);
-                    cout << selectedRecipe.name << " is ready!" << endl;
-                    TextColor(WHITE, BLACK);
-                    break;
-                case 2:
-                    // (2) No, I wanna go back to the food list.
-
-                    break;
-                case 3:
-                    // (3) No, I wanna go back to home.
-                    break;
-            }
-
-
-            break;
+        // When recipe is not selected
+        if (answer_recipeChosen == 4) {
+            continue;
         }
 
+        RecipeItem selectedRecipe = extractedRecipes[answer_recipeChosen-1];
+        // Whether selectedRecipe is makable, Ask Cook OR Buy
+        bool selectedIsMakable = refriRecipe.checkMakable(selectedRecipe);
+        if (selectedIsMakable){
+            Subtitle(selectedRecipe.name +" is chosen, We can make this food with the ingredients in the storage! ");
+            Subtitle("Would you like to cook now, master? ");
+        } else {
+            Subtitle(selectedRecipe.name +" is chosen, But we need more of the following ingredients: ");
+            vector<IngredientDetail> lackIngredientList = refriRecipe.checkLackIngredient(selectedRecipe);
+            for (size_t i = 0; i < lackIngredientList.size(); ++i) {
+                cout << "\t" << lackIngredientList[i].name << " * " << lackIngredientList[i].amount << endl;
+            }
+            Subtitle("Shall we buy these ingredients and then cook now, master? ");
+        }
+        // Receive answer for ask:[Cook/Buy]
+        int answer_willCook = SingleChoiceWithNumber({
+                                                             "Yes, please!",
+                                                             "No, I wanna go back to the food list.",
+                                                             "No, I wanna go back to home."
+                                                     });
+        switch (answer_willCook) {
+            case 1:
+                // UI : display Starting Cook message
+                Subtitle("All right! I'll prepare a perfect meal, master. ");
+                TextColor(CYAN, BLACK);
+                cout << R"( ______     ______     ______     __  __     __     __   __     ______ )" << endl;
+                cout << R"(/\  ___\   /\  __ \   /\  __ \   /\ \/ /    /\ \   /\ "-.\ \   /\  ___\ )" << endl;
+                cout << R"(\ \ \____  \ \ \/\ \  \ \ \/\ \  \ \  _"-.  \ \ \  \ \ \-.  \  \ \ \__ \ )" << endl;
+                cout << R"( \ \_____\  \ \_____\  \ \_____\  \ \_\ \_\  \ \_\  \ \_\\"\_\  \ \_____\)" << endl;
+                cout << R"(  \/_____/   \/_____/   \/_____/   \/_/\/_/   \/_/   \/_/ \/_/   \/_____/ )" << endl << endl;
+                for (int i = 5; i >= 0; i--) {
+                    TextColor(BLACK, CYAN);
+                    cout << "Refri is cooking ... (" << i << "s)";
+                    TextColor(WHITE, BLACK);
+                    cout << endl;
+                    this_thread::sleep_for(chrono::seconds(1));
+                }
+                // [Cook] selected food -> update(reduce quantity) refrigerator.ingredientData
+                if(selectedIsMakable) {
+                    // makable -> use each ingredients * (recipe.ingredient.amount)
+                    for (const auto& ing : selectedRecipe.ingredients) {
+                        refrigerator.removeIngredient(ing.name, ing.amount);
+                    }
+                } else {
+                    // non-makable -> use each ingredients * [isIngSufficient ? (recipe.ingredient.amount) : (all)]
+                    // (this means ; For insufficient ingredient, Fill and use all)
+                    for (const auto& ing : selectedRecipe.ingredients) {
+                        double ownIngAmount = refrigerator.checkAmount(ing.name, 0);
+                        // cout << ing.name << "\t" << ownIngAmount << " :::: now having ------- " << endl; // TEST CODE
+                        if (ownIngAmount >= ing.amount){
+                            refrigerator.removeIngredient(ing.name, ing.amount);
+                        } else {
+                            if (ownIngAmount > 0)
+                                refrigerator.removeIngredient(ing.name, ownIngAmount);
+                        }
+                        cout << "\t" << ing.name << "\t" << ing.amount << " used" << endl;
+                    }
+                }
+                // UI : display Succeed Cook message
+                TextColor(BLACK, CYAN);
+                cout << selectedRecipe.name << " is ready!" << endl;
+                TextColor(WHITE, BLACK);
+                break;
+            case 2:
+                // (2) No, I wanna go back to the food list.
+
+                break;
+            case 3:
+                // (3) No, I wanna go back to home.
+                break;
+        }
+
+
+        break;
     }
 
 }

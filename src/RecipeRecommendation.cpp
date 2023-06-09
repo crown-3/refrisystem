@@ -1,3 +1,7 @@
-//
-// Created by strik on 2023-06-09.
-//
+#include "../include/RecipeRecommendation.h"
+
+using namespace std;
+
+vector<RecipeItem> RecipeRecommendation::recommend() {
+
+}

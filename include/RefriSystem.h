@@ -1,18 +1,18 @@
 #ifndef REFRISYSTEM_REFRISYSTEM_H
 #define REFRISYSTEM_REFRISYSTEM_H
 
-#include "Refrigerator.h"
-#include "RefriRecipe.h"
+#include "Storage.h"
+#include "Recipe.h"
 
 // RefriSystem 클래스
 class RefriSystem{
-    // composition of instance Refrigerator
+    // composition of instance Storage
     string Storage_RawJSON_path = "../db/Storage.json";
-    Refrigerator refrigerator;
+    Storage refrigerator;
 
-    // composition of instance RefriRecipe
+    // composition of instance Recipe
     string Recipe_RawJSON_path = "../db/RecipeData.json";
-    RefriRecipe refriRecipe;
+    Recipe refriRecipe;
 public:
     RefriSystem();
 

@@ -6,7 +6,9 @@
 #include <algorithm>
 #include <utility>
 
-#include "../include/RefriRecipe.h"
+#include "../include/Recipe.h"
+#include "../include/Interfaces.h"
+#include "../include/Consts.h"
 #include "../utils/CutDecimal.h"
 #include "../utils/Title.h"
 #include "../utils/Input.h"
@@ -16,46 +18,15 @@
 using namespace std;
 using namespace nlohmann;
 
-
-// ------------------------------------------------------------------------------------------------------------
-// Constants used for Recipe management & recommendation
-// ------------------------------------------------------------------------------------------------------------
-
-// Possible Tags for Recipes
-vector<string> RecipeTagList = {
-        "Vegan", "Vegetarian",  // Preference
-        "Cold", "Hot", "Sweet", "Salty", "Spicy", "Sour", "Savory", // Flavor
-        "Fat", "Protein", "Carbohydrate", "Vitamin", "Mineral", // Nutrition
-        "Healthy", "Premium", // Miscellaneous
-};
-
-// Preferred recipe tags for each mood
-map<string, vector<string>> moodPreference = {
-        {"happy", {"Healthy", "Cold", "Salty", "Sour", "Vitamin", "Mineral"}},
-        {"moody", {"Premium", "Sweet", "Savory", "Fat", "Carbohydrate", "Vitamin", "Mineral"}},
-        {"exhausted", {"Healthy", "Sweet", "Fat", "Protein", "Carbohydrate"}},
-        {"fine", {"Healthy", "Premium", "Cold", "Hot", "Sweet", "Savory", "Protein", "Carbohydrate", "Mineral"}},
-        {"mentally_tired", {"Premium", "Hot", "Spicy", "Fat", "Vitamin"}}
-};
-
-// Preferred recipe tags for each user
-map<int, vector<string>> userPreference = {
-        {1, {"Hot", "Sweet", "Salty", "Spicy", "Sour"}},
-        {2, {"Premium", "Fat", "Protein", "Carbohydrate"}},
-        {3, {"Vitamin", "Mineral", "Savory", "Cold"}},
-        {4, {"Healthy", "Vegan", "Vegetarian"}}
-};
-
 // ------------------------------------------------------------------------------------------------------------
 // Load from JSON file
-RefriRecipe::RefriRecipe(string data_path, Refrigerator& ref)
+Recipe::Recipe(string data_path, Storage& ref)
 : RawJSON_path(std::move(data_path)), refrigeratorRef(ref)
 {
     loadRecipeData();
 }
 
-
-void RefriRecipe::loadRecipeData() {
+void Recipe::loadRecipeData() {
     // load json file with data_path
     ifstream jsonFile(RawJSON_path);
     if (!jsonFile.is_open()) {
@@ -69,7 +40,7 @@ void RefriRecipe::loadRecipeData() {
 
     // assign json items to each RecipeRow row
     for (const auto& recipe : j) {
-        RecipeRow row;
+        RecipeItem row;
 
         // Assign values to RecipeRow members
         row.id = idCounter++;
@@ -92,11 +63,11 @@ void RefriRecipe::loadRecipeData() {
 }
 
 // Save to JSON file
-RefriRecipe::~RefriRecipe() {
+Recipe::~Recipe() {
     saveRecipeData();
 }
 
-void RefriRecipe::saveRecipeData() {
+void Recipe::saveRecipeData() {
     // load json file with data_path
     ofstream jsonFile(RawJSON_path);
     if (!jsonFile.is_open()) {
@@ -129,19 +100,19 @@ void RefriRecipe::saveRecipeData() {
 }
 
 // Show All Recipes
-void RefriRecipe::showAllRecipe() {
+void Recipe::showAllRecipe() {
     vector<string> title = {"NAME", "TAGS", "INGREDIENTS", "Makable?"};
     vector<Row> recipeDataStrings = stringifyRecipe(recipeData);
 
     table(title, recipeDataStrings); // print all rows in table format
 }
-void RefriRecipe::showPartialRecipe(vector<RecipeRow> targetRecipeData) {
+void Recipe::showPartialRecipe(vector<RecipeItem> targetRecipeData) {
     vector<string> title = {"NAME", "TAGS", "INGREDIENTS", "Makable?"};
     vector<Row> recipeDataStrings = stringifyRecipe(targetRecipeData);
 
     table(title, recipeDataStrings); // print all rows in table format
 }
-vector<Row> RefriRecipe::stringifyRecipe(vector<RecipeRow> targetRecipeData){
+vector<Row> Recipe::stringifyRecipe(vector<RecipeItem> targetRecipeData){
     vector<Row> result;
 
     for (const auto &recipe: targetRecipeData) {
@@ -177,7 +148,7 @@ vector<Row> RefriRecipe::stringifyRecipe(vector<RecipeRow> targetRecipeData){
 
 // ------------------------------------------------------------------------------------------------------------
 // Add Recipe
-void RefriRecipe::addRecipe() {
+void Recipe::addRecipe() {
     try {
         // UI : input name/tags/ingredients/steps
         Title("Add Recipe");
@@ -196,7 +167,7 @@ void RefriRecipe::addRecipe() {
         vector<string> recipeSteps = inputSteps();
 
         // manipulate recipeData : append newRecipe
-        RecipeRow newRecipe;
+        RecipeItem newRecipe;
         newRecipe.name = recipeName;
         newRecipe.tags = recipeTagSelect;
         newRecipe.steps = recipeSteps;
@@ -212,7 +183,7 @@ void RefriRecipe::addRecipe() {
         Subtitle(e.what());
     }
 }
-void RefriRecipe::showPossibleTags() {
+void Recipe::showPossibleTags() {
     cout << "Possible Tags: ";
     for (size_t i = 0; i < RecipeTagList.size(); ++i) {
         TextColor(LIGHTGREEN, BLACK);
@@ -224,7 +195,7 @@ void RefriRecipe::showPossibleTags() {
     }
     cout << endl;
 }
-vector<string> RefriRecipe::inputSteps() {
+vector<string> Recipe::inputSteps() {
     vector<string> steps = json::array();
     string step;
     int step_num = 1;
@@ -237,7 +208,7 @@ vector<string> RefriRecipe::inputSteps() {
     }
     return steps;
 }
-vector<IngredientDetail> RefriRecipe::inputIngredients() {
+vector<IngredientDetail> Recipe::inputIngredients() {
     vector<IngredientDetail> ingredientList;
 
     while (true) {
@@ -264,9 +235,9 @@ void removeRecipe(){
 
 // ------------------------------------------------------------------------------------------------------------
 // Recommend Recipe
-vector<RecipeRow> RefriRecipe::recommendRecipe(string mood) {
+vector<RecipeItem> Recipe::recommendRecipe(string mood) {
     // Step 1: Select rows with tags matching moodPreference
-    vector<RecipeRow> matchingRows;
+    vector<RecipeItem> matchingRows;
     for (const auto& recipe : recipeData) {
         bool hasMatchingTag = false;
         for (const auto& tag : recipe.tags) {
@@ -285,7 +256,7 @@ vector<RecipeRow> RefriRecipe::recommendRecipe(string mood) {
     }
 
     // Step 2: Sort rows based on userPreference order
-    sort(matchingRows.begin(), matchingRows.end(), [&](const RecipeRow& a, const RecipeRow& b) { // std::sort 사용
+    sort(matchingRows.begin(), matchingRows.end(), [&](const RecipeItem& a, const RecipeItem& b) { // std::sort 사용
         const auto& preference = userPreference.find(a.id);
         if (preference != userPreference.end()) {
             const auto& preferenceTags = preference->second;
@@ -301,7 +272,7 @@ vector<RecipeRow> RefriRecipe::recommendRecipe(string mood) {
     });
 
     // Step 3: Sort makable recipes first
-    sort(matchingRows.begin(), matchingRows.end(), [&](const RecipeRow& a, const RecipeRow& b) {
+    sort(matchingRows.begin(), matchingRows.end(), [&](const RecipeItem& a, const RecipeItem& b) {
         bool aMakable = checkMakable(a);
         bool bMakable = checkMakable(b);
 
@@ -327,7 +298,7 @@ vector<RecipeRow> RefriRecipe::recommendRecipe(string mood) {
     return matchingRows;
 }
 
-bool RefriRecipe::checkMakable(RecipeRow recipe) {
+bool Recipe::checkMakable(RecipeItem recipe) {
     bool makable = true;
     for (const auto& ingredient : recipe.ingredients) {
         if (refrigeratorRef.checkAmount(ingredient.name, 0) < ingredient.amount) {
@@ -338,7 +309,7 @@ bool RefriRecipe::checkMakable(RecipeRow recipe) {
     return makable;
 }
 
-vector<IngredientDetail> RefriRecipe::checkLackIngredient(RecipeRow recipe) {
+vector<IngredientDetail> Recipe::checkLackIngredient(RecipeItem recipe) {
     vector<IngredientDetail> lackIngredientList;
     cout << "===================checkLackIngredient===================" << endl;
     for (const auto& ingredient : recipe.ingredients) {

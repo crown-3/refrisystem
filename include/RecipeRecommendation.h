@@ -1,13 +1,18 @@
 #ifndef RECIPERECOMMENDATION_H
 #define RECIPERECOMMENDATION_H
 
-// RecipeRecommendation class
-class RecipeRecommendation {
-public:
-    vector<RecipeRow> recommendRecipe(string mood);
-    bool checkMakable(RecipeRow recipe); // helper function
+#include "Recommendation.h"
+#include "Interfaces.h"
 
-    vector<IngredientDetail> checkLackIngredient(RecipeRow recipe); // helper function
+class RecipeRecommendation : public Recommendation<RecipeItem, > {
+public:
+    virtual vector<RecipeItem> recommend(vector<RecipeItem> TargetList, State UserState, Criteria PriorityCriteria) override;
+
+    /*
+     * vector<RecipeItem> recommendRecipe(string mood);
+     * bool checkMakable(RecipeItem recipe); // helper function
+     * vector<IngredientDetail> checkLackIngredient(RecipeItem recipe); // helper function
+     */
 };
 
 

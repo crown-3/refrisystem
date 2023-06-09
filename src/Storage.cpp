@@ -1,4 +1,4 @@
-#include "../include/Refrigerator.h"
+#include "../include/Storage.h"
 #include <fstream>
 #include <algorithm>
 #include <iostream>
@@ -8,17 +8,17 @@
 using namespace std;
 using namespace nlohmann;
 
-vector<Ingredient> Refrigerator::ingredientData;
+vector<IngredientItem> Storage::ingredientData;
 
 // Load from JSON file
 
-Refrigerator::Refrigerator(string data_path)
+Storage::Storage(string data_path)
 : RawJSON_path(data_path)
 {
-    loadIngredient();
+    loadData();
 }
 
-void Refrigerator::loadIngredient() {
+void Storage::loadData() {
     // load json file with data_path
     ifstream jsonFile(RawJSON_path);
     if (!jsonFile.is_open()) {
@@ -32,7 +32,7 @@ void Refrigerator::loadIngredient() {
 
     // assign json items to each RecipeRow row
     for (const auto& element : j) {
-        Ingredient newIngredient;
+        IngredientItem newIngredient;
 
         // Assign values to RecipeRow members
         newIngredient.id = idCounter++;
@@ -48,11 +48,11 @@ void Refrigerator::loadIngredient() {
     }
 }
 
-Refrigerator::~Refrigerator() {
-    saveIngredient();
+Storage::~Storage() {
+    saveData();
 }
 
-void Refrigerator::saveIngredient() {
+void Storage::saveData() {
     ofstream jsonFile(RawJSON_path);
     if (!jsonFile.is_open()) {
         throw runtime_error("Storage.json file could not be opened for writing. Check if the file exists and its permissions.");
@@ -75,12 +75,12 @@ void Refrigerator::saveIngredient() {
 
 // ------------------------------------------------------------------------------------------------------------
 // Add Ingredient
-void Refrigerator::addIngredient(Ingredient ingredient) {
-    Refrigerator::ingredientData.push_back(ingredient);
+void Storage::addIngredient(IngredientItem ingredient) {
+    Storage::ingredientData.push_back(ingredient);
 }
 
 // Remove Ingredient
-void Refrigerator::removeIngredient(string ingredientName, double amount) {
+void Storage::removeIngredient(string ingredientName, double amount) {
     // Collect all ingredients with the given name
     vector<int> ingredientIndices;
     for (int i = 0; i < ingredientData.size(); i++) {
@@ -114,15 +114,15 @@ void Refrigerator::removeIngredient(string ingredientName, double amount) {
 
     // Remove ingredients with zero quantity
     ingredientData.erase(remove_if(ingredientData.begin(), ingredientData.end(),
-                   [](const Ingredient& ing) { return ing.quantity <= 0; }), ingredientData.end());
+                   [](const IngredientItem& ing) { return ing.quantity <= 0; }), ingredientData.end());
 }
 
-// Print Current Refrigerator Storage (Using Table.h)
+// Print Current Storage Storage (Using Table.h)
 
-void Refrigerator::printStorage() {
+void Storage::printStorage() {
 
     vector<Row> spoiledRow;
-    vector<Ingredient> spoiledIngredients = getIngredientsFreshnessLowerThan(10);
+    vector<IngredientItem> spoiledIngredients = getIngredientsFreshnessLowerThan(10);
     for (const auto& ing : spoiledIngredients) {
         Row newRow;
         newRow.values.push_back(to_string(ing.id));
@@ -194,7 +194,7 @@ void Refrigerator::printStorage() {
 
 
 // Check Ingredient amount
-double Refrigerator::checkAmount(string ingredientName, int freshThreshold) {
+double Storage::checkAmount(string ingredientName, int freshThreshold) {
     double amount = 0.0;
     for (const auto& ing : ingredientData) {
         if (ing.name == ingredientName && ing.freshness >= freshThreshold) {
@@ -207,19 +207,19 @@ double Refrigerator::checkAmount(string ingredientName, int freshThreshold) {
 
 // ------------------------------------------------------------------------------------------------------------
 
-void Refrigerator::clearFreshness(string ingredientName, int init) {
+void Storage::clearFreshness(string ingredientName, int init) {
     for (auto& ing : ingredientData) {
         if (ing.name == ingredientName && ing.freshness <= 10) {
             ing.freshness = init;
         }
     }
-    saveIngredient();
+    saveData();
 }
 
 // ------------------------------------------------------------------------------------------------------------
 
-vector<Ingredient> Refrigerator::getIngredientsFreshnessLowerThan(int criteria) {
-    vector<Ingredient> spoiledFoods;
+vector<IngredientItem> Storage::getIngredientsFreshnessLowerThan(int criteria) {
+    vector<IngredientItem> spoiledFoods;
     for (const auto& ing : ingredientData) {
         if (ing.freshness <= criteria) {
             spoiledFoods.push_back(ing);
