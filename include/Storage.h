@@ -6,34 +6,50 @@
 #include "nlohmann/json.hpp"
 #include "DataManagement.h"
 #include "Interfaces.h"
+#include "StorageDataManagement.h"
 
 using namespace nlohmann;
 using namespace std;
 
-class Storage: public DataManagement {
+enum SpoiledIngredientsBehavior {
+    DELETE, CLEAR, NONE
+};
+
+class Storage {
 private:
     string RawJSON_path;
-    static vector<IngredientItem> ingredientData;
+    StorageDataManagement *dataManager;
+
+    enum FreshnessCriteria {
+        ROTTEN = 0, DANGER = 10, PERISHABLE = 20, FRESH = 100
+    };
+
+    // the original helper functions
+    bool isSpoiledEmpty(int criteria);
+    string spoiledIngredientsBehavior(int criteria, SpoiledIngredientsBehavior behavior);
+
 public:
     Storage(string data_path);
+
     ~Storage();
 
-    void loadData();
-    void saveData();
-    void addIngredient(IngredientItem ingredient);
-    void removeIngredient(string ingredientName, double amount);
     void printStorage();
 
-    // --------------------------------------------------------------
+    bool isDangerEmpty();
+    bool isRottenEmpty();
 
-    // clearFreshness 기능 : 멤버 변수 ingredient에서 특정 ingredient name을 찾아 freshness를 초기화
-    void clearFreshness(string ingredientName, int init);
+    string dangerIngredientsBehavior(SpoiledIngredientsBehavior behavior);
+    string rottenIngredientsBehavior(SpoiledIngredientsBehavior behavior);
 
-    // criteria보다 낮은  freshness를 가진 Ingredients 반환
+    double checkUsableIngredientAmount(string ingredientName);
+    bool checkIngredientPerishable(string ingredientName);
+
+    void addIngredientSequence();
+    void removeIngredientSequence();
+
     vector<IngredientItem> getIngredientsFreshnessLowerThan(int criteria);
-
-    // helper function
-    double checkAmount(string ingredientName, int freshThreshold);
+    double checkIngredientAmount(string ingredientName, int freshThreshold);
+    double checkIngredientLowestFreshness(string ingredientName);
 };
 
 #endif //REFRISYSTEM_STORAGE_H

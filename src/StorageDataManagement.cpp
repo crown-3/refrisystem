@@ -6,6 +6,14 @@
 using namespace std;
 using namespace nlohmann;
 
+StorageDataManagement::StorageDataManagement(string data_path) {
+    RawJSON_path = data_path;
+    loadData();
+}
+
+StorageDataManagement::~StorageDataManagement() {
+    saveData();
+}
 
 void StorageDataManagement::loadData() {
     // load json file with data_path
@@ -32,13 +40,9 @@ void StorageDataManagement::loadData() {
                                     element["storage"] == "freezer" ? StorageType::FREEZER :
                                     StorageType::PANTRY;
 
-        // Add the newIngredient to ingredientData vector
-        ingredientData.push_back(newIngredient);
+        // Add the newIngredient to data vector
+        data.push_back(newIngredient);
     }
-}
-
-StorageDataManagement::~StorageDataManagement() {
-    saveData();
 }
 
 void StorageDataManagement::saveData() {
@@ -48,7 +52,7 @@ void StorageDataManagement::saveData() {
     }
 
     json j;
-    for (auto& element : ingredientData) {
+    for (auto& element : data) {
         json sub;
         sub["name"] = element.name;
         sub["amount"] = element.quantity;
@@ -62,17 +66,22 @@ void StorageDataManagement::saveData() {
     jsonFile.close();
 }
 
+// Getter
+vector<IngredientItem> StorageDataManagement::getData() {
+    return data;
+}
+
 // Add Ingredient
 void StorageDataManagement::addData(IngredientItem ingredient) {
-    StorageDataManagement::ingredientData.push_back(ingredient);
+    StorageDataManagement::data.push_back(ingredient);
 }
 
 // Remove Ingredient
 void StorageDataManagement::removeData(std::string ingredientName, double amount) {
     // Collect all ingredients with the given name
     vector<int> ingredientIndices;
-    for (int i = 0; i < ingredientData.size(); i++) {
-        if (ingredientData[i].name == ingredientName) {
+    for (int i = 0; i < data.size(); i++) {
+        if (data[i].name == ingredientName) {
             ingredientIndices.push_back(i);
         }
     }
@@ -83,7 +92,7 @@ void StorageDataManagement::removeData(std::string ingredientName, double amount
 
     // Sort ingredients by freshness in ascending order
     sort(ingredientIndices.begin(), ingredientIndices.end(), [&](int a, int b) {
-        return ingredientData[a].freshness < ingredientData[b].freshness;
+        return data[a].freshness < data[b].freshness;
     });
 
     // Subtract the requested amount from the freshness-sorted ingredients
@@ -91,16 +100,25 @@ void StorageDataManagement::removeData(std::string ingredientName, double amount
         if (amount <= 0) {
             break;
         }
-        if (amount >= ingredientData[index].quantity) {
-            amount -= ingredientData[index].quantity;
-            ingredientData[index].quantity = 0;
+        if (amount >= data[index].quantity) {
+            amount -= data[index].quantity;
+            data[index].quantity = 0;
         } else {
-            ingredientData[index].quantity -= amount;
+            data[index].quantity -= amount;
             amount = 0;
         }
     }
 
     // Remove ingredients with zero quantity
-    ingredientData.erase(remove_if(ingredientData.begin(), ingredientData.end(),
-                                   [](const IngredientItem& ing) { return ing.quantity <= 0; }), ingredientData.end());
+    data.erase(remove_if(data.begin(), data.end(),
+                                   [](const IngredientItem& ing) { return ing.quantity <= 0; }), data.end());
+}
+
+// Clear Freshness of an Ingredient
+void StorageDataManagement::clearFreshness(string ingredientName, int init, int criteria) {
+    for (auto& ing : data) {
+        if (ing.name == ingredientName && ing.freshness <= criteria) {
+            ing.freshness = init;
+        }
+    }
 }

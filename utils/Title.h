@@ -10,5 +10,6 @@ using namespace std;
 
 void Title(string title);
 void Subtitle(string subtitle);
+void Error(const string error);
 
 #endif //REFRISYSTEM_TITLE_H

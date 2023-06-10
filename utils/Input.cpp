@@ -27,6 +27,35 @@ string Input(string question, string example = "") {
     return value;
 }
 
+int InputInteger(int minimum, int maximum, string question, string example = "") {
+    string value;
+    int integer;
+    bool firstAttempt = true;
+    while (true) {
+        TextColor(YELLOW, BLACK);
+        cout << question;
+        TextColor(DARKGRAY, BLACK);
+        cout << " " << example << ": ";
+        TextColor(WHITE, BLACK);
+
+        getline(cin, value);
+
+        stringstream ss(value);
+        if (ss >> integer && !(ss >> value)) { // Check if the input is integer
+            if (integer >= minimum && integer <= maximum) { // Check if the input is in the range
+                return integer;
+            } else {
+                cout << "Please Enter a Number between " << minimum << " and " << maximum << "!" << endl;
+            }
+        } else {
+            if (!firstAttempt || value.length() > 0) {
+                cout << "Please Enter a Valid Number!" << endl;
+            }
+        }
+        firstAttempt = false;
+    }
+}
+
 int SingleChoiceWithNumber(vector<string> choices) {
     // Print the choices
     for (int i = 0; i < choices.size(); ++i) {

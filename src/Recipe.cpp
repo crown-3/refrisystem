@@ -8,7 +8,6 @@
 
 #include "../include/Recipe.h"
 #include "../include/Interfaces.h"
-#include "../include/Consts.h"
 #include "../utils/CutDecimal.h"
 #include "../utils/Title.h"
 #include "../utils/Input.h"
@@ -18,101 +17,62 @@
 using namespace std;
 using namespace nlohmann;
 
-// ------------------------------------------------------------------------------------------------------------
-// Load from JSON file
-Recipe::Recipe(string data_path, Storage& ref)
-: RawJSON_path(std::move(data_path)), refrigeratorRef(ref)
+// Possible Tags for Recipes
+vector<string> RecipeTagList = {
+        "Vegan", "Vegetarian",  // tags related to Dietary pattern
+        "Cold", "Hot", "Sweet", "Salty", "Spicy", "Sour", "Savory", // tags related to Flavor
+        "Fat", "Protein", "Carbohydrate", "Vitamin", "Mineral", // tags related to Nutrition
+        "Healthy", "Premium", // // tags related to Miscellaneous
+};
+
+// Constructor
+Recipe::Recipe(string data_path, Storage &ref)
+: RawJSON_path(move(data_path)), storageRef(ref)
 {
-    loadRecipeData();
+    dataManager = new RecipeDataManagement(data_path);
+    recommendManager = new RecipeRecommendation(*this);
 }
 
-void Recipe::loadRecipeData() {
-    // load json file with data_path
-    ifstream jsonFile(RawJSON_path);
-    if (!jsonFile.is_open()) {
-        throw runtime_error("RecipeData.json file could not be opened. Check if the file exists and its permissions.");
-    }
-    json j;
-    jsonFile >> j;
-    jsonFile.close();
-
-    int idCounter = 1; // Counter for assigning row.id
-
-    // assign json items to each RecipeRow row
-    for (const auto& recipe : j) {
-        RecipeItem row;
-
-        // Assign values to RecipeRow members
-        row.id = idCounter++;
-        row.name = recipe["NAME"];
-        row.tags = recipe["TAG"];
-        row.steps = recipe["STEPS"];
-
-        // Assign ingredient details
-        const auto& ingredientInfo = recipe["INGREDIENT_INFO"];
-        for (const auto& ingredient : ingredientInfo) {
-            IngredientDetail detail;
-            detail.name = ingredient["name"];
-            detail.amount = ingredient["amount"];
-            row.ingredients.push_back(detail);
-        }
-
-        // Add the RecipeRow to recipeData vector
-        recipeData.push_back(row);
-    }
-}
-
-// Save to JSON file
+// Destructor : Save to JSON file & delete managers
 Recipe::~Recipe() {
-    saveRecipeData();
+    dataManager->saveData();
+    delete recommendManager;
+    delete dataManager;
 }
 
-void Recipe::saveRecipeData() {
-    // load json file with data_path
-    ofstream jsonFile(RawJSON_path);
-    if (!jsonFile.is_open()) {
-        throw runtime_error("Storage.json file could not be opened for writing. Check if the file exists and its permissions.");
-    }
-
-    // assign RecipeRow rows to each json item
-    json j;
-    for (auto& element : recipeData) {
-        json sub;
-        sub["NAME"] = element.name;
-        sub["TAG"] = element.tags;
-        sub["STEPS"] = element.steps;
-
-        vector<json> ingredientInfo;
-        for (const auto& ingredient : element.ingredients) {
-            json ingredientItem;
-            ingredientItem["name"] = ingredient.name;
-            ingredientItem["amount"] = ingredient.amount;
-            ingredientInfo.push_back(ingredientItem);
-        }
-        sub["INGREDIENT_INFO"] = ingredientInfo;
-
-        j.push_back(sub);
-    }
-
-    // overwrite(save) jsonFile
-    jsonFile << j.dump(4) << endl;
-    jsonFile.close();
-}
-
-// Show All Recipes
+// ------------------------------------------------------------------------------------------------------------
+// Showing Recipes
+// ------------------------------------------------------------------------------------------------------------
 void Recipe::showAllRecipe() {
     vector<string> title = {"NAME", "TAGS", "INGREDIENTS", "Makable?"};
-    vector<Row> recipeDataStrings = stringifyRecipe(recipeData);
+    vector<Row> recipeDataStrings = stringifyRecipeForTable(dataManager->getData());
 
     table(title, recipeDataStrings); // print all rows in table format
 }
+
 void Recipe::showPartialRecipe(vector<RecipeItem> targetRecipeData) {
     vector<string> title = {"NAME", "TAGS", "INGREDIENTS", "Makable?"};
-    vector<Row> recipeDataStrings = stringifyRecipe(targetRecipeData);
+    vector<Row> recipeDataStrings = stringifyRecipeForTable(targetRecipeData);
 
     table(title, recipeDataStrings); // print all rows in table format
 }
-vector<Row> Recipe::stringifyRecipe(vector<RecipeItem> targetRecipeData){
+
+
+bool Recipe::checkRecipeExist(string recipeName) {
+    bool isFound = false;
+
+    for (const auto &recipe: dataManager->getData()) {
+        if (recipe.name == recipeName) {
+            isFound = true;
+            break;
+        }
+    }
+
+    return isFound;
+};
+
+
+vector<Row> Recipe::stringifyRecipeForTable(vector<RecipeItem> targetRecipeData) {
     vector<Row> result;
 
     for (const auto &recipe: targetRecipeData) {
@@ -123,14 +83,14 @@ vector<Row> Recipe::stringifyRecipe(vector<RecipeItem> targetRecipeData){
 
         // 2열: Tags
         string tags;
-        for (const auto& tag : recipe.tags) {
+        for (const auto &tag: recipe.tags) {
             tags += tag + ", ";
         }
         tags = tags.substr(0, tags.size() - 2); // remove the trailing comma
         row.values.push_back(tags);
         // 3열: Ingredients
         string ingredients;
-        for (const auto& ingredient : recipe.ingredients) {
+        for (const auto &ingredient: recipe.ingredients) {
             ingredients += CutDecimal(to_string(ingredient.amount), 1) + " " +
                            ingredient.name + ", ";
         }
@@ -148,42 +108,50 @@ vector<Row> Recipe::stringifyRecipe(vector<RecipeItem> targetRecipeData){
 
 // ------------------------------------------------------------------------------------------------------------
 // Add Recipe
-void Recipe::addRecipe() {
-    try {
-        // UI : input name/tags/ingredients/steps
-        Title("Add Recipe");
+// ------------------------------------------------------------------------------------------------------------
+void Recipe::addRecipeSequence() {
+    Title("Add Recipe");
 
-        Subtitle("Recipe Name");
-        string recipeName = Input("Enter your recipe name");
+    Subtitle("Recipe Name");
 
-        Subtitle("Recipe Tags");
-        showPossibleTags();
-        vector<string> recipeTagSelect = MultipleChoice(RecipeTagList, "Enter recipe's tags", "ex) Sweet, Fat");
-
-        Subtitle("Recipe Ingredients");
-        vector<IngredientDetail> recipeIngredients = inputIngredients();
-
-        Subtitle("Recipe Steps");
-        vector<string> recipeSteps = inputSteps();
-
-        // manipulate recipeData : append newRecipe
-        RecipeItem newRecipe;
-        newRecipe.name = recipeName;
-        newRecipe.tags = recipeTagSelect;
-        newRecipe.steps = recipeSteps;
-        newRecipe.ingredients = recipeIngredients;
-
-        recipeData.push_back(newRecipe);
-
-        // UI : Display success message
-        Subtitle("Successfully added new recipe '" + recipeName + "'!");
+    string recipeName;
+    // check if the entered recipe name already exists
+    while (true){
+        recipeName = Input("Enter your recipe name");
+        if (checkRecipeExist(recipeName)) {
+            TextColor(RED, BLACK);
+            cout << "The recipe name already exists." << endl;
+            TextColor(WHITE, BLACK);
+        } else {
+            break;
+        }
     }
-    catch (const exception &e) {
-        // UI : Display error message
-        Subtitle(e.what());
-    }
+
+    Subtitle("Recipe Tags");
+    printPossibleTags();
+    vector<string> recipeTagSelect = MultipleChoice(RecipeTagList, "Enter recipe's tags", "ex) Sweet, Fat");
+
+    Subtitle("Recipe Ingredients");
+    vector<IngredientDetail> recipeIngredients = inputIngredients();
+
+    Subtitle("Recipe Steps");
+    vector<string> recipeSteps = inputSteps();
+
+    // manipulate recipeData : append newRecipe
+    RecipeItem newRecipe;
+    newRecipe.name = recipeName;
+    newRecipe.tags = recipeTagSelect;
+    newRecipe.steps = recipeSteps;
+    newRecipe.ingredients = recipeIngredients;
+
+    dataManager->addData(newRecipe);
+
+    // UI : Display success message
+    Subtitle("Successfully added new recipe '" + recipeName + "'!");
 }
-void Recipe::showPossibleTags() {
+
+// helper function for addRecipe(): it shows possible tags
+void Recipe::printPossibleTags() {
     cout << "Possible Tags: ";
     for (size_t i = 0; i < RecipeTagList.size(); ++i) {
         TextColor(LIGHTGREEN, BLACK);
@@ -195,6 +163,8 @@ void Recipe::showPossibleTags() {
     }
     cout << endl;
 }
+
+// helper function for addRecipe(): it takes input for recipe steps
 vector<string> Recipe::inputSteps() {
     vector<string> steps = json::array();
     string step;
@@ -208,100 +178,113 @@ vector<string> Recipe::inputSteps() {
     }
     return steps;
 }
+
+// helper function for addRecipe(): it takes input for recipe ingredients
 vector<IngredientDetail> Recipe::inputIngredients() {
-    vector<IngredientDetail> ingredientList;
+    fstream dataFile;
+    dataFile.open("../source/FoodData.json");
 
-    while (true) {
-        IngredientDetail ingredient;
+    json j;
+    dataFile >> j;
 
-        // UI : Input ingredient name and amount
-        // ..
+    map<string, string> foodData;
 
-        // foodData에 없다면 정보 추가
-        // ..
-
-        // Add the ingredient and amount to the ingredientList
-        ingredientList.push_back(ingredient);
+    for (auto &element: j) {
+        foodData[element["name"]] = element["storage"];
     }
 
-    return ingredientList;
+    json ingredientList = json::array(); // JSON array to hold the ingredient list
+    vector<IngredientDetail> recipeIngredients; // vector to hold the ingredient list
 
+    while (true) {
+        double amount;
+        string name;
+        IngredientDetail ingredient;
+
+        cout << "Input an ingredient name and amount (-1 to finish): ";
+        cin >> amount;
+        if (amount == -1) {
+            break;
+        }
+        cin.ignore();
+        getline(cin, name);
+
+
+
+        if (foodData.find(name) == foodData.end()) {
+            char response;
+            cout << "----| Add new ingredient '" << name << "' to food data? (y/n): ";
+            cin >> response;
+            if (response == 'y' || response == 'Y') {
+                string storage;
+                storage = MultipleChoice({"fridge", "freezer", "pantry"},
+                                         "----| What is the suit storage for '" + name + "'?",
+                                         "(fridge / freezer / pantry)")[0];
+                foodData[name] = storage;
+                json newElement = {
+                        {"name",    name},
+                        {"storage", storage}
+                };
+                j.push_back(newElement);
+                // Write the updated data to the file immediately
+                ofstream output;
+                output.open("../source/FoodData.json");
+                output << j.dump(4); // pretty-printing with 4 spaces indent
+                output.close();
+            } else {
+                TextColor(DARKGRAY, BLACK);
+                cout << "----| Adding ingredient '" << name << "' canceled." << endl;
+                TextColor(WHITE, BLACK);
+                continue;
+            }
+        }
+
+        ingredient.name = name;
+        ingredient.amount = amount;
+
+        // Add the ingredient and amount to the recipeIngredients
+        recipeIngredients.push_back(ingredient);
+    }
+
+    return recipeIngredients;
 }
 
+// ------------------------------------------------------------------------------------------------------------
 // Remove Recipe
-void removeRecipe(){
+// ------------------------------------------------------------------------------------------------------------
+void Recipe::removeRecipeSequence() {
+    Title("Remove Recipe");
 
+    string recipeName;
+    // check if the entered recipe name exists
+    while (true){
+        recipeName = Input("Enter the name of recipe you want to remove");
+        if (!checkRecipeExist(recipeName)) {
+            TextColor(RED, BLACK);
+            cout << "The recipe name does not exists." << endl;
+            TextColor(WHITE, BLACK);
+        } else {
+            break;
+        }
+    }
+
+    dataManager->removeData(recipeName);
 }
 
 // ------------------------------------------------------------------------------------------------------------
 // Recommend Recipe
+// ------------------------------------------------------------------------------------------------------------
 vector<RecipeItem> Recipe::recommendRecipe(string mood) {
-    // Step 1: Select rows with tags matching moodPreference
-    vector<RecipeItem> matchingRows;
-    for (const auto& recipe : recipeData) {
-        bool hasMatchingTag = false;
-        for (const auto& tag : recipe.tags) {
-            const auto& preference = moodPreference.find(mood);
-            if (preference != moodPreference.end()) {
-                const auto& preferenceTags = preference->second;
-                if (find(preferenceTags.begin(), preferenceTags.end(), tag) != preferenceTags.end()) { // std::find 사용
-                    hasMatchingTag = true;
-                    break;
-                }
-            }
-        }
-        if (hasMatchingTag) {
-            matchingRows.push_back(recipe);
-        }
-    }
-
-    // Step 2: Sort rows based on userPreference order
-    sort(matchingRows.begin(), matchingRows.end(), [&](const RecipeItem& a, const RecipeItem& b) { // std::sort 사용
-        const auto& preference = userPreference.find(a.id);
-        if (preference != userPreference.end()) {
-            const auto& preferenceTags = preference->second;
-            auto aIt = find_if(a.tags.begin(), a.tags.end(), [&](const string& tag) { // std::find_if 사용
-                return find(preferenceTags.begin(), preferenceTags.end(), tag) != preferenceTags.end(); // std::find 사용
-            });
-            auto bIt = find_if(b.tags.begin(), b.tags.end(), [&](const string& tag) { // std::find_if 사용
-                return find(preferenceTags.begin(), preferenceTags.end(), tag) != preferenceTags.end(); // std::find 사용
-            });
-            return aIt < bIt;
-        }
-        return false;
-    });
-
-    // Step 3: Sort makable recipes first
-    sort(matchingRows.begin(), matchingRows.end(), [&](const RecipeItem& a, const RecipeItem& b) {
-        bool aMakable = checkMakable(a);
-        bool bMakable = checkMakable(b);
-
-        if (aMakable && !bMakable) {
-            return true;  // a is makable, but b is not, so a should come first
-        } else if (!aMakable && bMakable) {
-            return false;  // b is makable, but a is not, so b should come first
-        }
-
-        // Both a and b are either makable or not makable
-        // Sort based on the number of available ingredients in the refrigerator
-        int aAvailableIngredients = 0;
-        for (const auto& ingredient : a.ingredients)
-            if (refrigeratorRef.checkAmount(ingredient.name, 0) >= ingredient.amount)
-                aAvailableIngredients++;
-        int bAvailableIngredients = 0;
-        for (const auto& ingredient : b.ingredients)
-            if (refrigeratorRef.checkAmount(ingredient.name, 0) >= ingredient.amount)
-                bAvailableIngredients++;
-        return aAvailableIngredients > bAvailableIngredients;
-    });
-
-    return matchingRows;
+    recommendManager->setUserMood(mood);
+    return recommendManager->recommend(dataManager->getData());
 }
+
+// ------------------------------------------------------------------------------------------------------------
 
 bool Recipe::checkMakable(RecipeItem recipe) {
     bool makable = true;
-    for (const auto& ingredient : recipe.ingredients) {
-        if (refrigeratorRef.checkAmount(ingredient.name, 0) < ingredient.amount) {
+    for (const auto &ingredient: recipe.ingredients) {
+        if (storageRef.checkUsableIngredientAmount(ingredient.name) < ingredient.amount) {
             makable = false;
             break;
         }
@@ -309,13 +292,24 @@ bool Recipe::checkMakable(RecipeItem recipe) {
     return makable;
 }
 
-vector<IngredientDetail> Recipe::checkLackIngredient(RecipeItem recipe) {
+int Recipe::countLackIngredients(RecipeItem recipe) {
+    int lackCount = 0;
+    for (const auto &ingredient: recipe.ingredients) {
+        if (storageRef.checkUsableIngredientAmount(ingredient.name) < ingredient.amount) {
+            lackCount ++;
+        }
+    }
+    return lackCount;
+}
+
+vector<IngredientDetail> Recipe::checkLackIngredients(RecipeItem recipe) {
     vector<IngredientDetail> lackIngredientList;
     cout << "===================checkLackIngredient===================" << endl;
-    for (const auto& ingredient : recipe.ingredients) {
-        double ownIngAmount = refrigeratorRef.checkAmount(ingredient.name, 0);
+    for (const auto &ingredient: recipe.ingredients) {
+        double ownIngAmount = storageRef.checkUsableIngredientAmount(ingredient.name);
         cout << "\t" << ingredient.name << " now have " << ownIngAmount << ", need"
-            << ingredient.amount << " , so " << ((ownIngAmount < ingredient.amount) ? "NON-SUFFICIENT" : "SUFFICIENT") << endl;
+             << ingredient.amount << " , so " << ((ownIngAmount < ingredient.amount) ? "NON-SUFFICIENT" : "SUFFICIENT")
+             << endl;
         if (ownIngAmount < ingredient.amount) {
             IngredientDetail lackIng;
             lackIng.name = ingredient.name;

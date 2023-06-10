@@ -1,129 +1,29 @@
 #include "../include/Storage.h"
-#include <fstream>
 #include <algorithm>
 #include <iostream>
 #include "../utils/Table.h"
 #include "../utils/ColorfulCli.h"
+#include "../utils/Title.h"
+#include "../utils/Input.h"
 
 using namespace std;
 using namespace nlohmann;
 
-vector<IngredientItem> Storage::ingredientData;
-
-// Load from JSON file
 
 Storage::Storage(string data_path)
-: RawJSON_path(data_path)
-{
-    loadData();
-}
-
-void Storage::loadData() {
-    // load json file with data_path
-    ifstream jsonFile(RawJSON_path);
-    if (!jsonFile.is_open()) {
-        throw runtime_error("Storage.json file could not be opened. Check if the file exists and its permissions.");
-    }
-    json j;
-    jsonFile >> j;
-    jsonFile.close();
-
-    int idCounter = 1; // Counter for assigning newIngredient.id
-
-    // assign json items to each RecipeRow row
-    for (const auto& element : j) {
-        IngredientItem newIngredient;
-
-        // Assign values to RecipeRow members
-        newIngredient.id = idCounter++;
-        newIngredient.name = element["name"];
-        newIngredient.quantity = element["amount"];
-        newIngredient.freshness = element["freshness"];
-        newIngredient.storageType = element["storage"] == "fridge" ? StorageType::FRIDGE :
-                                    element["storage"] == "freezer" ? StorageType::FREEZER :
-                                    StorageType::PANTRY;
-
-        // Add the newIngredient to ingredientData vector
-        ingredientData.push_back(newIngredient);
-    }
+        : RawJSON_path(data_path) {
+    dataManager = new StorageDataManagement(data_path);
 }
 
 Storage::~Storage() {
-    saveData();
+    dataManager->saveData();
 }
-
-void Storage::saveData() {
-    ofstream jsonFile(RawJSON_path);
-    if (!jsonFile.is_open()) {
-        throw runtime_error("Storage.json file could not be opened for writing. Check if the file exists and its permissions.");
-    }
-
-    json j;
-    for (auto& element : ingredientData) {
-        json sub;
-        sub["name"] = element.name;
-        sub["amount"] = element.quantity;
-        sub["freshness"] = element.freshness;
-        sub["storage"] = element.storageType == StorageType::FRIDGE ? "fridge" :
-                         element.storageType == StorageType::FREEZER ? "freezer" : "pantry";
-        j.push_back(sub);
-    }
-
-    jsonFile << j.dump(4) << endl;
-    jsonFile.close();
-}
-
-// ------------------------------------------------------------------------------------------------------------
-// Add Ingredient
-void Storage::addIngredient(IngredientItem ingredient) {
-    Storage::ingredientData.push_back(ingredient);
-}
-
-// Remove Ingredient
-void Storage::removeIngredient(string ingredientName, double amount) {
-    // Collect all ingredients with the given name
-    vector<int> ingredientIndices;
-    for (int i = 0; i < ingredientData.size(); i++) {
-        if (ingredientData[i].name == ingredientName) {
-            ingredientIndices.push_back(i);
-        }
-    }
-
-    if (ingredientIndices.empty()) {
-        throw runtime_error("Ingredient not found in the refrigerator.");
-    }
-
-    // Sort ingredients by freshness in ascending order
-    sort(ingredientIndices.begin(), ingredientIndices.end(), [&](int a, int b) {
-        return ingredientData[a].freshness < ingredientData[b].freshness;
-    });
-
-    // Subtract the requested amount from the freshness-sorted ingredients
-    for (auto index : ingredientIndices) {
-        if (amount <= 0) {
-            break;
-        }
-        if (amount >= ingredientData[index].quantity) {
-            amount -= ingredientData[index].quantity;
-            ingredientData[index].quantity = 0;
-        } else {
-            ingredientData[index].quantity -= amount;
-            amount = 0;
-        }
-    }
-
-    // Remove ingredients with zero quantity
-    ingredientData.erase(remove_if(ingredientData.begin(), ingredientData.end(),
-                   [](const IngredientItem& ing) { return ing.quantity <= 0; }), ingredientData.end());
-}
-
-// Print Current Storage Storage (Using Table.h)
 
 void Storage::printStorage() {
 
     vector<Row> spoiledRow;
-    vector<IngredientItem> spoiledIngredients = getIngredientsFreshnessLowerThan(10);
-    for (const auto& ing : spoiledIngredients) {
+    vector<IngredientItem> spoiledIngredients = getIngredientsFreshnessLowerThan(DANGER);
+    for (const auto &ing: spoiledIngredients) {
         Row newRow;
         newRow.values.push_back(to_string(ing.id));
         newRow.values.push_back(ing.storageType == StorageType::FRIDGE ? "fridge" :
@@ -137,7 +37,7 @@ void Storage::printStorage() {
     vector<Row> fridgeRow;
     vector<Row> freezerRow;
     vector<Row> pantryRow;
-    for (const auto& ing : ingredientData) {
+    for (const auto &ing: dataManager->getData()) {
         if (ing.storageType == StorageType::FRIDGE) {
             Row newRow;
             newRow.values.push_back(to_string(ing.id));
@@ -192,38 +92,173 @@ void Storage::printStorage() {
 }
 
 
-
-// Check Ingredient amount
-double Storage::checkAmount(string ingredientName, int freshThreshold) {
-    double amount = 0.0;
-    for (const auto& ing : ingredientData) {
-        if (ing.name == ingredientName && ing.freshness >= freshThreshold) {
-            amount += ing.quantity;
-        }
-    }
-    // cout << ingredientName << "   " << amount << endl;
-    return amount;
+// this function checks if there is any  spoiled ingredients
+bool Storage::isSpoiledEmpty(int criteria) {
+    return getIngredientsFreshnessLowerThan(criteria).empty();
 }
 
-// ------------------------------------------------------------------------------------------------------------
-
-void Storage::clearFreshness(string ingredientName, int init) {
-    for (auto& ing : ingredientData) {
-        if (ing.name == ingredientName && ing.freshness <= 10) {
-            ing.freshness = init;
-        }
-    }
-    saveData();
+bool Storage::isDangerEmpty() {
+    return isSpoiledEmpty(DANGER);
 }
 
-// ------------------------------------------------------------------------------------------------------------
+bool Storage::isRottenEmpty() {
+    return isSpoiledEmpty(ROTTEN);
+}
 
+
+// this function deletes the spoiled ingredients / clear the freshness of the spoiled ingredients, and it also returns a string of the spoiled ingredients
+string Storage::spoiledIngredientsBehavior(int criteria, SpoiledIngredientsBehavior behavior) {
+    vector<IngredientItem> spoiledFoods = getIngredientsFreshnessLowerThan(criteria);
+    stringstream ss;
+
+    for (size_t i = 0; i < spoiledFoods.size(); ++i) {
+        if (i == spoiledFoods.size() - 1) { // last item
+            ss << "and " << spoiledFoods[i].name << " * " << spoiledFoods[i].quantity;
+        } else {
+            ss << spoiledFoods[i].name << " * " << spoiledFoods[i].quantity << ", ";
+        }
+
+        // behavior
+        switch (behavior) {
+            case DELETE:
+                dataManager->removeData(spoiledFoods[i].name, spoiledFoods[i].quantity);
+                break;
+            case CLEAR:
+                dataManager->clearFreshness(spoiledFoods[i].name, 100, criteria);
+                break;
+            default:
+                // case of "NONE"
+                break;
+        }
+    }
+
+    return ss.str();
+}
+
+string Storage::dangerIngredientsBehavior(SpoiledIngredientsBehavior behavior) {
+    return spoiledIngredientsBehavior(DANGER, behavior);
+}
+
+string Storage::rottenIngredientsBehavior(SpoiledIngredientsBehavior behavior) {
+    return spoiledIngredientsBehavior(ROTTEN, behavior);
+}
+
+
+// this function checks the usable amount of an ingredient
+double Storage::checkUsableIngredientAmount(string ingredientName) {
+    return checkIngredientAmount(ingredientName, ROTTEN);
+}
+
+bool Storage::checkIngredientPerishable(string ingredientName) {
+    return (checkIngredientLowestFreshness(ingredientName) <= PERISHABLE);
+}
+
+
+// this function adds an ingredient to the storage
+void Storage::addIngredientSequence() {
+    IngredientItem newIngredient;
+
+    string name;
+    int quantity;
+    StorageType storageType;
+
+    Title("Add Ingredient");
+
+    Subtitle("Ingredient Name");
+    name = Input("Enter your ingredient name");
+
+    Subtitle("Ingredient Quantity");
+    quantity = InputInteger(0, 200, "Enter the quantity of ingredient", "Integer between 0 and 200");
+
+    Subtitle("Storage type for the ingredient");
+    string storageTypeStr = MultipleChoice({"fridge", "freezer", "pantry"},
+                                           "Enter the type of storage to put the corresponding ingredient in.")[0];
+
+    transform(storageTypeStr.begin(), storageTypeStr.end(), storageTypeStr.begin(), ::tolower);
+    if (storageTypeStr == "fridge") {
+        storageType = StorageType::FRIDGE;
+    } else if (storageTypeStr == "freezer") {
+        storageType = StorageType::FREEZER;
+    } else if (storageTypeStr == "pantry") {
+        storageType = StorageType::PANTRY;
+    } else {
+        Error("Invalid storage type: internal error");
+        return;
+    }
+
+    newIngredient.name = name;
+    newIngredient.quantity = quantity;
+    newIngredient.freshness = FRESH;
+    newIngredient.storageType = storageType;
+
+    dataManager->addData(newIngredient);
+}
+
+
+// this function removes an ingredient from the storage
+void Storage::removeIngredientSequence() {
+    Title("Remove Ingredient");
+
+    string name;
+    int quantity;
+
+    Subtitle("Ingredient Name");
+    name = Input("Enter the ingredient name to remove");
+
+    Subtitle("Ingredient Quantity");
+    quantity = InputInteger(0, 200, "Enter how much ingredient you want to remove", "Integer between 0 and 200");
+
+    dataManager->removeData(name, quantity);
+}
+
+
+// Get ingredients with freshness lower than a given criteria
 vector<IngredientItem> Storage::getIngredientsFreshnessLowerThan(int criteria) {
     vector<IngredientItem> spoiledFoods;
-    for (const auto& ing : ingredientData) {
+    for (const auto& ing : dataManager->getData()) {
         if (ing.freshness <= criteria) {
             spoiledFoods.push_back(ing);
         }
     }
     return spoiledFoods;
+}
+
+// Check amount of an ingredient
+double Storage::checkIngredientAmount(string ingredientName, int freshThreshold) {
+    double amount = 0;
+    bool isInStorage = false;
+
+    for (const auto& ing : dataManager->getData()) {
+        if (ing.name == ingredientName && ing.freshness > freshThreshold) {
+            isInStorage = true;
+            amount += ing.quantity;
+        }
+    }
+
+    if (isInStorage) {
+        throw runtime_error("Ingredient not found in the refrigerator.");
+    }
+
+    return amount;
+}
+
+// Check freshness of an ingredient
+double Storage::checkIngredientLowestFreshness(string ingredientName) {
+    double lowestFreshness = 0;
+    bool isInStorage = false;
+
+    for (auto& ing : dataManager->getData()) {
+        if (ing.name == ingredientName) {
+            if(!isInStorage || ing.freshness < lowestFreshness){
+                isInStorage = true;
+                lowestFreshness = ing.freshness;
+            }
+        }
+    }
+
+    if (isInStorage) {
+        throw runtime_error("Ingredient not found in the refrigerator.");
+    }
+
+    return lowestFreshness;
 }

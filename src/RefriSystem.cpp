@@ -3,19 +3,50 @@
 #include <thread>
 #include "../include/RefriSystem.h"
 #include "../include/Storage.h"
-#include "../include/Consts.h"
 #include "../utils/ColorfulCli.h"
 #include "../utils/Title.h"
 #include "../utils/Input.h"
 
 using namespace std;
 
-//string RefriSystem::Storage_RawJSON_path = "../db/Storage.json";
-//Storage RefriSystem::refrigerator(RefriSystem::Storage_RawJSON_path);
+// ------------------------------------------------------------------------------------------------------------
+// Constants used for User Interaction : Ask List & User Answer & Responses
+// ------------------------------------------------------------------------------------------------------------
 
-RefriSystem::RefriSystem()
- : refrigerator(Storage_RawJSON_path), refriRecipe(Recipe_RawJSON_path, refrigerator)
-{ }
+// [Mood] Question List for User Mood
+vector<string> MoodQ = {
+        "I'm very happy now.",
+        "I feel moody today.",
+        "I'm exhausted because of physical movement.",
+        "I'm just fine.",
+        "I'm mentally tired."
+};
+
+// [Mood] Switch number answer to Mood answer
+map<int, string> MoodA = {
+        {1, "happy"}, {2, "moody"}, {3, "exhausted"}, {4, "fine"}, {5, "mentally_tired"}
+};
+
+// [Mood] Responses for each Mood answer
+map<string, string> MoodR = {
+        {"happy", "Oh, I'm really glad to hear that!"},
+        {"moody", "Oh, I understand how you feel."},
+        {"exhausted", "Oh, you need to recharge."},
+        {"fine", "Oh, that’s nice."},
+        {"mentally_tired", "Oh, I'm so sorry to hear that."}
+};
+
+// ------------------------------------------------------------------------------------------------------------
+// Function Implementations
+// -----------------------------------------------------------------------------------------------------------
+
+//string RefriSystem::Storage_RawJSON_path = "../db/Storage.json";
+//Storage RefriSystem::storage(RefriSystem::Storage_RawJSON_path);
+
+RefriSystem::RefriSystem() :
+        storage(Storage_RawJSON_path),
+        storageDataManagement(Storage_RawJSON_path),
+        recipe(Recipe_RawJSON_path, storage) {}
 
 void RefriSystem::MAIN_MENU() {
     RefriSystem::Introduction();
@@ -27,11 +58,11 @@ void RefriSystem::MAIN_MENU() {
 void RefriSystem::Introduction() {
 
     TextColor(CYAN, BLACK);
-    cout << R"( ______     __    __     ______     ______     ______      ______     ______     ______   ______     __ )" << endl;
-    cout << R"(/\  ___\   /\ "-./  \   /\  __ \   /\  == \   /\__  _\    /\  == \   /\  ___\   /\  ___\ /\  == \   /\ \   )" << endl;
-    cout << R"(\ \___  \  \ \ \-./\ \  \ \  __ \  \ \  __<   \/_/\ \/    \ \  __<   \ \  __\   \ \  __\ \ \  __<   \ \ \  )" << endl;
-    cout << R"( \/\_____\  \ \_\ \ \_\  \ \_\ \_\  \ \_\ \_\    \ \_\     \ \_\ \_\  \ \_____\  \ \_\    \ \_\ \_\  \ \_\ )" << endl;
-    cout << R"(  \/_____/   \/_/  \/_/   \/_/\/_/   \/_/ /_/     \/_/      \/_/ /_/   \/_____/   \/_/     \/_/ /_/   \/_/ )" << endl << endl;
+    cout << R"( ______     __    __     ______     ______     ______      ______     ______     ______   ______     __ )"<< endl;
+    cout << R"(/\  ___\   /\ "-./  \   /\  __ \   /\  == \   /\__  _\    /\  == \   /\  ___\   /\  ___\ /\  == \   /\ \   )"<< endl;
+    cout << R"(\ \___  \  \ \ \-./\ \  \ \  __ \  \ \  __<   \/_/\ \/    \ \  __<   \ \  __\   \ \  __\ \ \  __<   \ \ \  )"<< endl;
+    cout << R"( \/\_____\  \ \_\ \ \_\  \ \_\ \_\  \ \_\ \_\    \ \_\     \ \_\ \_\  \ \_____\  \ \_\    \ \_\ \_\  \ \_\ )"<< endl;
+    cout << R"(  \/_____/   \/_/  \/_/   \/_/\/_/   \/_/ /_/     \/_/      \/_/ /_/   \/_____/   \/_/     \/_/ /_/   \/_/ )"<< endl << endl;
     TextColor(BLACK, CYAN);
     cout << "WELCOME TO THE SMART REFRI SYSTEM." << endl;
     TextColor(WHITE, BLACK);
@@ -42,74 +73,49 @@ void RefriSystem::Briefing() {
     // Title
     Title("Briefing");
 
-    // Print and remove the rotten ingredients
-    vector<IngredientItem> spoiledFoods = refrigerator.getIngredientsFreshnessLowerThan(0);
-    stringstream ss1;
-
-    if (!spoiledFoods.empty()) {
-        for (size_t i = 0; i < spoiledFoods.size(); ++i) {
-            if (i == spoiledFoods.size() - 1) { // last item
-                ss1 << "and " << spoiledFoods[i].name << " * " << spoiledFoods[i].quantity;
-            } else {
-                ss1 << spoiledFoods[i].name << " * " << spoiledFoods[i].quantity << ", ";
-            }
-            refrigerator.removeIngredient(spoiledFoods[i].name, spoiledFoods[i].quantity);
-        }
-        ss1 << " have rotten, so were thrown away.";
+    // Briefing about Rotten Ingredients
+    if (storage.isRottenEmpty()) {
+        Subtitle("No ingredients have rotten.");
     } else {
-        ss1 << "No ingredients have rotten.";
+        Subtitle(storage.rottenIngredientsBehavior(DELETE) + " have rotten, so were thrown away.");
     }
 
-    // Tomato * 2, Ketchup * 0.4, and Onion * 2 have rotten, so was thrown away.
-    Subtitle(ss1.str());
+    // Briefing about Danger Ingredients
+    if (storage.isDangerEmpty()) {
+        Subtitle("No ingredients are in dangerous status.");
+    } else {
+        Subtitle(storage.dangerIngredientsBehavior(NONE) + " are in dangerous status. Are you gonna dump them all, master?");
 
-    // Print the danger ingredients
-    vector<IngredientItem> dangerFoods = refrigerator.getIngredientsFreshnessLowerThan(10);
-    stringstream ss2;
-    if (!dangerFoods.empty()) {
-        ss2 << dangerFoods[0].name << " * " << dangerFoods[0].quantity;
-        for (size_t i = 1; i < dangerFoods.size(); ++i) {
-            if (i == dangerFoods.size() - 1) { // last item
-                ss2 << ", and " << dangerFoods[i].name << " * " << dangerFoods[i].quantity;
-            } else {
-                ss2 << ", " << dangerFoods[i].name << " * " << dangerFoods[i].quantity;
-            }
-        }
-        ss2 << " are in dangerous status.";
-
-        // Tomato * 2, Ketchup * 0.4, and Onion * 2 are in dangerous status.
-        Subtitle(ss2.str() + " Are you gonna dump them all, master?");
-
-        int answer1 = SingleChoiceWithNumber({"Yes", "No"});
-        switch (answer1) {
+        int answer = SingleChoiceWithNumber({"Yes", "No"});
+        switch (answer) {
             case 1: {
                 Subtitle("Certainly! Do you want to refill them with fresh ones, master?");
                 int answer2 = SingleChoiceWithNumber({"Yes", "No"});
+
                 switch (answer2) {
                     case 1:
-                        for (size_t i = 0; i < dangerFoods.size(); ++i) {
-                            refrigerator.clearFreshness(dangerFoods[i].name, 100);
-                        }
+                        storage.dangerIngredientsBehavior(CLEAR);
                         break;
                     case 2:
-                        for (size_t i = 0; i < dangerFoods.size(); ++i) {
-                            refrigerator.removeIngredient(dangerFoods[i].name, dangerFoods[i].quantity);
-                        }
+                        storage.dangerIngredientsBehavior(DELETE);
                         break;
-                };
-
+                    default:
+                        break;
+                }
                 break;
             }
+            default:
+                break;
         }
-    } else {
-        ss2 << "No ingredients are in danger.";
-        Subtitle(ss2.str());
     }
-    refrigerator.saveIngredient();
 
 }
 
+// ------------------------------------------------------------------------------------------------------------
+// Actual menu (eat? -> what else?)
+// ------------------------------------------------------------------------------------------------------------
 void RefriSystem::Act() {
+    Title("Act");
     Subtitle("Are you gonna eat something, master?");
     int answer1 = SingleChoiceWithNumber({"Yes", "No"});
     switch (answer1) {
@@ -128,27 +134,69 @@ void RefriSystem::Act() {
                     break;
                 }
                 case 2: {
-                    ShowRecipe();
+                    ManageRecipe();
                     break;
                 }
+                default:
+                    break;
             }
             break;
         }
+        default:
+            break;
     }
 }
 
-// STORAGE--------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------
+// STORAGE
+// ------------------------------------------------------------------------------------------------------------
 void RefriSystem::ManageStorage() {
     Title("Open Storage");
-    refrigerator.printStorage();
-    PressEnterToContinue();
-    Act();
+    storage.printStorage();
+
+    int answer1 = SingleChoiceWithNumber({"Add Ingredient", "Delete Ingredient", "Back to Menu"});
+    switch (answer1) {
+        case 1: {
+            storage.addIngredientSequence();
+            break;
+        }
+        case 2: {
+            storage.removeIngredientSequence();
+            break;
+        }
+        case 3: {
+            Act();
+            break;
+        }
+        default:
+            break;
+    }
 }
 
-// RECIPE---------------------------------------------------------------------------------------------------------------
-void RefriSystem::ShowRecipe() {
-    Title("Show Recipe");
-    refriRecipe.showAllRecipe();
+// ------------------------------------------------------------------------------------------------------------
+// RECIPE
+// ------------------------------------------------------------------------------------------------------------
+void RefriSystem::ManageRecipe() {
+    Title("Manage Recipe");
+    recipe.showAllRecipe();
+
+    int answer1 = SingleChoiceWithNumber({"Add Recipe", "Delete Recipe", "Back to Menu"});
+    switch (answer1) {
+        case 1: {
+            recipe.addRecipeSequence();
+            break;
+        }
+        case 2: {
+            recipe.removeRecipeSequence();
+            break;
+        }
+        case 3: {
+            Act();
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 void RefriSystem::Eat() {
@@ -163,9 +211,13 @@ void RefriSystem::Eat() {
     // Response output according to User's mood
     Subtitle(MoodR[mood]);
 
+    Cook(mood);
+}
+
+void RefriSystem::Cook(string mood) {
     // Recommend recipes according to User's mood
-    vector<RecipeItem> recipePriorityList = refriRecipe.recommendRecipe(mood);
-    while (!recipePriorityList.empty()){
+    vector<RecipeItem> recipePriorityList = recipe.recommendRecipe(mood);
+    while (!recipePriorityList.empty()) {
         // Extract first 3 recipes
         vector<RecipeItem> extractedRecipes;
         for (int i = 0; i < 3 && !recipePriorityList.empty(); ++i) {
@@ -176,31 +228,31 @@ void RefriSystem::Eat() {
         // Output detailed info of first 3 recipes
         Subtitle("Then, I recommend these foods. ");
         Subtitle("Here is the detailed info of TOP 3 recommended recipes");
-        refriRecipe.showPartialRecipe(extractedRecipes);
+        recipe.showPartialRecipe(extractedRecipes);
 
         // Ask to choose recipe
         Subtitle("Please choose the food you want. ");
         int answer_recipeChosen = SingleChoiceWithNumber({
-            extractedRecipes[0].name,
-            extractedRecipes[1].name,
-            extractedRecipes[2].name,
-            "There's nothing I like."
-        });
+                                                                 extractedRecipes[0].name,
+                                                                 extractedRecipes[1].name,
+                                                                 extractedRecipes[2].name,
+                                                                 "There's nothing I like."
+                                                         });
 
         // When recipe is not selected
         if (answer_recipeChosen == 4) {
             continue;
         }
 
-        RecipeItem selectedRecipe = extractedRecipes[answer_recipeChosen-1];
+        RecipeItem selectedRecipe = extractedRecipes[answer_recipeChosen - 1];
         // Whether selectedRecipe is makable, Ask Cook OR Buy
-        bool selectedIsMakable = refriRecipe.checkMakable(selectedRecipe);
-        if (selectedIsMakable){
-            Subtitle(selectedRecipe.name +" is chosen, We can make this food with the ingredients in the storage! ");
+        bool selectedIsMakable = recipe.checkMakable(selectedRecipe);
+        if (selectedIsMakable) {
+            Subtitle(selectedRecipe.name + " is chosen, We can make this food with the ingredients in the storage! ");
             Subtitle("Would you like to cook now, master? ");
         } else {
-            Subtitle(selectedRecipe.name +" is chosen, But we need more of the following ingredients: ");
-            vector<IngredientDetail> lackIngredientList = refriRecipe.checkLackIngredient(selectedRecipe);
+            Subtitle(selectedRecipe.name + " is chosen, But we need more of the following ingredients: ");
+            vector<IngredientDetail> lackIngredientList = recipe.checkLackIngredients(selectedRecipe);
             for (size_t i = 0; i < lackIngredientList.size(); ++i) {
                 cout << "\t" << lackIngredientList[i].name << " * " << lackIngredientList[i].amount << endl;
             }
@@ -229,23 +281,23 @@ void RefriSystem::Eat() {
                     cout << endl;
                     this_thread::sleep_for(chrono::seconds(1));
                 }
-                // [Cook] selected food -> update(reduce quantity) refrigerator.ingredientData
-                if(selectedIsMakable) {
+                // [Cook] selected food -> update(reduce quantity) storage.ingredientData
+                if (selectedIsMakable) {
                     // makable -> use each ingredients * (recipe.ingredient.amount)
-                    for (const auto& ing : selectedRecipe.ingredients) {
-                        refrigerator.removeIngredient(ing.name, ing.amount);
+                    for (const auto &ing: selectedRecipe.ingredients) {
+                        storageDataManagement.removeData(ing.name, ing.amount);
                     }
                 } else {
                     // non-makable -> use each ingredients * [isIngSufficient ? (recipe.ingredient.amount) : (all)]
                     // (this means ; For insufficient ingredient, Fill and use all)
-                    for (const auto& ing : selectedRecipe.ingredients) {
-                        double ownIngAmount = refrigerator.checkAmount(ing.name, 0);
+                    for (const auto &ing: selectedRecipe.ingredients) {
+                        double ownIngAmount = storage.checkUsableIngredientAmount(ing.name);
                         // cout << ing.name << "\t" << ownIngAmount << " :::: now having ------- " << endl; // TEST CODE
-                        if (ownIngAmount >= ing.amount){
-                            refrigerator.removeIngredient(ing.name, ing.amount);
+                        if (ownIngAmount >= ing.amount) {
+                            storageDataManagement.removeData(ing.name, ing.amount);
                         } else {
                             if (ownIngAmount > 0)
-                                refrigerator.removeIngredient(ing.name, ownIngAmount);
+                                storageDataManagement.removeData(ing.name, ownIngAmount);
                         }
                         cout << "\t" << ing.name << "\t" << ing.amount << " used" << endl;
                     }
@@ -257,15 +309,13 @@ void RefriSystem::Eat() {
                 break;
             case 2:
                 // (2) No, I wanna go back to the food list.
-
+                Cook(mood);
                 break;
             case 3:
                 // (3) No, I wanna go back to home.
+                Act();
                 break;
         }
-
-
         break;
     }
-
-}
+};

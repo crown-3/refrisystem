@@ -26,8 +26,13 @@ struct IngredientItem {
     StorageType storageType;
 };
 
+// Ingredient Name and Amount of it
+struct IngredientDetail {
+    string name;
+    double amount;
+};
+
 // RecipeItem
-struct IngredientDetail;
 struct RecipeItem {
     int id;
     string name;
@@ -35,9 +40,7 @@ struct RecipeItem {
     vector<string> steps;
     vector<IngredientDetail> ingredients;
 };
-struct IngredientDetail {
-    string name;
-    double amount;
-};
+
+
 
 #endif //REFRISYSTEM_INTERFACES_H

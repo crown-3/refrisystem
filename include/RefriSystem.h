@@ -4,15 +4,16 @@
 #include "Storage.h"
 #include "Recipe.h"
 
-// RefriSystem 클래스
+
 class RefriSystem{
     // composition of instance Storage
     string Storage_RawJSON_path = "../db/Storage.json";
-    Storage refrigerator;
+    Storage storage;
+    StorageDataManagement storageDataManagement;
 
     // composition of instance Recipe
     string Recipe_RawJSON_path = "../db/RecipeData.json";
-    Recipe refriRecipe;
+    Recipe recipe;
 public:
     RefriSystem();
 
@@ -24,10 +25,11 @@ public:
     void Briefing();
     void Act();
     void Eat();
+    void Cook(string mood);
 
     // sub-menu of Act()
     void ManageStorage();
-    void ShowRecipe();
+    void ManageRecipe();
 };
 
 #endif //REFRISYSTEM_REFRISYSTEM_H

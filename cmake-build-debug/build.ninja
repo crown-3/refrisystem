@@ -133,6 +133,13 @@ build CMakeFiles/refrisystem.dir/src/StorageDataManagement.cpp.obj: CXX_COMPILER
   OBJECT_DIR = CMakeFiles\refrisystem.dir
   OBJECT_FILE_DIR = CMakeFiles\refrisystem.dir\src
 
+build CMakeFiles/refrisystem.dir/src/RecipeDataManagement.cpp.obj: CXX_COMPILER__refrisystem_Debug C$:/Users/strik/CLionProjects/refrisystem/src/RecipeDataManagement.cpp || cmake_object_order_depends_target_refrisystem
+  DEP_FILE = CMakeFiles\refrisystem.dir\src\RecipeDataManagement.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/strik/CLionProjects/refrisystem/json/include
+  OBJECT_DIR = CMakeFiles\refrisystem.dir
+  OBJECT_FILE_DIR = CMakeFiles\refrisystem.dir\src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target refrisystem
@@ -141,7 +148,7 @@ build CMakeFiles/refrisystem.dir/src/StorageDataManagement.cpp.obj: CXX_COMPILER
 #############################################
 # Link the executable refrisystem.exe
 
-build refrisystem.exe: CXX_EXECUTABLE_LINKER__refrisystem_Debug CMakeFiles/refrisystem.dir/main.cpp.obj CMakeFiles/refrisystem.dir/src/Recipe.cpp.obj CMakeFiles/refrisystem.dir/src/RefriSystem.cpp.obj CMakeFiles/refrisystem.dir/utils/Table.cpp.obj CMakeFiles/refrisystem.dir/utils/ColorfulCli.cpp.obj CMakeFiles/refrisystem.dir/utils/CutDecimal.cpp.obj CMakeFiles/refrisystem.dir/utils/Title.cpp.obj CMakeFiles/refrisystem.dir/utils/Input.cpp.obj CMakeFiles/refrisystem.dir/src/Storage.cpp.obj CMakeFiles/refrisystem.dir/src/RecipeRecommendation.cpp.obj CMakeFiles/refrisystem.dir/src/Recommendation.cpp.obj CMakeFiles/refrisystem.dir/src/StorageDataManagement.cpp.obj
+build refrisystem.exe: CXX_EXECUTABLE_LINKER__refrisystem_Debug CMakeFiles/refrisystem.dir/main.cpp.obj CMakeFiles/refrisystem.dir/src/Recipe.cpp.obj CMakeFiles/refrisystem.dir/src/RefriSystem.cpp.obj CMakeFiles/refrisystem.dir/utils/Table.cpp.obj CMakeFiles/refrisystem.dir/utils/ColorfulCli.cpp.obj CMakeFiles/refrisystem.dir/utils/CutDecimal.cpp.obj CMakeFiles/refrisystem.dir/utils/Title.cpp.obj CMakeFiles/refrisystem.dir/utils/Input.cpp.obj CMakeFiles/refrisystem.dir/src/Storage.cpp.obj CMakeFiles/refrisystem.dir/src/RecipeRecommendation.cpp.obj CMakeFiles/refrisystem.dir/src/Recommendation.cpp.obj CMakeFiles/refrisystem.dir/src/StorageDataManagement.cpp.obj CMakeFiles/refrisystem.dir/src/RecipeDataManagement.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\refrisystem.dir

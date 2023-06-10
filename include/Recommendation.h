@@ -3,22 +3,28 @@
 
 #include <vector>
 #include <string>
+#include <functional>
 
 using namespace std;
 
-template <typename Item, typename State, typename Criteria>
+template <typename Item>
 class Recommendation {
-    // helper function (will be implemented?)
-//    virtual vector<Item> stateBasedFilter(vector<Item> TargetList, State UserState, Criteria PriorityCriteria) = 0;
-//    virtual vector<Item> priorityBasedSorter(vector<Item> TargetList, State UserState, Criteria PriorityCriteria) = 0;
-//    virtual vector<Item> propertyBasedFilter(vector<Item> TargetList, State UserState, Criteria PriorityCriteria) = 0;
 protected:
-    bool checkSInState
-public:
-    // Recommendation according to User's state
-    // : Returns the TargetList sorted by priorityCriteria for the UserState
-    virtual vector<Item> recommend(vector<Item> TargetList) = 0;
+    enum BooleanCriteria {TRUE, FALSE};
+    enum NumericFilterCriteria {OVER, UNDER};
+    enum NumericSortCriteria {ASCENDING, DESCENDING};
 
+    // recommend **General** helper function
+    vector<Item> booleanCheckerBasedFilter(vector<Item> TargetList, function<bool(Item item)> checker, BooleanCriteria criteria);
+    void booleanCheckerBasedSorter(vector<Item>& TargetList, function<bool(Item item)> checker, BooleanCriteria criteria);
+    template <typename NumericCheckingType>
+    vector<Item> numericCheckerBasedFilter(vector<Item> TargetList, function<NumericCheckingType(Item item)> checker, NumericCheckingType threshold, NumericFilterCriteria criteria);
+    template <typename NumericCheckingType>
+    void numericCheckerBasedSorter(vector<Item>& TargetList, function<NumericCheckingType(Item item)> checker, NumericSortCriteria criteria);
+public:
+    // Main(Total) Recommendation function
+    // : Returns the TargetList sorted by distinct priorityCriteria
+    virtual vector<Item> recommend(vector<Item> TargetList) = 0;
 };
 
 #endif //RECOMMENDATION_H
