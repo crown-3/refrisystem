@@ -2596,40 +2596,104 @@
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 3.0,
-                "name": "II"
+                "amount": 2.0,
+                "name": "Curry powder"
+            },
+            {
+                "amount": 0.25,
+                "name": "Carrot"
+            },
+            {
+                "amount": 1.0,
+                "name": "Potato"
+            },
+            {
+                "amount": 0.5,
+                "name": "Onion"
+            },
+            {
+                "amount": 1.0,
+                "name": "Bell pepper"
+            },
+            {
+                "amount": 2.0,
+                "name": "Pork loin"
+            },
+            {
+                "amount": 1.0,
+                "name": "Egg"
+            },
+            {
+                "amount": 1.0,
+                "name": "Flour"
+            },
+            {
+                "amount": 0.1,
+                "name": "Olive oil"
+            },
+            {
+                "amount": 0.1,
+                "name": "Pepper"
+            },
+            {
+                "amount": 0.1,
+                "name": "Salt"
+            },
+            {
+                "amount": 0.2,
+                "name": "Garlic"
+            },
+            {
+                "amount": 2.0,
+                "name": "Rice"
+            },
+            {
+                "amount": 0.1,
+                "name": "Parsley"
             }
         ],
-        "NAME": "sdfkwe;r",
+        "NAME": "Pork cutlet curry with rice",
         "STEPS": [
-            "werwef",
-            "sdfwe",
-            "we"
+            "Water and potatoes in a pan. Boil the carrots and add onions and bell peppers when the carrots and potatoes are cooked.When the bell pepper, onion, and curry are cooked, add the folded curry in the water and dissolve it to complete the curry.Curry with pork cutlet gives you a wonderful taste with just vegetables.",
+            "Curry concentration improves when the ratio of curry and water is right. If cooked too bluish, fold the curry in cold water. When cooked thickly, add more water and boil to adjust the concentration.",
+            "Hitting pork with a hammer softens the texture of the meat and makes it a more delicious pork cutlet, but hammering at home is never easy. Fragments of meat fry in all directions and turn into tatters. The sirloin removes the fat and cuts the tendon in between. You have to cut it so that the meat doesn't shrink when fried. Press lightly using clean plastic or wrap, apply minced garlic, sprinkle a little pepper, sprinkle a little salt, and let it ripen for about 30 minutes.",
+            "Coat the marinated meat with flour, egg wash, and cover with raw bread crumbs.Cover the meat with bread crumbs and press lightly to complete the pork cutlet.",
+            "Fry the finished pork cutlet with 165 degrees of oil, and remove the oil slightly from the fried pork cutlet and cut it into bite-sized pieces.",
+            "Put the rice in a bowl, place the chopped pork cutlet on the rice, and pour the boiled curry slightly."
         ],
         "TAG": [
-            "Cold",
-            "Hot"
+            "Hot",
+            "Savory",
+            "Fat",
+            "Protein",
+            "Carbohydrate"
         ]
     },
     {
         "INGREDIENT_INFO": [
             {
-                "amount": 2.0,
-                "name": "Onion"
+                "amount": 1.0,
+                "name": "Potato"
             },
             {
-                "amount": 8.0,
-                "name": "Carrot"
+                "amount": 0.1,
+                "name": "Butter"
+            },
+            {
+                "amount": 0.1,
+                "name": "Chive"
             }
         ],
-        "NAME": "asdf",
+        "NAME": "Baked Potaotes",
         "STEPS": [
-            "asdfllkj",
-            "adwer"
+            "First, clean the potatoes and pierce them with a fork.",
+            "Bake in the oven until they are soft.",
+            "Serve the baked potatoes with butter and chives."
         ],
         "TAG": [
-            "Cold",
-            "Premium"
+            "Hot",
+            "Vegan",
+            "Carbohydrate"
         ]
     }
 ]

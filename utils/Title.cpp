@@ -2,6 +2,8 @@
 #include <string>
 #include <typeinfo>
 #include "ColorfulCli.h"
+#include <chrono>
+#include <thread>
 
 
 #define LENGTH 50
@@ -33,17 +35,25 @@ void Title(const string title) {
     }
 }
 
+
 void Subtitle(const string subtitle) {
     cout << endl;
     cout << "### ";
     TextColor(LIGHTCYAN, BLACK);
-    cout << subtitle << endl;
+
+    for (char c : subtitle) {
+        cout << c;
+        cout.flush();  // clear buffer to make the text appear immediately
+        std::this_thread::sleep_for(std::chrono::milliseconds(5));
+    }
+
+    cout << endl;
     TextColor(WHITE, BLACK);
 }
 
 void Error(const string error) {
     cout << endl;
-    TextColor(RED, YELLOW);
+    TextColor(BLACK,RED);
     cerr << "!!! <ERR> " << error << " !!!" << endl;
     TextColor(WHITE, BLACK);
 }

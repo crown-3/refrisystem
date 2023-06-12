@@ -27,7 +27,7 @@ vector<string> RecipeTagList = {
 
 // Constructor
 Recipe::Recipe(string data_path, Storage &ref)
-: RawJSON_path(move(data_path)), storageRef(ref)
+: RawJSON_path(data_path), storageRef(ref)
 {
     dataManager = new RecipeDataManagement(data_path);
     recommendManager = new RecipeRecommendation(*this);
@@ -72,7 +72,8 @@ bool Recipe::checkRecipeExist(string recipeName) {
 };
 
 
-vector<Row> Recipe::stringifyRecipeForTable(vector<RecipeItem> targetRecipeData) {
+vector<Row> Recipe::stringifyRecipeForTable
+(vector<RecipeItem> targetRecipeData) {
     vector<Row> result;
 
     for (const auto &recipe: targetRecipeData) {
@@ -88,10 +89,11 @@ vector<Row> Recipe::stringifyRecipeForTable(vector<RecipeItem> targetRecipeData)
         }
         tags = tags.substr(0, tags.size() - 2); // remove the trailing comma
         row.values.push_back(tags);
+
         // 3열: Ingredients
         string ingredients;
         for (const auto &ingredient: recipe.ingredients) {
-            ingredients += CutDecimal(to_string(ingredient.amount), 1) + " " +
+            ingredients += CutDecimal(to_string(ingredient.amount), 3) + " " +
                            ingredient.name + ", ";
         }
         ingredients = ingredients.substr(0, ingredients.size() - 2); // remove the trailing comma
@@ -148,6 +150,7 @@ void Recipe::addRecipeSequence() {
 
     // UI : Display success message
     Subtitle("Successfully added new recipe '" + recipeName + "'!");
+    PressEnterToContinue();
 }
 
 // helper function for addRecipe(): it shows possible tags
@@ -181,19 +184,6 @@ vector<string> Recipe::inputSteps() {
 
 // helper function for addRecipe(): it takes input for recipe ingredients
 vector<IngredientDetail> Recipe::inputIngredients() {
-    fstream dataFile;
-    dataFile.open("../source/FoodData.json");
-
-    json j;
-    dataFile >> j;
-
-    map<string, string> foodData;
-
-    for (auto &element: j) {
-        foodData[element["name"]] = element["storage"];
-    }
-
-    json ingredientList = json::array(); // JSON array to hold the ingredient list
     vector<IngredientDetail> recipeIngredients; // vector to hold the ingredient list
 
     while (true) {
@@ -208,36 +198,6 @@ vector<IngredientDetail> Recipe::inputIngredients() {
         }
         cin.ignore();
         getline(cin, name);
-
-
-
-        if (foodData.find(name) == foodData.end()) {
-            char response;
-            cout << "----| Add new ingredient '" << name << "' to food data? (y/n): ";
-            cin >> response;
-            if (response == 'y' || response == 'Y') {
-                string storage;
-                storage = MultipleChoice({"fridge", "freezer", "pantry"},
-                                         "----| What is the suit storage for '" + name + "'?",
-                                         "(fridge / freezer / pantry)")[0];
-                foodData[name] = storage;
-                json newElement = {
-                        {"name",    name},
-                        {"storage", storage}
-                };
-                j.push_back(newElement);
-                // Write the updated data to the file immediately
-                ofstream output;
-                output.open("../source/FoodData.json");
-                output << j.dump(4); // pretty-printing with 4 spaces indent
-                output.close();
-            } else {
-                TextColor(DARKGRAY, BLACK);
-                cout << "----| Adding ingredient '" << name << "' canceled." << endl;
-                TextColor(WHITE, BLACK);
-                continue;
-            }
-        }
 
         ingredient.name = name;
         ingredient.amount = amount;
@@ -267,8 +227,78 @@ void Recipe::removeRecipeSequence() {
             break;
         }
     }
-
     dataManager->removeData(recipeName);
+
+    // UI : Display success message
+    Subtitle("Successfully deleted recipe '" + recipeName + "'!");
+    PressEnterToContinue();
+}
+
+// ------------------------------------------------------------------------------------------------------------
+// Inspect Recipe
+// ------------------------------------------------------------------------------------------------------------
+void Recipe::inspectRecipeSequence() {
+    Title("Inspect Recipe");
+
+    string recipeName;
+    RecipeItem recipeWantToInspect;
+
+    // check if the entered recipe name exists
+    while (true){
+        recipeName = Input("Enter the name of recipe you want to inspect");
+        if (!checkRecipeExist(recipeName)) {
+            TextColor(RED, BLACK);
+            cout << "The recipe name does not exists." << endl;
+            TextColor(WHITE, BLACK);
+        } else {
+            // found
+            for (const auto &recipe: dataManager->getData()) {
+                if (recipe.name == recipeName) {
+                    recipeWantToInspect = recipe;
+                    break;
+                }
+            }
+            break;
+        }
+    }
+
+    // UI : Display recipe information
+    Subtitle("Recipe of " + recipeWantToInspect.name);
+
+    cout << endl;
+    TextColor(MAGENTA, BLACK);
+    cout << "Tags : ";
+    TextColor(LIGHTGRAY, BLACK);
+    for (const auto &tag: recipeWantToInspect.tags) {
+        cout << tag << ", ";
+    }
+    cout << endl;
+
+    cout << endl;
+    TextColor(MAGENTA, BLACK);
+    cout << "Ingredients";
+    TextColor(LIGHTGRAY, BLACK);
+    cout << endl;
+    for (const auto &ingredient: recipeWantToInspect.ingredients) {
+        cout << ingredient.name << " * " << ingredient.amount << endl;
+    }
+
+    cout << endl;
+    TextColor(MAGENTA, BLACK);
+    cout << "Steps";
+    cout << endl;
+    int StepNumber = 1;
+    for (const auto &step: recipeWantToInspect.steps) {
+        TextColor(YELLOW, BLACK);
+        cout << "Step " << StepNumber << " : ";
+        TextColor(LIGHTGRAY, BLACK);
+        cout << step << endl;
+        StepNumber++;
+    }
+
+    cout << endl;
+    TextColor(WHITE, BLACK);
+    PressEnterToContinue();
 }
 
 // ------------------------------------------------------------------------------------------------------------
@@ -304,20 +334,34 @@ int Recipe::countLackIngredients(RecipeItem recipe) {
 
 vector<IngredientDetail> Recipe::checkLackIngredients(RecipeItem recipe) {
     vector<IngredientDetail> lackIngredientList;
-    cout << "===================checkLackIngredient===================" << endl;
+    cout << setprecision(2);
+
+    cout << endl;
+    cout << "===================== Ingredient Status =====================" << endl;
     for (const auto &ingredient: recipe.ingredients) {
         double ownIngAmount = storageRef.checkUsableIngredientAmount(ingredient.name);
-        cout << "\t" << ingredient.name << " now have " << ownIngAmount << ", need"
-             << ingredient.amount << " , so " << ((ownIngAmount < ingredient.amount) ? "NON-SUFFICIENT" : "SUFFICIENT")
-             << endl;
+        TextColor(YELLOW, BLACK);
+        cout << ingredient.name;
+        TextColor(WHITE, BLACK);
+        cout << " -" << " now have ";
+        TextColor(LIGHTCYAN, BLACK);
+        cout << ownIngAmount;
+        TextColor(WHITE, BLACK);
+        cout << ", need ";
+        TextColor(LIGHTBLUE, BLACK);
+        cout << ingredient.amount;
+        TextColor(WHITE, BLACK);
+        cout << ", so ";
+        TextColor(((ownIngAmount < ingredient.amount) ? RED : GREEN), BLACK);
+        cout << ((ownIngAmount < ingredient.amount) ? "NOT SUFFICIENT" : "SUFFICIENT");
+        TextColor(WHITE, BLACK);
+        cout << endl;
         if (ownIngAmount < ingredient.amount) {
             IngredientDetail lackIng;
             lackIng.name = ingredient.name;
             lackIng.amount = ingredient.amount - ownIngAmount;
             lackIngredientList.push_back(lackIng);
-            break;
         }
     }
-    cout << "=========================================================" << endl;
     return lackIngredientList;
 }

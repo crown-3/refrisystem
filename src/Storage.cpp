@@ -17,9 +17,11 @@ Storage::Storage(string data_path)
 
 Storage::~Storage() {
     dataManager->saveData();
+    delete dataManager;
 }
 
 void Storage::printStorage() {
+    dataManager->loadData();
 
     vector<Row> spoiledRow;
     vector<IngredientItem> spoiledIngredients = getIngredientsFreshnessLowerThan(DANGER);
@@ -64,11 +66,19 @@ void Storage::printStorage() {
 
     vector<string> alertTitle = {"ID", "STORAGE", "NAME", "FRESHNESS", "QUANTITY"};
 
-    TextColor(BLACK, RED);
-    cout << "!ALERT! These ingredients are about to expire!";
-    TextColor(WHITE, BLACK);
-    cout << endl;
-    table(alertTitle, spoiledRow);
+    // check if the spoiled items are empty
+    if (spoiledRow.empty()) {
+        TextColor(BLACK, GREEN);
+        cout << "No ingredients are about to expire!";
+        TextColor(WHITE, BLACK);
+        cout << endl;
+    } else {
+        TextColor(BLACK, RED);
+        cout << "!ALERT! These ingredients are about to expire!";
+        TextColor(WHITE, BLACK);
+        cout << endl;
+        table(alertTitle, spoiledRow);
+    }
 
     vector<string> storageTitle = {"ID", "NAME", "FRESHNESS", "QUANTITY"};
 
@@ -89,6 +99,15 @@ void Storage::printStorage() {
     TextColor(WHITE, BLACK);
     cout << endl;
     table(storageTitle, pantryRow);
+}
+
+bool Storage::isInStorage(std::string ingredientName) {
+    for (const auto &ing: dataManager->getData()) {
+        if (ing.name == ingredientName) {
+            return true;
+        }
+    }
+    return false;
 }
 
 
@@ -172,7 +191,7 @@ void Storage::addIngredientSequence() {
 
     Subtitle("Storage type for the ingredient");
     string storageTypeStr = MultipleChoice({"fridge", "freezer", "pantry"},
-                                           "Enter the type of storage to put the corresponding ingredient in.")[0];
+                                           "Enter the type of storage to put the corresponding ingredient in.", "fridge / freezer / pantry")[0];
 
     transform(storageTypeStr.begin(), storageTypeStr.end(), storageTypeStr.begin(), ::tolower);
     if (storageTypeStr == "fridge") {
@@ -192,6 +211,9 @@ void Storage::addIngredientSequence() {
     newIngredient.storageType = storageType;
 
     dataManager->addData(newIngredient);
+
+    Subtitle("Successfully added ingredient '" + name + "' to the storage!");
+    PressEnterToContinue();
 }
 
 
@@ -203,12 +225,27 @@ void Storage::removeIngredientSequence() {
     int quantity;
 
     Subtitle("Ingredient Name");
-    name = Input("Enter the ingredient name to remove");
+
+    while (true) {
+        name = Input("Enter the ingredient name to remove");
+        if (isInStorage(name)) {
+            break;
+        } else {
+            TextColor(RED, BLACK);
+            cout << "Ingredient '" << name << "' is not in the storage!";
+            TextColor(WHITE, BLACK);
+            cout << endl;
+        }
+    }
+
 
     Subtitle("Ingredient Quantity");
     quantity = InputInteger(0, 200, "Enter how much ingredient you want to remove", "Integer between 0 and 200");
 
     dataManager->removeData(name, quantity);
+
+    Subtitle("Successfully removed ingredient '" + name + "' from the storage!");
+    PressEnterToContinue();
 }
 
 
@@ -226,17 +263,12 @@ vector<IngredientItem> Storage::getIngredientsFreshnessLowerThan(int criteria) {
 // Check amount of an ingredient
 double Storage::checkIngredientAmount(string ingredientName, int freshThreshold) {
     double amount = 0;
-    bool isInStorage = false;
+    int count = 0;
 
     for (const auto& ing : dataManager->getData()) {
-        if (ing.name == ingredientName && ing.freshness > freshThreshold) {
-            isInStorage = true;
+        if ((ing.name == ingredientName) && (ing.freshness > freshThreshold)) {
             amount += ing.quantity;
         }
-    }
-
-    if (isInStorage) {
-        throw runtime_error("Ingredient not found in the refrigerator.");
     }
 
     return amount;
@@ -257,7 +289,7 @@ double Storage::checkIngredientLowestFreshness(string ingredientName) {
     }
 
     if (isInStorage) {
-        throw runtime_error("Ingredient not found in the refrigerator.");
+        throw runtime_error("Ingredient not found in the refrigerator. [checkIngredientLowestFreshness]");
     }
 
     return lowestFreshness;

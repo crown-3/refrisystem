@@ -27,4 +27,6 @@ public:
     virtual vector<Item> recommend(vector<Item> TargetList) = 0;
 };
 
+#include "Recommendation-impl.h"
+
 #endif //RECOMMENDATION_H

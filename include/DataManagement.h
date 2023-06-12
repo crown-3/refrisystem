@@ -7,7 +7,7 @@ using namespace std;
 // Using pure virtual function to make this class abstract
 class DataManagement {
 public:
-    virtual ~DataManagement()=0;
+    virtual ~DataManagement() {};
 
     // Save to JSON file
     virtual void saveData()=0;

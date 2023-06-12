@@ -2,6 +2,7 @@
 #include "nlohmann/json.hpp"
 #include <fstream>
 #include <vector>
+#include <iostream>
 
 using namespace std;
 using namespace nlohmann;
@@ -27,6 +28,7 @@ void StorageDataManagement::loadData() {
 
     int idCounter = 1; // Counter for assigning newIngredient.id
 
+    data = vector<IngredientItem>(); // Clear data vector
     // assign json items to each RecipeRow row
     for (const auto& element : j) {
         IngredientItem newIngredient;
@@ -68,12 +70,14 @@ void StorageDataManagement::saveData() {
 
 // Getter
 vector<IngredientItem> StorageDataManagement::getData() {
+    loadData();
     return data;
 }
 
 // Add Ingredient
 void StorageDataManagement::addData(IngredientItem ingredient) {
     StorageDataManagement::data.push_back(ingredient);
+    saveData();
 }
 
 // Remove Ingredient
@@ -95,6 +99,7 @@ void StorageDataManagement::removeData(std::string ingredientName, double amount
         return data[a].freshness < data[b].freshness;
     });
 
+
     // Subtract the requested amount from the freshness-sorted ingredients
     for (auto index : ingredientIndices) {
         if (amount <= 0) {
@@ -109,9 +114,11 @@ void StorageDataManagement::removeData(std::string ingredientName, double amount
         }
     }
 
+
     // Remove ingredients with zero quantity
     data.erase(remove_if(data.begin(), data.end(),
                                    [](const IngredientItem& ing) { return ing.quantity <= 0; }), data.end());
+    saveData();
 }
 
 // Clear Freshness of an Ingredient
@@ -121,4 +128,5 @@ void StorageDataManagement::clearFreshness(string ingredientName, int init, int 
             ing.freshness = init;
         }
     }
+    saveData();
 }

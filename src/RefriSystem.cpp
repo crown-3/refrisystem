@@ -1,4 +1,5 @@
 #include <iostream>
+#include <conio.h>
 #include <chrono>
 #include <thread>
 #include "../include/RefriSystem.h"
@@ -24,15 +25,19 @@ vector<string> MoodQ = {
 
 // [Mood] Switch number answer to Mood answer
 map<int, string> MoodA = {
-        {1, "happy"}, {2, "moody"}, {3, "exhausted"}, {4, "fine"}, {5, "mentally_tired"}
+        {1, "happy"},
+        {2, "moody"},
+        {3, "exhausted"},
+        {4, "fine"},
+        {5, "mentally_tired"}
 };
 
 // [Mood] Responses for each Mood answer
 map<string, string> MoodR = {
-        {"happy", "Oh, I'm really glad to hear that!"},
-        {"moody", "Oh, I understand how you feel."},
-        {"exhausted", "Oh, you need to recharge."},
-        {"fine", "Oh, that’s nice."},
+        {"happy",          "Oh, I'm really glad to hear that!"},
+        {"moody",          "Oh, I understand how you feel."},
+        {"exhausted",      "Oh, you need to recharge."},
+        {"fine",           "Oh, that's nice."},
         {"mentally_tired", "Oh, I'm so sorry to hear that."}
 };
 
@@ -50,6 +55,7 @@ RefriSystem::RefriSystem() :
 
 void RefriSystem::MAIN_MENU() {
     RefriSystem::Introduction();
+
     PressEnterToContinue();
     RefriSystem::Briefing();
     RefriSystem::Act();
@@ -58,11 +64,24 @@ void RefriSystem::MAIN_MENU() {
 void RefriSystem::Introduction() {
 
     TextColor(CYAN, BLACK);
-    cout << R"( ______     __    __     ______     ______     ______      ______     ______     ______   ______     __ )"<< endl;
-    cout << R"(/\  ___\   /\ "-./  \   /\  __ \   /\  == \   /\__  _\    /\  == \   /\  ___\   /\  ___\ /\  == \   /\ \   )"<< endl;
-    cout << R"(\ \___  \  \ \ \-./\ \  \ \  __ \  \ \  __<   \/_/\ \/    \ \  __<   \ \  __\   \ \  __\ \ \  __<   \ \ \  )"<< endl;
-    cout << R"( \/\_____\  \ \_\ \ \_\  \ \_\ \_\  \ \_\ \_\    \ \_\     \ \_\ \_\  \ \_____\  \ \_\    \ \_\ \_\  \ \_\ )"<< endl;
-    cout << R"(  \/_____/   \/_/  \/_/   \/_/\/_/   \/_/ /_/     \/_/      \/_/ /_/   \/_____/   \/_/     \/_/ /_/   \/_/ )"<< endl << endl;
+    cout << R"(
+
+ .====================================================================================.
+||    ______     __    __     ______     ______     ______           ______________   ||
+||   /\  ___\   /\ "-./  \   /\  __ \   /\  == \   /\__  _\        /              /|  ||
+||   \ \___  \  \ \ \-./\ \  \ \  __ \  \ \  __<   \/_/\ \/       /______________/ |  ||
+||    \ \_____\  \ \_\ \ \_\  \ \_\ \_\  \ \_\ \_\    \ \_\       | .            | |  ||
+||     \/_____/   \/_/  \/_/   \/_/\/_/   \/_/ /_/     \/_/       | !            | |  ||
+||     ______     ______     ______   ______     __               |______________| |  ||
+||    /\  == \   /\  ___\   /\  ___\ /\  == \   /\ \              | .            | |  ||
+||    \ \  __<   \ \  __\   \ \  __\ \ \  __<   \ \ \             | |            | /  ||
+||     \ \_\ \_\  \ \_____\  \ \_\    \ \_\ \_\  \ \_\            | !            |/   ||
+||      \/_/ /_/   \/_____/   \/_/     \/_/ /_/   \/_/            |______________/    ||
+||                                                                                    ||
+ `===================================================================================='
+)" << endl;
+
+
     TextColor(BLACK, CYAN);
     cout << "WELCOME TO THE SMART REFRI SYSTEM." << endl;
     TextColor(WHITE, BLACK);
@@ -84,7 +103,8 @@ void RefriSystem::Briefing() {
     if (storage.isDangerEmpty()) {
         Subtitle("No ingredients are in dangerous status.");
     } else {
-        Subtitle(storage.dangerIngredientsBehavior(NONE) + " are in dangerous status. Are you gonna dump them all, master?");
+        Subtitle(storage.dangerIngredientsBehavior(NONE) +
+                 " are in dangerous status. Are you gonna dump them all, master?");
 
         int answer = SingleChoiceWithNumber({"Yes", "No"});
         switch (answer) {
@@ -126,7 +146,7 @@ void RefriSystem::Act() {
         case 2: {
             // storage or recipe
             Subtitle("Then, what do you want to do, master?");
-            int answer2 = SingleChoiceWithNumber({"Open Storage", "Show Recipe"});
+            int answer2 = SingleChoiceWithNumber({"Open Storage", "Manage Recipe", "Exit Program"});
 
             switch (answer2) {
                 case 1: {
@@ -136,6 +156,14 @@ void RefriSystem::Act() {
                 case 2: {
                     ManageRecipe();
                     break;
+                }
+                case 3: {
+                    Title("Exit Program");
+                    Subtitle("Bye, master!");
+
+                    // Call destructor
+                    delete this;
+                    exit(0);
                 }
                 default:
                     break;
@@ -151,17 +179,19 @@ void RefriSystem::Act() {
 // STORAGE
 // ------------------------------------------------------------------------------------------------------------
 void RefriSystem::ManageStorage() {
-    Title("Open Storage");
+    Title("Manage Storage");
     storage.printStorage();
 
     int answer1 = SingleChoiceWithNumber({"Add Ingredient", "Delete Ingredient", "Back to Menu"});
     switch (answer1) {
         case 1: {
             storage.addIngredientSequence();
+            ManageStorage();
             break;
         }
         case 2: {
             storage.removeIngredientSequence();
+            ManageStorage();
             break;
         }
         case 3: {
@@ -180,17 +210,24 @@ void RefriSystem::ManageRecipe() {
     Title("Manage Recipe");
     recipe.showAllRecipe();
 
-    int answer1 = SingleChoiceWithNumber({"Add Recipe", "Delete Recipe", "Back to Menu"});
+    int answer1 = SingleChoiceWithNumber({"Add Recipe", "Delete Recipe", "Inspect Recipe", "Back to Menu"});
     switch (answer1) {
         case 1: {
             recipe.addRecipeSequence();
+            ManageRecipe();
             break;
         }
         case 2: {
             recipe.removeRecipeSequence();
+            ManageRecipe();
             break;
         }
         case 3: {
+            recipe.inspectRecipeSequence();
+            ManageRecipe();
+            break;
+        }
+        case 4: {
             Act();
             break;
         }
@@ -253,8 +290,11 @@ void RefriSystem::Cook(string mood) {
         } else {
             Subtitle(selectedRecipe.name + " is chosen, But we need more of the following ingredients: ");
             vector<IngredientDetail> lackIngredientList = recipe.checkLackIngredients(selectedRecipe);
+
+            cout << endl;
+            cout << "=================== Check Lack Ingredient ===================" << endl;
             for (size_t i = 0; i < lackIngredientList.size(); ++i) {
-                cout << "\t" << lackIngredientList[i].name << " * " << lackIngredientList[i].amount << endl;
+                cout << lackIngredientList[i].name << " * " << lackIngredientList[i].amount << endl;
             }
             Subtitle("Shall we buy these ingredients and then cook now, master? ");
         }
@@ -275,7 +315,7 @@ void RefriSystem::Cook(string mood) {
                 cout << R"( \ \_____\  \ \_____\  \ \_____\  \ \_\ \_\  \ \_\  \ \_\\"\_\  \ \_____\)" << endl;
                 cout << R"(  \/_____/   \/_____/   \/_____/   \/_/\/_/   \/_/   \/_/ \/_/   \/_____/ )" << endl << endl;
                 for (int i = 5; i >= 0; i--) {
-                    TextColor(BLACK, CYAN);
+                    TextColor(BLUE, BLACK);
                     cout << "Refri is cooking ... (" << i << "s)";
                     TextColor(WHITE, BLACK);
                     cout << endl;
@@ -299,13 +339,35 @@ void RefriSystem::Cook(string mood) {
                             if (ownIngAmount > 0)
                                 storageDataManagement.removeData(ing.name, ownIngAmount);
                         }
-                        cout << "\t" << ing.name << "\t" << ing.amount << " used" << endl;
                     }
                 }
+
                 // UI : display Succeed Cook message
                 TextColor(BLACK, CYAN);
-                cout << selectedRecipe.name << " is ready!" << endl;
+                cout << selectedRecipe.name << " is ready!";
                 TextColor(WHITE, BLACK);
+                cout << endl;
+                cout << endl;
+                cout << "       ________  .====\n"
+                        "      [________>< :===\n"
+                        "                 '====\n"
+                        "       ________ ___,,,,,,,\n"
+                        "      [________>__________\\\n"
+                        "\n"
+                        "       ________   .==.\n"
+                        "      [________>c((_  )\n"
+                        "                  '=='" << endl;
+
+                cout << endl;
+                TextColor(BLACK, YELLOW);
+                cout << "Enjoy your meal, master!";
+                TextColor(WHITE, BLACK);
+                cout << endl;
+                cout.flush();
+                PressEnterToContinue();
+
+                cout << endl;
+                Act();
                 break;
             case 2:
                 // (2) No, I wanna go back to the food list.

@@ -55,6 +55,12 @@ public:
     // ------------------------------------------------------------------------------------------------------------
     vector<RecipeItem> recommendRecipe(string mood);
 
+    // ------------------------------------------------------------------------------------------------------------
+    // Inspect Recipe
+    // ------------------------------------------------------------------------------------------------------------
+    void inspectRecipeSequence();
+
+
     // helper functions for RecipeRecommendation
     bool checkMakable(RecipeItem recipe);
     int countLackIngredients(RecipeItem recipe);

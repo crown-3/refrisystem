@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <stdexcept>
 #include <functional>
+#include <iostream>
 
 using namespace std;
 
@@ -33,7 +34,6 @@ RecipeRecommendation::RecipeRecommendation(Recipe &ref)
 }
 
 RecipeRecommendation::~RecipeRecommendation() {
-
 }
 
 void RecipeRecommendation::setUserMood(string new_userMood) {

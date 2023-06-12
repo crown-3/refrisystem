@@ -35,6 +35,7 @@ public:
 
     void printStorage();
 
+    bool isInStorage(string ingredientName);
     bool isDangerEmpty();
     bool isRottenEmpty();
 

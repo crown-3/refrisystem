@@ -14,7 +14,6 @@ class RecipeDataManagement : public DataManagement {
 private:
     string RawJSON_path;
     vector<RecipeItem> data;
-    Storage* storage;
 public:
     RecipeDataManagement(string data_path);
     ~RecipeDataManagement();

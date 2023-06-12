@@ -4,6 +4,7 @@
 #include <sstream>
 #include <algorithm>
 #include <cctype>
+#include <limits>
 
 #include "ColorfulCli.h"
 using namespace std;
@@ -86,8 +87,10 @@ int SingleChoiceWithNumber(vector<string> choices) {
 void PressEnterToContinue() {
     TextColor(DARKGRAY,BLACK);
     cout << "Press ENTER to continue...";
+    cout.flush();
     TextColor(WHITE,BLACK);
     cin.get();
+//    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
 vector<string> MultipleChoice(vector<string> choices, string question, string example = "") {

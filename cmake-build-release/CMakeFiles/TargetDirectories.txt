@@ -1,0 +1,5 @@
+C:/Users/strik/CLionProjects/refrisystem/cmake-build-release/CMakeFiles/refrisystem.dir
+C:/Users/strik/CLionProjects/refrisystem/cmake-build-release/CMakeFiles/edit_cache.dir
+C:/Users/strik/CLionProjects/refrisystem/cmake-build-release/CMakeFiles/rebuild_cache.dir
+C:/Users/strik/CLionProjects/refrisystem/cmake-build-release/json/CMakeFiles/edit_cache.dir
+C:/Users/strik/CLionProjects/refrisystem/cmake-build-release/json/CMakeFiles/rebuild_cache.dir
