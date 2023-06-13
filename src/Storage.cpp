@@ -1,6 +1,7 @@
 #include "../include/Storage.h"
 #include <algorithm>
 #include <iostream>
+#include <sstream>
 #include "../utils/Table.h"
 #include "../utils/ColorfulCli.h"
 #include "../utils/Title.h"
@@ -246,6 +247,27 @@ void Storage::removeIngredientSequence() {
 
     Subtitle("Successfully removed ingredient '" + name + "' from the storage!");
     PressEnterToContinue();
+}
+
+void Storage::removeIngredientsInRecipe(RecipeItem recipe, bool useAll) {
+    if (useAll) {
+        // makable -> use each ingredients * (recipe.ingredient.amount)
+        for (const auto &ing: recipe.ingredients) {
+            dataManager->removeData(ing.name, ing.amount);
+        }
+    } else {
+        // non-makable -> use each ingredients * [isIngSufficient ? (recipe.ingredient.amount) : (all)]
+        // (this means ; For insufficient ingredient, Fill and use all)
+        for (const auto &ing: recipe.ingredients) {
+            double ownIngAmount = checkUsableIngredientAmount(ing.name);
+            if (ownIngAmount >= ing.amount) {
+                dataManager->removeData(ing.name, ing.amount);
+            } else {
+                if (ownIngAmount > 0)
+                    dataManager->removeData(ing.name, ownIngAmount);
+            }
+        }
+    }
 }
 
 

@@ -50,7 +50,6 @@ map<string, string> MoodR = {
 
 RefriSystem::RefriSystem() :
         storage(Storage_RawJSON_path),
-        storageDataManagement(Storage_RawJSON_path),
         recipe(Recipe_RawJSON_path, storage) {}
 
 void RefriSystem::MAIN_MENU() {
@@ -160,10 +159,6 @@ void RefriSystem::Act() {
                 case 3: {
                     Title("Exit Program");
                     Subtitle("Bye, master!");
-
-                    // Call destructor
-                    delete this;
-                    exit(0);
                 }
                 default:
                     break;
@@ -252,6 +247,13 @@ void RefriSystem::Eat() {
 }
 
 void RefriSystem::Cook(string mood) {
+
+    cout << endl;
+    TextColor(DARKGRAY, BLACK);
+    cout << "LODADING";
+    TextColor(WHITE, BLACK);
+    cout << endl;
+
     // Recommend recipes according to User's mood
     vector<RecipeItem> recipePriorityList = recipe.recommendRecipe(mood);
     while (!recipePriorityList.empty()) {
@@ -321,26 +323,9 @@ void RefriSystem::Cook(string mood) {
                     cout << endl;
                     this_thread::sleep_for(chrono::seconds(1));
                 }
+
                 // [Cook] selected food -> update(reduce quantity) storage.ingredientData
-                if (selectedIsMakable) {
-                    // makable -> use each ingredients * (recipe.ingredient.amount)
-                    for (const auto &ing: selectedRecipe.ingredients) {
-                        storageDataManagement.removeData(ing.name, ing.amount);
-                    }
-                } else {
-                    // non-makable -> use each ingredients * [isIngSufficient ? (recipe.ingredient.amount) : (all)]
-                    // (this means ; For insufficient ingredient, Fill and use all)
-                    for (const auto &ing: selectedRecipe.ingredients) {
-                        double ownIngAmount = storage.checkUsableIngredientAmount(ing.name);
-                        // cout << ing.name << "\t" << ownIngAmount << " :::: now having ------- " << endl; // TEST CODE
-                        if (ownIngAmount >= ing.amount) {
-                            storageDataManagement.removeData(ing.name, ing.amount);
-                        } else {
-                            if (ownIngAmount > 0)
-                                storageDataManagement.removeData(ing.name, ownIngAmount);
-                        }
-                    }
-                }
+                storage.removeIngredientsInRecipe(selectedRecipe, selectedIsMakable);
 
                 // UI : display Succeed Cook message
                 TextColor(BLACK, CYAN);
@@ -362,10 +347,6 @@ void RefriSystem::Cook(string mood) {
                 TextColor(BLACK, YELLOW);
                 cout << "Enjoy your meal, master!";
                 TextColor(WHITE, BLACK);
-                cout << endl;
-                cout.flush();
-                PressEnterToContinue();
-
                 cout << endl;
                 Act();
                 break;

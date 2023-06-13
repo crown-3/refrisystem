@@ -21,7 +21,7 @@ void RecipeDataManagement::loadData() {
     // load json file with data_path
     ifstream jsonFile(RawJSON_path);
     if (!jsonFile.is_open()) {
-        throw runtime_error("RecipeData.json file could not be opened. Check if the file exists and its permissions. 여기에서 에러가 걸리는 것인가? 대답해라 바보야");
+        throw runtime_error("RecipeData.json file could not be opened. Check if the file exists and its permissions.");
     }
     json j;
     jsonFile >> j;

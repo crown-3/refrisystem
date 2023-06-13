@@ -48,6 +48,7 @@ public:
     void addIngredientSequence();
     void removeIngredientSequence();
 
+    void removeIngredientsInRecipe(RecipeItem recipe, bool useAll);
     vector<IngredientItem> getIngredientsFreshnessLowerThan(int criteria);
     double checkIngredientAmount(string ingredientName, int freshThreshold);
     double checkIngredientLowestFreshness(string ingredientName);

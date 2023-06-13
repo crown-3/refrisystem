@@ -12,11 +12,8 @@
 using namespace std;
 using namespace nlohmann;
 
-// 가능한 RecipeTag 종류
+// Possible kinds of RecipeTag
 extern vector<string> RecipeTagList;
-// RecipeTag 중요도 정보
-//extern map<string, vector<string>> moodPreference; // 기분에 따른 선호 RecipeTag
-//extern map<int, vector<string>> userPreference;    // 사용자의 RecipeTag 선호순서
 
 // Recipe class
 class RecipeRecommendation;

@@ -5,12 +5,12 @@
 #include <string>
 using namespace std;
 
-// 각 행을 표현하는 구조체
+// Struct that represents the row
 struct Row {
     vector<string> values;
 };
 
-// 테이블을 출력하는 함수
+// Function that prints the table
 void table(const vector<string>& titles, const vector<Row>& rows);
 
 #endif //REFRISYSTEM_TABLE_H

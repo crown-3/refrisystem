@@ -90,7 +90,7 @@
         "storage": "fridge"
     },
     {
-        "amount": 4.0,
+        "amount": 3.0,
         "freshness": 95,
         "name": "Blueberry",
         "storage": "fridge"
@@ -120,7 +120,7 @@
         "storage": "pantry"
     },
     {
-        "amount": 2.0,
+        "amount": 1.5,
         "freshness": 89,
         "name": "Caesar dressing",
         "storage": "fridge"
@@ -156,7 +156,7 @@
         "storage": "pantry"
     },
     {
-        "amount": 4.0,
+        "amount": 2.0,
         "freshness": 33,
         "name": "Chicken",
         "storage": "fridge"

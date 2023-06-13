@@ -34,3 +34,11 @@
 2402	4765	7082696119920820	refrisystem.exe	ed5c100e418d4abc
 5	2333	7082723742708767	CMakeFiles/refrisystem.dir/src/Storage.cpp.obj	d02054377a308f
 2334	4902	7082723768296760	refrisystem.exe	ed5c100e418d4abc
+24	742	7082890669292201	CMakeFiles/refrisystem.dir/utils/Table.cpp.obj	44325b1ef8dc3506
+4	1917	7082890681061667	CMakeFiles/refrisystem.dir/main.cpp.obj	19a2bb4585f11f07
+39	2153	7082890683349738	CMakeFiles/refrisystem.dir/src/Storage.cpp.obj	d02054377a308f
+17	2341	7082890685273460	CMakeFiles/refrisystem.dir/src/RefriSystem.cpp.obj	2616ad3a87bd64fc
+32	2542	7082890687286102	CMakeFiles/refrisystem.dir/src/RecipeRecommendation.cpp.obj	dc7b7cd2df744f78
+11	2911	7082890690955847	CMakeFiles/refrisystem.dir/src/Recipe.cpp.obj	200f3834dcb25e
+48	3911	7082890700943676	CMakeFiles/refrisystem.dir/src/RecipeDataManagement.cpp.obj	c1f467de2472d2b1
+3911	6323	7082890725022609	refrisystem.exe	ed5c100e418d4abc
